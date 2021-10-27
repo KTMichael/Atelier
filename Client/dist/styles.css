@@ -1,0 +1,30 @@
+/* STYLES COMMON TO ENTIRE APP */
+
+body {
+  background-color: lightblue;
+  padding: 5px;
+}
+
+div {
+  background-color: lightslategray
+}
+
+p {
+  background-color: lightslategray
+}
+
+
+
+/* Styles specific to PRODUCT DETAIL widget */
+
+
+
+/* Styles specific to QUESTIONS & ANSWERS widget */
+
+
+
+/* Styles specific to RATINGS widget */
+
+
+
+/* Styles specific to RELATED ITEMS widget */
