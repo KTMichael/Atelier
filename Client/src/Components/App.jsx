@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductDetail from './ProductDetail.jsx';
-import QuestionsAnswers from './QuestionsAnswers.jsx';
-import Ratings from './Ratings.jsx';
-import RelatedItems from './RelatedItems.jsx';
+import ProductDetail from './productDetail/ProductDetail.jsx';
+import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
+import Ratings from './ratings/Ratings.jsx';
+import RelatedItems from './relatedItems/RelatedItems.jsx';
 
 class App extends React.Component {
   constructor(props) {
