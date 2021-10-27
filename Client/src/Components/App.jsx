@@ -2,7 +2,7 @@ import React from 'react';
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import Ratings from './ratings/Ratings.jsx';
-import RelatedItems from './relatedItems/RelatedItems.jsx';
+import MainRelatedFeature from './relatedItems/mainRelatedFeature.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends React.Component {
         <ProductDetail />
         <QuestionsAnswers />
         <Ratings />
-        <RelatedItems />
+        <MainRelatedFeature />
       </div>
     )
   }
