@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageGallery from './ImageGallery.jsx'
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class ProductDetail extends React.Component {
   render() {
     return (
       <div>
-        <div id="image_gallery">Image Gallery</div>
+        <ImageGallery />
         <div id="product_info">
           <div className="sub_component">Product Descriptions</div>
           <div className="sub_component">Style Selector</div>
