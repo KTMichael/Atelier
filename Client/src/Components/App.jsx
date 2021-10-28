@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductDetail from './productDetail/ProductDetail.jsx';
-import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
+import QA from './QA.jsx';
 import Ratings from './ratings/Ratings.jsx';
 import MainRelatedFeature from './relatedItems/mainRelatedFeature.jsx';
 
@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <ProductDetail />
-        <QuestionsAnswers />
+        <QA />
         <Ratings />
         <MainRelatedFeature />
       </div>
