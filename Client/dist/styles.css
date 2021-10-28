@@ -1,22 +1,50 @@
 /* STYLES COMMON TO ENTIRE APP */
 
 body {
-  background-color: lightblue;
+  background-color: rgb(255, 255, 255);
   padding: 5px;
 }
 
 div {
-  background-color: lightslategray
+  background-color: lightblue;
 }
 
 p {
-  background-color: lightslategray
+  background-color: lightblue
 }
 
 
 
 /* Styles specific to PRODUCT DETAIL widget */
 
+#image_gallery {
+  float: left;
+  width: 400px;
+  height: 400px;
+  margin: 8px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+}
+
+#product_info {
+  float: right;
+  height: 400px;
+  margin-left: 500px;
+  margin: 8px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+}
+
+.sub_component {
+  margin: 8px;
+  padding: 5px;
+}
 
 
 /* Styles specific to QUESTIONS & ANSWERS widget */
