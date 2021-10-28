@@ -12,10 +12,10 @@ class ScrollableProductContainer extends React.Component {
 
   render() {
     return (
-      <div class='scrolling-product-container'>
+      <div className='scrolling-product-container'>
         {/* based off number this.state.products.length */}
-        <div class='productDisplay'></div>
-        <div class='productDisplay'></div>
+        <div className='productDisplay'></div>
+        <div className='productDisplay'></div>
       </div>
     )
   }

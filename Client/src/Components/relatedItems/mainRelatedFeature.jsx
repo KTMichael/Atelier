@@ -29,7 +29,7 @@ class MainRelatedFeature extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='RelatedFeature'>
         <div>
           <ScrollableProductContainer products={this.state.relatedProducts} />
         </div>

@@ -11,7 +11,7 @@ class ProductDetail extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <div id='ProductDetail'></div>
     )
   }
 }
