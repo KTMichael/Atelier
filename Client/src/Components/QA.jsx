@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionSearch from './QA/QuestionSearch.jsx'
 import QuestionList from './QA/QuestionList.jsx'
+import MoreQuestionsButton from './QA/MoreQuestionsButton.jsx'
 
 class QA extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class QA extends React.Component {
       <div id='QA'>
         <QuestionSearch/>
         <QuestionList/>
+        <MoreQuestionsButton/>
       </div>
     )
   }

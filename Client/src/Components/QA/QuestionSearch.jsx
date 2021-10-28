@@ -20,4 +20,4 @@ class QuestionSearch extends React.Component {
   }
 }
 
-export default QuestionSearch
+export default QuestionSearch;
