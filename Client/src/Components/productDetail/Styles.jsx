@@ -4,11 +4,9 @@ function Styles (props) {
 
   return (
     <div>
-      {props.options.map( (element) => {
+      {props.options.map( (element, index) => {
         return (
-        <span>
-          <img src={element.photos[0].thumbnail_url}/>
-        </span>
+          <img key={index} src={element.photos[0].thumbnail_url}/>
         )
       })}
     </div>
