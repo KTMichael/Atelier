@@ -7,10 +7,14 @@ class Answer extends React.Component {
   }
 
   render() {
+    let username = this.props.data.answerer_name === 'Seller' ? <strong>Seller</strong> : this.props.data.answerer_name;
+    let date = moment(this.props.data.date).format('MMMM DD, YYYY');
     return (
       <>
         <p className='question'>A: {this.props.data.body}</p>
-        <p>by {this.props.data.answerer_name}, {moment(this.props.data.date).format('MMMM DD, YYYY')}</p>
+        <p className='answerer'>
+          by {username}, {date}
+        </p>
       </>
     )
   }
