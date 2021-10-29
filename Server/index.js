@@ -7,9 +7,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/../Client/dist'));
 
 app.get('/qa/questions/', (req, res) => {
-  console.log(req.query.product_id);
   api.getQuestions(req.query.product_id, (err, results) => {
-    console.log(err);
     if (!err) {
       res.status(200).send(results);
     } else {
