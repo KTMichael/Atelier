@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import QA from './QA.jsx';
-import Ratings from './ratings/Ratings.jsx';
+import RatingsandReviews from './ratings/RatingsandReviews.jsx';
 import MainRelatedFeature from './relatedItems/mainRelatedFeature.jsx';
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
         <ProductDetail />
         <QA />
-        <Ratings />
+        <RatingsandReviews />
         <MainRelatedFeature />
       </div>
     )
