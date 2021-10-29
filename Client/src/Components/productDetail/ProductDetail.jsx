@@ -12,7 +12,7 @@ class ProductDetail extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='ProductDetail'>
         <ImageGallery />
         <div id="product_info">
           <div className="sub_component">Product Descriptions</div>

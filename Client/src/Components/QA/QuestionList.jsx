@@ -1,6 +1,6 @@
 import React from 'react';
 
-class QuestionsAnswers extends React.Component {
+class QuestionList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -10,10 +10,8 @@ class QuestionsAnswers extends React.Component {
   }
 
   render() {
-    return (
-      <div></div>
-    )
+    return (<ul></ul>)
   }
 }
 
-export default QuestionsAnswers;
+export default QuestionList;
