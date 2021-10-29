@@ -1,25 +1,27 @@
 import React from 'react';
 import Answer from './Answer.jsx'
 
-const sortAnswers = (firstAns, secondAns) => {
-  if (firstAns.answerer_name === 'Seller' && secondAns.answerer_name !== 'Seller') {
-    return -1;
-  }
-
-  if (secondAns.answerer_name === 'Seller' && firstAns.answerer_name !== 'Seller') {
-    return 1;
-  }
-
-  return secondAns.helpfulness - firstAns.helpfulness;
-}
-
 class Question extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      answers: Object.values(this.props.data.answers).sort(sortAnswers),
+      answers: Object.values(this.props.data.answers).sort(this.sortAnswers),
       answerListMax: 2
+    }
+
+    this.renderSeeMoreAnswers = this.renderSeeMoreAnswers.bind(this);
+  }
+
+  sortAnswers(firstAns, secondAns) {
+    if (firstAns.answerer_name === 'Seller' && secondAns.answerer_name !== 'Seller') { return -1; }
+    if (secondAns.answerer_name === 'Seller' && firstAns.answerer_name !== 'Seller') { return 1; }
+    return secondAns.helpfulness - firstAns.helpfulness;
+  }
+
+  renderSeeMoreAnswers() {
+    if (this.state.answers.length > 2 && this.state.answerListMax === 2) {
+      return <p onClick={() => this.setState({ answerListMax: this.state.answers.length })}>See more answers</p>
     }
   }
 
@@ -33,6 +35,7 @@ class Question extends React.Component {
             renderAnswers.map(answer => <Answer key={`Answer ${answer.id}`} data={answer} />)
           }
         </ul>
+        {this.renderSeeMoreAnswers()}
       </>
     )
   }
