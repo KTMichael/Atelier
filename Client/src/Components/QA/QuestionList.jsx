@@ -12,7 +12,7 @@ class QuestionList extends React.Component {
 
   componentDidMount() {
     //TODO: Remove this dirty direct get request, should be done through the server router
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/qa/questions/?product_id=42366')
+    axios.get('http://localhost:3000/qa/questions/?product_id=42366')
     .then((result) => { this.setState({questions: result})})
   }
 
