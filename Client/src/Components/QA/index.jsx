@@ -1,8 +1,8 @@
 import React from 'react';
-import QuestionSearch from './QA/QuestionSearch.jsx';
-import QuestionList from './QA/QuestionList.jsx';
-import MoreQuestionsButton from './QA/MoreQuestionsButton.jsx';
-import AddQuestionButton from './QA/AddQuestionButton.jsx';
+import QuestionSearch from './QuestionSearch.jsx';
+import QuestionList from './QuestionList.jsx';
+import MoreQuestionsButton from './MoreQuestionsButton.jsx';
+import AddQuestionButton from './AddQuestionButton.jsx';
 
 class QA extends React.Component {
   constructor(props) {

@@ -10,7 +10,7 @@ class AddQuestionButton extends React.Component {
   }
 
   render() {
-    return (<button id='AddQuestion'>Add Question</button>)
+    return (<button id='addQuestion'>Add Question</button>)
   }
 }
 
