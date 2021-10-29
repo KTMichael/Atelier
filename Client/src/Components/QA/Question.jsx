@@ -4,16 +4,18 @@ import Answer from './Answer.jsx'
 class Question extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      answers: Object.values(this.props.data.answers).sort((firstAns, secondAns) => {return secondAns.helpfulness - firstAns.helpfulness})
+    }
   }
 
   render() {
-    let answers = this.props.data.answers
-    let answerKeys = Object.keys(answers);
     return (
       <>
         <p className='question'>Q: {this.props.data.question_body}</p>
         <ul className='answerList'>
-          {answerKeys.map(key => <Answer key={key} data={answers[key]}/>)}
+          {this.state.answers.map(answer => <Answer key={`Answer ${answer.id}`} data={answer}/>)}
         </ul>
       </>
     )
