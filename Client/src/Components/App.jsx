@@ -15,12 +15,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <ProductDetail />
         <QA />
         <Ratings />
         <MainRelatedFeature />
-      </div>
+      </>
     )
   }
 }
