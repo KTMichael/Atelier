@@ -11,6 +11,7 @@ class Question extends React.Component {
     }
 
     this.renderSeeMoreAnswers = this.renderSeeMoreAnswers.bind(this);
+    this.handleSeeMoreAnswers = this.handleSeeMoreAnswers.bind(this);
   }
 
   sortAnswers(firstAns, secondAns) {
@@ -19,9 +20,21 @@ class Question extends React.Component {
     return secondAns.helpfulness - firstAns.helpfulness;
   }
 
+  handleSeeMoreAnswers() {
+    if (this.state.answerListMax <= 2) {
+      this.setState({ answerListMax: this.state.answers.length })
+    } else {
+      this.setState({ answerListMax: 2 })
+    }
+  }
+
   renderSeeMoreAnswers() {
-    if (this.state.answers.length > 2 && this.state.answerListMax === 2) {
-      return <p onClick={() => this.setState({ answerListMax: this.state.answers.length })}>See more answers</p>
+    if (this.state.answers.length > 2) {
+      if (this.state.answerListMax <= 2) {
+        return <p onClick={this.handleSeeMoreAnswers}>See more answers</p>
+      } else {
+        return <p onClick={this.handleSeeMoreAnswers}>Collapse answers</p>
+      }
     }
   }
 
