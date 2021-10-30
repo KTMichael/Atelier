@@ -16,7 +16,7 @@ class QuestionSearch extends React.Component {
   }
 
   render() {
-    return (<input type='text' id='qSearch'></input>)
+    return (<input type='text' id='questionSearch'></input>)
   }
 }
 
