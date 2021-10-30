@@ -5,21 +5,27 @@ body {
   padding: 5px;
   width: 100%;
   height: 100%;
+  background-color: rgb(32, 33, 34)
+  font-family: 'Ubuntu', sans-serif;
 }
 
 div {
-  background-color: lightblue;
+  background-color: rgb(60, 75, 80)
 }
 
-p {
-  background-color: lightblue
-}
+
 
 
 
 /* Styles specific to PRODUCT DETAIL widget */
 
 /* ---------------- Product Detail ------------------- */
+#Title {
+  font-family: 'Major Mono Display', monospace;
+  font-size: 7vw;
+  margin-left: 30%;
+  color:ivory
+}
 
 #ProductDetailMain {
   display: flex;
@@ -32,6 +38,7 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 
@@ -84,6 +91,7 @@ p {
     border-width: 1px;
     border-radius: 5px;
     border-color: black;
+    font-family: 'Ubuntu', sans-serif;
   }
 
   /* #RelatedFeature {
@@ -113,24 +121,13 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #QA {
   width: 100%;
   height: 100%;
   margin: 8px;
-  padding: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-}
-
-#qa {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  margin: 1%;
   padding: 5px;
   border-style: solid;
   border-width: 1px;
@@ -153,13 +150,13 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-  background-color: rgb(60, 75, 80)
+  background-color: rgb(60, 75, 80);
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #RRComp {
   display: flex;
   flex-flow: wrap;
-
   margin-right: 8px;
   margin-left: 8px;
   width: 97.5%;
@@ -170,6 +167,7 @@ p {
   border-radius: 5px;
   border-color: black;
   background-color: rgb(32, 33, 34)
+
 }
 
 #OverallRatings {
@@ -183,6 +181,7 @@ p {
   border-radius: 5px;
   border-color: black;
   background-color: rgb(46, 69, 93)
+
 }
 
 #CustomerReviews {
@@ -196,10 +195,10 @@ p {
   border-radius: 5px;
   border-color: black;
   background-color: rgb(46, 69, 93)
+
 }
 
 #ReviewForm {
-
 height: 100%;
 width: 98%;
 margin: 7px;
@@ -209,10 +208,12 @@ border-width: 1px;
 border-radius: 5px;
 border-color: black;
 background-color: rgb(38, 83, 132)
+
 }
 
 #btn {
   background-color: rgb(46, 69, 93)
+
 }
 
 #StarRating{

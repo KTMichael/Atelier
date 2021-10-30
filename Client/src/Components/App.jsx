@@ -11,7 +11,7 @@ const App = () => {
   const [productInfo, setProductInfo] = useState(testData.testListProducts);
   return (
     <div>
-      {console.log(productInfo)}
+      <div id='Title'>Atelier</div>
       <div id="ProductDetailMain" >
         <ProductDetail />
       </div>
