@@ -6,7 +6,7 @@ import { testContext } from './context.js';
 
 function MainRelatedFeature() {
   const [product, setProduct] = useState({});
-  const [relatedProduct, setRelatedProducts] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [outfits, setOutfits] = useState([]);
   const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
 
@@ -33,13 +33,13 @@ function MainRelatedFeature() {
   // };
   return (
     <div id='RelatedFeature'>
-      Related Products
+      <h1>Related Products</h1>
       <div>
-        <testContext.Provider value={{relatedProduct, outfits}}>
+        <testContext.Provider value={{relatedProducts, outfits}}>
           <ScrollableProductContainer  />
         </testContext.Provider>
       </div>
-      Your Outfit
+      <h1>Your Outfit</h1>
       {/* <div>
         <ScrollableProductContainer  />
       </div> */}
