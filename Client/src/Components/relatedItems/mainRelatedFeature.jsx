@@ -30,8 +30,8 @@ class MainRelatedFeature extends React.Component {
   render() {
     return (
       <div id='RelatedFeature'>
+        <h1> Related Features </h1>
         <div>
-          <h1> Related Features </h1>
           <ScrollableProductContainer products={this.state.relatedProducts} />
         </div>
         <div>

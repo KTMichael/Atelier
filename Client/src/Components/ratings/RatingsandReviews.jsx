@@ -10,14 +10,16 @@ const RatingsandReviews = () => {
   return (
 
     <div id="RatingsandReviews" >
-      <h1> Ratings & Reviews</h1>
+      <div id="RRTitle">
+        <h1> Ratings & Reviews</h1>
+      </div>
       <div id="RRComp">
         <div id="OverallRatings">
           <OverallRatings />
         </div>
         <div id="CustomerReviews">
           <CustomerReviews />
-          <div id="CustomerReviews"style={{ display: 'flex', flexDirection: 'row' }}>
+          <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
               <button type="button" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
             </div>
