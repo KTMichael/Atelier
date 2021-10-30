@@ -3,6 +3,8 @@
 body {
   background-color: rgb(255, 255, 255);
   padding: 5px;
+  width: 100%;
+  height: 100%;
 }
 
 div {
@@ -62,6 +64,7 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(60, 75, 80)
 }
 
 #RRComp {
@@ -77,6 +80,7 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(32, 33, 34)
 }
 
 #OverallRatings {
@@ -89,11 +93,12 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(46, 69, 93)
 }
 
 #CustomerReviews {
   text-align: center;
-  height: 70%;
+  height: 100%;
   width: 54%;
   margin: 8px;
   padding: 5px;
@@ -101,11 +106,12 @@ p {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(46, 69, 93)
 }
 
 #ReviewForm {
-text-align: center;
-height: 70%;
+
+height: 100%;
 width: 98%;
 margin: 7px;
 padding: 6px;
@@ -113,6 +119,15 @@ border-style: solid;
 border-width: 1px;
 border-radius: 5px;
 border-color: black;
+background-color: rgb(38, 83, 132)
+}
+
+#btn {
+  background-color: rgb(46, 69, 93)
+}
+
+#StarRating{
+  background-color: rgb(38, 83, 132)
 }
 /* Styles specific to QUESTIONS & ANSWERS widget */
 

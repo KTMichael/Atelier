@@ -5,7 +5,7 @@ const Stars = ({ filled, onClick, val }) => {
   return (
     <FaStar
       bordercolor={"black"}
-      color={filled ? "gold" : "lightgray"}
+      color={filled ? "gold" : "white"}
       onClick={onClick} />
   );
 }
