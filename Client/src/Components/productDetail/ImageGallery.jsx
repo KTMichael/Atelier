@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 class ImageGallery extends React.Component {
     render() {
         return (
-            <div>
+            <div id="imgGal">
                 <h2>My Image Gallery</h2>
                 <Carousel autoPlay interval="5000" transitionTime="5000">
                     <div>
