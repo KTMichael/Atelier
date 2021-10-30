@@ -4,7 +4,6 @@ import { testContext } from './context.js';
 //Container for Arrow keys and product diplay
 function scrollableProductContainer() {
   const { relatedProduct, outfits } = useContext(testContext);
-  console.log(relatedProduct);
 
 
   return (
