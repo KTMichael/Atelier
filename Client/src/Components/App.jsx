@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductDetail from './productDetail/ProductDetail.jsx';
-import QA from './QA.jsx';
+import QA from './QA/index.jsx';
 import Ratings from './ratings/Ratings.jsx';
 import MainRelatedFeature from './relatedItems/mainRelatedFeature.jsx';
 
