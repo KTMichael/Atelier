@@ -6,7 +6,7 @@ function Styles (props) {
     <div>
       {props.options.map( (element, index) => {
         return (
-          <img key={index} src={element.photos[0].thumbnail_url}/>
+          <img className="thumbnail" key={index} src={element.photos[0].thumbnail_url}/>
         )
       })}
     </div>
