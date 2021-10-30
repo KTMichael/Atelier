@@ -46,6 +46,11 @@ p {
   padding: 5px;
 }
 
+.thumbnail {
+  width: 80px;
+  margin: 8px;
+}
+
 
 /* Styles specific to QUESTIONS & ANSWERS widget */
 
