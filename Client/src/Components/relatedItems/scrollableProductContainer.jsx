@@ -1,25 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { testContext } from './context.js';
 
 //Container for Arrow keys and product diplay
-class ScrollableProductContainer extends React.Component {
-  constructor(props) {
-    super(props);
+function scrollableProductContainer() {
+  const { relatedProduct, outfits } = useContext(testContext);
+  console.log(relatedProduct);
 
-    this.state = {
-      products: []
-    };
-  }
 
-  render() {
-    return (
-      <div className='scrolling-product-container'>
-        {/* based off number this.state.products.length */}
-        <div className='productDisplay'></div>
-        <div className='productDisplay'></div>
-      </div>
-    )
-  }
+  return (
+    <div className='scrolling-product-container'>
+      <button id='left-scroll' type='button'>Left Scroll</button>
+      <div className='productDisplay'></div>
+      <div className='productDisplay'></div>
+    </div>
+  )
 }
 
-export default ScrollableProductContainer;
+export default scrollableProductContainer;
 

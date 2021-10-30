@@ -56,3 +56,16 @@ p {
 
 
 /* Styles specific to RELATED ITEMS widget */
+#RelatedFeature {
+  float: left;
+  width: 300px;
+  height: 100px;
+  border: 1px solid black;
+  padding: 2px;
+}
+#scrolling-product-container {
+  width: 300px;
+  height: 100px;
+  border: 1px solid black;
+  padding: 50px;
+}
