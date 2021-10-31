@@ -16,10 +16,11 @@ class QA extends React.Component {
   render() {
     return (
       <div id='QA'>
-        <QuestionSearch/>
-        <QuestionList/>
-        <MoreQuestionsButton/>
-        <AddQuestionButton/>
+        <h1>Questions & Answers</h1>
+        <QuestionSearch />
+        <QuestionList />
+        <MoreQuestionsButton />
+        <AddQuestionButton />
       </div>
     )
   }

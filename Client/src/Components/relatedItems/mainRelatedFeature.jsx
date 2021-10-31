@@ -10,6 +10,7 @@ function MainRelatedFeature() {
   const [outfits, setOutfits] = useState([]);
   const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
 
+
   useEffect( () => {
     axios.get(productAPI, { headers: { Authorization: `${TOKEN}`}})
       .then( results => {
@@ -21,16 +22,6 @@ function MainRelatedFeature() {
       });
   }, [product]);
 
-  // getRelatedProducts() {
-    // get main producst
-    // request server for related products to main product
-      //setState related products = relatedProducts;
-  // }
-
-  // getOutfits() {
-    //get request to server get all outfits
-      //setState outfits = outfits;
-  // };
   return (
     <div id='RelatedFeature'>
       <h1>Related Products</h1>
@@ -38,6 +29,7 @@ function MainRelatedFeature() {
         <testContext.Provider value={{relatedProducts, outfits}}>
           <ScrollableProductContainer  />
         </testContext.Provider>
+
       </div>
       <h1>Your Outfit</h1>
       {/* <div>

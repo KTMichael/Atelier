@@ -12,10 +12,18 @@ const App = () => {
   return (
     <div>
       {console.log(productInfo)}
-      <ProductDetail />
-      <QA />
-      <MainRelatedFeature />
-      <RatingsandReviews />
+      <div id="ProductDetailMain" >
+        <ProductDetail />
+      </div>
+      <div id="MainRelatedFeatureMain">
+        <MainRelatedFeature />
+      </div>
+      <div id="QAMain">
+        <QA />
+      </div>
+      <div id="RatingsandReviewsMain ">
+        <RatingsandReviews />
+      </div>
     </div >
   )
 }
