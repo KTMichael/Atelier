@@ -240,38 +240,53 @@ background-color: rgb(38, 83, 132)
   border-radius: 5px;
   border-color: black;
 }
+
 .scrolling-product-container {
-  display: flex;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  padding: 20px;
-}
-.scrolling-product-container
-#product-display {
-  object-fit: contain;
   width: 100%;
-  height: 250px;
-  max-height: 250px;
-  margin-right: 20px;
-  border: 1px solid black;
-  display: inline-block;
-  transition: transform 450ms;
+  display: flex;
+  flex-direction: column;
 }
-#product-display:hover {
-  transform: scale(1.08);
-}
-
-
-/* .scrolling-product-container {
-  display: flexbox;
-  width: 93%;
-  height: 350px;
-  border: 1px solid black;
-  padding: 50px;
-  white-space: nowrap;
+.scrolling-wrapper {
+  display: flex;
+  width: 100%;
   position: relative;
-  overflow-x: scroll;
-  overflow-y: hidden;
+}
+.scrolling-content-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.scrolling-product-content {
+  display: flex;
+  transition: all 250ms linear;
+  -ms-overflow-style: none;  /* hide scrollbar in IE and Edge */
+  scrollbar-width: none;  /* hide scrollbar in Firefox */
+}
+/* hide scrollbar in webkit browser */
+.scrolling-product-content::-webkit-scrollbar, .scrolling-product-content::-webkit-scrollbar {
+  display: none;
+}
+.scrolling-product-content > * {
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.left-arrow, .right-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+.left-arrow {
+  left: 24px;
+}
+.right-arrow {
+  right: 24px;
 }
 .scrolling-product-container
 #product-display {
@@ -281,21 +296,4 @@ background-color: rgb(38, 83, 132)
   padding: 10px;
   margin: 10px;
   display: inline-block;
-} */
-
-
-/* .scrolling-product-container
-#left-button {
-  display: flex;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 }
-.scrolling-product-container
-#right-button {
-  display: flex;
-  position: absolute;
-  right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-} */
