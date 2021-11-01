@@ -43,6 +43,13 @@ function scrollableProductContainer() {
               </testContext.Provider>
             )
           })}
+          {relatedProducts.map(product => {
+            return (
+              <testContext.Provider value={{product}}>
+                <ProductDisplay />
+              </testContext.Provider>
+            )
+          })}
         </div>
       </div>
         {

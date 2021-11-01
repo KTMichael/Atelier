@@ -29,12 +29,13 @@ function MainRelatedFeature() {
         <testContext.Provider value={{relatedProducts, outfits}}>
           <ScrollableProductContainer  />
         </testContext.Provider>
-
       </div>
       <h1>Your Outfit</h1>
-      {/* <div>
-        <ScrollableProductContainer  />
-      </div> */}
+      <div>
+        <testContext.Provider value={{relatedProducts, outfits}}>
+          <ScrollableProductContainer  />
+        </testContext.Provider>
+      </div>
     </div>
   );
 }
