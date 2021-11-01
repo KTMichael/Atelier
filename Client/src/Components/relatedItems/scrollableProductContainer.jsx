@@ -1,25 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import ProductDisplay from './productDisplay.jsx';
+import { testContext } from './context.js';
 
 //Container for Arrow keys and product diplay
-class ScrollableProductContainer extends React.Component {
-  constructor(props) {
-    super(props);
+function scrollableProductContainer() {
+  const { relatedProducts, outfits } = useContext(testContext);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [length, setLength] = useState(relatedProducts.length)
 
-    this.state = {
-      products: []
-    };
+  useEffect(() => {
+      setLength(relatedProducts.length)
+  }, [relatedProducts])
+
+  const next = () => {
+    if (currentIndex < (length - 1)) {
+        setCurrentIndex(prevState => prevState + 1)
+    }
   }
 
-  render() {
-    return (
-      <div className='scrolling-product-container'>
-        {/* based off number this.state.products.length */}
-        <div className='productDisplay'></div>
-        <div className='productDisplay'></div>
+  const prev = () => {
+      if (currentIndex > 0) {
+          setCurrentIndex(prevState => prevState - 1)
+      }
+  }
+
+  return (
+    <div className='scrolling-product-container'>
+      <div className='scrolling-wrapper'>
+      {
+        currentIndex > 0 &&
+        <button className="left-arrow" onClick={prev}>
+          &lt;
+        </button>
+      }
+      <div className='scrolling-content-wrapper'>
+        <div className='scrolling-product-content' style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+          {relatedProducts.map(product => {
+            return (
+              <testContext.Provider value={{product}}>
+                <ProductDisplay />
+              </testContext.Provider>
+            )
+          })}
+          {relatedProducts.map(product => {
+            return (
+              <testContext.Provider value={{product}}>
+                <ProductDisplay />
+              </testContext.Provider>
+            )
+          })}
+        </div>
       </div>
-    )
-  }
+        {
+          currentIndex < (length - 3) &&
+          <button className="right-arrow" onClick={next}>
+            &gt;
+          </button>
+        }
+      </div>
+    </div>
+  )
 }
 
-export default ScrollableProductContainer;
+export default scrollableProductContainer;
 
