@@ -1,10 +1,6 @@
 /* STYLES COMMON TO ENTIRE APP */
 
 body {
-  background-color: rgb(255, 255, 255);
-  padding: 5px;
-  width: 100%;
-  height: 100%;
   background-color: rgb(32, 33, 34)
 }
 
@@ -13,11 +9,20 @@ div {
 
 }
 
+#app {
+  margin: 5px;
+  color: ivory;
+  padding: 8px;
+}
 
-
-
-
-/* Styles specific to PRODUCT DETAIL widget */
+.MainComponent {
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  font-family: 'Ubuntu', sans-serif;
+}
 
 /* ---------------- Product Detail ------------------- */
 #Title {
@@ -31,15 +36,6 @@ div {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
-  margin-left: 500px;
-  margin: 8px;
-  padding: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-  font-family: 'Ubuntu', sans-serif;
-  color:ivory
 }
 
 
@@ -83,18 +79,7 @@ div {
   /* ---------------- Related Features ------------------- */
 
   #MainRelatedFeatureMain {
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
-    margin-left: 500px;
-    margin: 8px;
-    padding: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: black;
-    font-family: 'Ubuntu', sans-serif;
-    color:ivory;
+
   }
 
   #RelatedFeature {
@@ -112,25 +97,10 @@ div {
 
   /* ---------------- Questions and Answers------------------- */
 #QAMain {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  margin-right: 8px;
-  margin-left: 8px;
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-  font-family: 'Ubuntu', sans-serif;
-  color:ivory
+
 }
 
 #QA {
-  width: 100%;
-  height: 100%;
   margin: 10px;
   padding: 10px;
   border-style: solid;
@@ -140,26 +110,12 @@ div {
   background-color: rgb(32, 33, 34)
 }
 
-#qa {
-  margin: 1%;
-  padding: 1%;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-}
-
 
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
-  margin-top: 1%;
-  margin-right: 8px;
-  margin-left: 8px;
-  width: 97.5%;
-  height: 100%;
   padding: 10px;
   border-style: solid;
   border-width: 1px;
@@ -167,14 +123,12 @@ div {
   border-color: black;
   background-color: rgb(60, 75, 80);
   font-family: 'Ubuntu', sans-serif;
-  color:ivory
 }
 
 #RRComp {
   display: flex;
   flex-flow: row;
-  margin-right: 8px;
-  margin-left: 8px;
+
   width: 97.5%;
   height: 100%;
   padding: 10px;
@@ -183,13 +137,10 @@ div {
   border-radius: 5px;
   border-color: black;
   background-color: rgb(32, 33, 34)
-
 }
 
 #RRTitle {
 
-  margin-right: 8px;
-  margin-left: 8px;
   width: 97.5%;
   height: 100%;
   padding: 10px;
@@ -224,8 +175,6 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-
-
 }
 
 #ReviewForm {
@@ -237,8 +186,6 @@ border-style: solid;
 border-width: 1px;
 border-radius: 5px;
 border-color: black;
-
-
 }
 
 #btn {
@@ -261,8 +208,7 @@ border-color: black;
 #RelatedFeature {
   flex-flow: wrap;
   flex-direction: column;
-  margin-right: 8px;
-  margin-left: 8px;
+
   width: 97.5%;
   height: 100%;
   padding: 10px;
