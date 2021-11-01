@@ -10,21 +10,21 @@ import testData from '../../../Data/testData.js';
 const App = () => {
   const [productInfo, setProductInfo] = useState(testData.testListProducts);
   return (
-    <div>
+    <>
       <div id='Title'>Atelier</div>
-      <div id="ProductDetailMain" >
+      <div id="ProductDetailMain" className='MainComponent'>
         <ProductDetail />
       </div>
-      <div id="MainRelatedFeatureMain">
+      <div id="MainRelatedFeatureMain" className='MainComponent'>
         <MainRelatedFeature />
       </div>
-      <div id="QAMain">
+      <div id="QAMain" className='MainComponent'>
         <QA />
       </div>
-      <div id="RatingsandReviewsMain ">
+      <div id="RatingsandReviewsMain">
         <RatingsandReviews />
       </div>
-    </div >
+    </>
   )
 }
 
