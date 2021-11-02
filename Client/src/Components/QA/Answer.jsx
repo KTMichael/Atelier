@@ -6,24 +6,41 @@ class Answer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = this.props.data;
+    this.state = {
+      helpfulness: this.props.data.helpfulness,
+      markedHelpful: false,
+      reportText: 'Report',
+      markedReport: false
+    };
 
     this.handleAnswerHelpful = this.handleAnswerHelpful.bind(this);
+    this.handleAnswerReport = this.handleAnswerReport.bind(this);
   }
 
   handleAnswerHelpful() {
-    axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.state.id}/helpful`)
-    .then(x => console.log('Returned:', x));
+    if (!this.state.markedHelpful) {
+      axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.props.data.id}/helpful`)
+        .then(() => this.setState({ helpfulness: this.state.helpfulness + 1, markedHelpful: true }));
+    }
+  }
+
+  handleAnswerReport(e) {
+    if (!this.state.markedReport) {
+      axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.props.data.id}/report`)
+        .then(() => {
+          this.setState({ markedReport: true, reportText: 'Reported' });
+        });
+    }
   }
 
   render() {
-    let username = this.state.answerer_name === 'Seller' ? <strong>Seller</strong> : this.state.answerer_name;
-    let date = moment(this.state.date).format('MMMM DD, YYYY');
+    let username = this.props.data.answerer_name === 'Seller' ? <strong>Seller</strong> : this.props.data.answerer_name;
+    let date = moment(this.props.data.date).format('MMMM DD, YYYY');
     return (
       <div className='answer'>
-        <p className='answerText'>A: {this.state.body}</p>
+        <p className='answerText'>A: {this.props.data.body}</p>
         <p className='answererDetails'>
-          by {username}, {date} | Helpful? <span className='answerHelpful' onClick={this.handleAnswerHelpful}>Yes</span> {this.state.helpfulness} | <span>Report</span>
+          by {username}, {date} | Helpful? <span className='answerHelpful noselect' onClick={this.handleAnswerHelpful}>Yes</span> {this.state.helpfulness} | <span className='answerReport noselect' onClick={this.handleAnswerReport}>{this.state.reportText}</span>
         </p>
       </div>
     )

@@ -11,14 +11,24 @@ app.get('/qa/questions/', (req, res) => {
     if (!err) {
       res.status(200).send(results);
     } else {
-      res.sendStatus(404)
+      res.sendStatus(err.response.status)
     }
   });
 });
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  console.log('Making a put request, Answer_id:', req.params.answer_id)
-  api.applyHelpfulQuestion(req.params.answer_id, (err) => {
+  api.helpfulAnswer(req.params.answer_id, (err) => {
+    if (!err) {
+      res.sendStatus(204);
+    } else {
+      console.log(err);
+      res.sendStatus(err.response.status);
+    }
+  })
+})
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  api.reportAnswer(req.params.answer_id, (err) => {
     if (!err) {
       res.sendStatus(204);
     } else {

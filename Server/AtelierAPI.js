@@ -19,9 +19,15 @@ module.exports = {
     .catch(err => {callback(err)});
   },
 
-  applyHelpfulQuestion: (answer_id, callback) => {
+  helpfulAnswer: (answer_id, callback) => {
     let url = `${apiUrl}/qa/answers/${answer_id}/helpful`;
-    console.log(url);
+    axios.put(url, '', config)
+    .then(() => {callback(null)})
+    .catch(err => {callback(err)});
+  },
+
+  reportAnswer: (answer_id, callback) => {
+    let url = `${apiUrl}/qa/answers/${answer_id}/report`;
     axios.put(url, '', config)
     .then(() => {callback(null)})
     .catch(err => {callback(err)});
