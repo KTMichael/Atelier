@@ -18,77 +18,61 @@ class ProductDetail extends React.Component {
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
-    this.initializeDefaultStyle = this.initializeDefaultStyle.bind(this);
   }
 
-  getProduct () { // updates state with product info
-    axios({
+  getProduct() { // updates state with product info
+    return axios({
       method: "get",
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/`,
       headers: {
-          Authorization: `${TOKEN}`,
-          "Content-Type": "application/json"
+        Authorization: `${TOKEN}`,
+        "Content-Type": "application/json"
       }
-    })
-      .then(res => {
-        this.setState({
-          product: res.data
-        })
-        console.log('product-->', this.state.product)
-      })
-      .catch(err => {
-          console.log(err);
-      });
+    });
   }
 
-  getStyles () { // updates state with all styles for currently selected product
-    axios({
+  getStyles() { // updates state with all styles for currently selected product
+    return axios({
       method: "get",
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/styles/`,
       headers: {
-          Authorization: `${TOKEN}`,
-          "Content-Type": "application/json"
+        Authorization: `${TOKEN}`,
+        "Content-Type": "application/json"
       }
-    })
-      .then(res => {
-        this.setState({
-          styles: res.data.results
-        })
-        console.log('styles --->', this.state.styles)
-      })
-      .then( () => {
-        this.initializeDefaultStyle();
-      })
-      .catch(err => {
-          console.log(err);
-      });
-  }
-
-  initializeDefaultStyle () { // adds default style to state
-    this.state.styles.forEach( element => {
-      if (element['default?'] === true) {
-        this.setState({
-          selectedStyle: element
-        })
-      }
-    })
+    });
   }
 
   componentDidMount() {
-    this.getProduct();
-    this.getStyles();
+    Promise.all([this.getProduct(), this.getStyles()])
+    .then(result => {
+      let selected = {};
+      for (let i = 0; i < result[1].data.results.length; i++) {
+        if (result[1].data.results[i]['default?']) {
+          selected = result[1].data.results[i];
+          break;
+        }
+      }
+
+      this.setState(
+        {
+          product: result[0].data,
+          styles: result[1].data.results,
+          selectedStyle: selected
+        }
+      )
+    });
   }
 
   render() {
     return (
       <div id='ProductDetail'>
-        <ImageGallery />
+        <ImageGallery photos={this.state.selectedStyle.photos} />
         <div id="product_info">
           <h6 className="product_category">{this.state.product.category}</h6>
           <h3 className="product_title">{this.state.product.name}</h3>
           <h4 className="price">{this.state.selectedStyle.sale_price}</h4>
           <p>{this.state.product.description}</p>
-          <Styles options={this.state.styles}/>
+          <Styles options={this.state.styles} />
           <AddToCart />
         </div>
       </div>
