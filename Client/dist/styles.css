@@ -6,7 +6,6 @@ body {
 
 div {
   background-color: rgb(60, 75, 80)
-
 }
 
 #app {
@@ -110,6 +109,22 @@ div {
   background-color: rgb(32, 33, 34)
 }
 
+.answerList {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.answererDetails {
+  font-size: 70%;
+}
+
+.answerHelpful {
+  text-decoration: underline;
+}
+
+.answerHelpful:hover {
+  color: #202122
+}
 
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {

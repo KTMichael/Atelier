@@ -16,6 +16,18 @@ app.get('/qa/questions/', (req, res) => {
   });
 });
 
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  console.log('Making a put request, Answer_id:', req.params.answer_id)
+  api.applyHelpfulQuestion(req.params.answer_id, (err) => {
+    if (!err) {
+      res.sendStatus(204);
+    } else {
+      console.log(err);
+      res.sendStatus(err.response.status);
+    }
+  })
+})
+
 
 let port = 3000;
 app.listen(port, () => {

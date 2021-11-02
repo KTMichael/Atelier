@@ -16,6 +16,14 @@ module.exports = {
     let url = `${apiUrl}/qa/questions/?product_id=${product_id}`;
     axios.get(url, config)
     .then(response => {callback(null, response.data.results)})
-    .catch((err) => {callback(err)})
+    .catch(err => {callback(err)});
+  },
+
+  applyHelpfulQuestion: (answer_id, callback) => {
+    let url = `${apiUrl}/qa/answers/${answer_id}/helpful`;
+    console.log(url);
+    axios.put(url, '', config)
+    .then(() => {callback(null)})
+    .catch(err => {callback(err)});
   }
 }
