@@ -1,9 +1,65 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { testContext } from './context.js';
+import { TOKEN } from '../../../../config.js';
+import { FaStar } from 'react-icons/fa';
+import axios from 'axios';
 
 function ProductDisplay() {
+  const [productInfo, setProductInfo] = useState({});
+  const [price, setPrice] = useState(0);
+  const [ image, setImage ] = useState(null);
+  const [ isFavorite, setIsFavorite ] = useState(false);
+  const [ rating, setRating ] = useState(0);
+  const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
+  const reviewsAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta";
+  const {product} = useContext(testContext);
+
+  useEffect( () => {
+    axios.get(`${productAPI}${product}`, { headers: { Authorization: `${TOKEN}`}})
+      .then( results => {
+        setProductInfo(results.data);
+      })
+      .then( () => {
+        axios.get(`${productAPI}${product}/styles`, { headers: { Authorization: `${TOKEN}`}})
+          .then( results => {
+            setPrice(results.data.results[0].original_price);
+            setImage(results.data.results[0].photos[0].thumbnail_url);
+          })
+      })
+      .then( () => {
+        axios.get(`${reviewsAPI}?product_id=${product}`, {
+          headers: { Authorization: `${TOKEN}`},})
+          .then( results => {
+            // console.log(results.data);
+          })
+      })
+  }, [])
+
+  const toggleFavorite = () => {
+    setIsFavorite( isFavorite => !isFavorite );
+  }
+
+  const renderClickableStar = () => {
+    return (
+      <label>
+        <input id='favorite-radio' type='radio' onClick={toggleFavorite} />
+        <FaStar id='favorite-star' color={isFavorite ? '#ffc107' : '#e4e5e9'} />
+      </label>
+    )
+  }
+
+  const renderRating = () => {
+
+  }
+
   return (
     <div id='product-display'>
-      <img src="https://www.w3schools.com/images/w3schools_green.jpg"/>
+      <img id='product-image' src={image}/>
+      <p>{productInfo.category}</p>
+      <p>{productInfo.slogan}</p>
+      <p>{`$${price}`}</p>
+      {renderClickableStar()}
+      {renderRating()}
     </div>
   )
 }

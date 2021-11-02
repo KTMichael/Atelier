@@ -20,7 +20,7 @@ function MainRelatedFeature() {
             setRelatedProducts(results.data);
           })
       });
-  }, [product]);
+  }, []);
 
   return (
     <div id='RelatedFeature'>

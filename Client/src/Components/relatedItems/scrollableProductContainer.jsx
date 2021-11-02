@@ -10,7 +10,7 @@ function scrollableProductContainer() {
   const [length, setLength] = useState(relatedProducts.length)
 
   useEffect(() => {
-      setLength(relatedProducts.length)
+    setLength(relatedProducts.length)
   }, [relatedProducts])
 
   const next = () => {
@@ -43,17 +43,10 @@ function scrollableProductContainer() {
               </testContext.Provider>
             )
           })}
-          {relatedProducts.map(product => {
-            return (
-              <testContext.Provider value={{product}}>
-                <ProductDisplay />
-              </testContext.Provider>
-            )
-          })}
         </div>
       </div>
         {
-          currentIndex < (length - 3) &&
+          currentIndex < (length - 1) &&
           <button className="right-arrow" onClick={next}>
             &gt;
           </button>
