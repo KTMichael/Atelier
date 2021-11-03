@@ -19,6 +19,7 @@ class ProductDetail extends React.Component {
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
+    this.handleChangeStyle = this.handleChangeStyle.bind(this);
   }
 
   getProduct() { // fetches product info
@@ -64,6 +65,13 @@ class ProductDetail extends React.Component {
     });
   }
 
+  handleChangeStyle (e) { // updates selected style when thumbnail is clicked
+    var newStyle = this.state.styles[e.target.dataset.index]
+    this.setState({
+      selectedStyle: newStyle
+    })
+  }
+
   render() {
     return (
       <div id='ProductDetail'>
@@ -75,7 +83,7 @@ class ProductDetail extends React.Component {
           <h4 className="price">{this.state.selectedStyle.sale_price}</h4>
           <p>{this.state.product.description}</p>
           <div>Share on Social Media</div>
-          <Styles options={this.state.styles} />
+          <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
           <AddToCart />
         </div>
       </div>
