@@ -1,5 +1,5 @@
 import React from 'react';
-import Answer from './Answer.jsx'
+import Answer from './Answer.jsx';
 
 class Question extends React.Component {
   constructor(props) {
@@ -38,6 +38,10 @@ class Question extends React.Component {
     }
   }
 
+  handleAddAnswer() {
+
+  }
+
   render() {
     let renderAnswers = this.state.answers.slice(0, this.state.answerListMax)
     return (
@@ -49,6 +53,7 @@ class Question extends React.Component {
           }
         </ul>
         {this.renderSeeMoreAnswers()}
+        {/* Add Helpful link and answer button on right*/}
       </div>
     )
   }
