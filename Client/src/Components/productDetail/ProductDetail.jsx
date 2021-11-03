@@ -15,7 +15,7 @@ class ProductDetail extends React.Component {
       styleId: 253620, // REMOVE HARD-CODE
       selectedStyle: {},
       product: {},
-      styles: []
+      styles: [],
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
@@ -74,6 +74,7 @@ class ProductDetail extends React.Component {
           <Rating />
           <h4 className="price">{this.state.selectedStyle.sale_price}</h4>
           <p>{this.state.product.description}</p>
+          <div>Share on Social Media</div>
           <Styles options={this.state.styles} />
           <AddToCart />
         </div>
