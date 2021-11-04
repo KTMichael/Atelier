@@ -38,6 +38,7 @@
     "nodemon": "^2.0.14",
     "react": "^16.4",
     "react-dom": "^16.4",
+    "react-icons": "^4.3.1",
     "react-responsive-carousel": "^3.2.22",
     "react-star-ratings": "^2.3.0"
   }
