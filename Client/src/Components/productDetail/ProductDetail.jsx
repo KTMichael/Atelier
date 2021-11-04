@@ -4,6 +4,7 @@ import axios from 'axios';
 import { TOKEN } from '../../../../config.js';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import Rating from './Rating.jsx';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -14,13 +15,14 @@ class ProductDetail extends React.Component {
       styleId: 253620, // REMOVE HARD-CODE
       selectedStyle: {},
       product: {},
-      styles: []
+      styles: [],
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
+    this.handleChangeStyle = this.handleChangeStyle.bind(this);
   }
 
-  getProduct() { // updates state with product info
+  getProduct() { // fetches product info
     return axios({
       method: "get",
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/`,
@@ -31,7 +33,7 @@ class ProductDetail extends React.Component {
     });
   }
 
-  getStyles() { // updates state with all styles for currently selected product
+  getStyles() { // fetches all styles for currently selected product
     return axios({
       method: "get",
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/styles/`,
@@ -42,7 +44,7 @@ class ProductDetail extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount() { // updates state with available styles and initializes to default style
     Promise.all([this.getProduct(), this.getStyles()])
     .then(result => {
       let selected = {};
@@ -63,6 +65,13 @@ class ProductDetail extends React.Component {
     });
   }
 
+  handleChangeStyle (e) { // updates selected style when thumbnail is clicked
+    var newStyle = this.state.styles[e.target.dataset.index]
+    this.setState({
+      selectedStyle: newStyle
+    })
+  }
+
   render() {
     return (
       <div id='ProductDetail'>
@@ -70,9 +79,11 @@ class ProductDetail extends React.Component {
         <div id="product_info">
           <h6 className="product_category">{this.state.product.category}</h6>
           <h3 className="product_title">{this.state.product.name}</h3>
+          <Rating />
           <h4 className="price">{this.state.selectedStyle.sale_price}</h4>
           <p>{this.state.product.description}</p>
-          <Styles options={this.state.styles} />
+          <div>Share on Social Media</div>
+          <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
           <AddToCart />
         </div>
       </div>
