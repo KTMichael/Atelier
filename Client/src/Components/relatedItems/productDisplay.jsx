@@ -30,10 +30,26 @@ function ProductDisplay() {
         axios.get(`${reviewsAPI}?product_id=${product}`, {
           headers: { Authorization: `${TOKEN}`},})
           .then( results => {
-            // console.log(results.data);
+            var ratingsInfo = results.data.ratings;
+            extractRatingFrom(ratingsInfo);
           })
       })
   }, [])
+
+  const extractRatingFrom = (info) => {
+    var totalStars = 0;
+    var totalRatings = 0;
+    var starRating = Object.keys(info);
+    for ( starRating in info ) {
+      var star = parseInt(starRating);
+      var numStarRating = parseInt(info[starRating]);
+      var numStars = star * numStarRating;
+
+      totalStars += numStars;
+      totalRatings += numStarRating;
+    }
+    setRating(totalStars / totalRatings);
+  }
 
   const toggleFavorite = () => {
     setIsFavorite( isFavorite => !isFavorite );
@@ -49,7 +65,14 @@ function ProductDisplay() {
   }
 
   const renderRating = () => {
-
+    var index = 0;
+    return (
+      <div id='five-star-rating'>
+        {[...Array(5)].map(star => {
+          return <FaStar id='star-overall-rating' color={(index + 1) < rating ? '#ffc107' : '#e4e5e9'}/>
+        })}
+      </div>
+    )
   }
 
   return (

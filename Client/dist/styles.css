@@ -294,3 +294,8 @@ border-color: black;
 #favorite-star:hover{
   cursor: pointer;
 }
+/* ---------------Five Star Rating --------------- */
+.star-overall-rating {
+  display: inline-block;
+  color: #ddd;
+}
