@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { testContext } from './context.js';
 import { TOKEN } from '../../../../config.js';
 import { FaStar } from 'react-icons/fa';
+import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 
 function ProductDisplay() {
@@ -59,19 +60,27 @@ function ProductDisplay() {
     return (
       <label>
         <input id='favorite-radio' type='radio' onClick={toggleFavorite} />
-        <FaStar id='favorite-star' color={isFavorite ? '#ffc107' : '#e4e5e9'} />
+        <FaStar id='favorite-star' color={isFavorite ? 'yellow' : '#e4e5e9'} />
       </label>
+      // <StarRatings
+      //   id='favorite-star'
+      //   starRatedColor='yellow'
+      //   numberOfStars={1}
+      //   changeRating={toggleFavorite}
+      //   starDimension='15px'
+      // />
     )
   }
 
   const renderRating = () => {
-    var index = 0;
     return (
-      <div id='five-star-rating'>
-        {[...Array(5)].map(star => {
-          return <FaStar id='star-overall-rating' color={(index + 1) < rating ? '#ffc107' : '#e4e5e9'}/>
-        })}
-      </div>
+      <StarRatings
+        rating={rating}
+        starRatedColor='yellow'
+        numberOfStars={5}
+        starDimension='15px'
+        starSpacing='0px'
+      />
     )
   }
 
