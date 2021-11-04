@@ -15,7 +15,6 @@ class ImageGallery extends React.Component {
 
     renderImages() {
         if (this.props.photos) {
-            console.log('RenderImages:', this.props.photos);
             return this.props.photos.map((x, index) => {
                 return <div key={`Product Image at index: ${index}`}>
                     <img src={x.url}/>
@@ -39,30 +38,13 @@ class ImageGallery extends React.Component {
 export default ImageGallery;
 
 
+// keep track of photo index and make default when new style is chosen
+// hovering over image should turn mouse into magnifying glass
+//   and a click should go to expanded view
 
-
-
-
-
-// import React from 'react';
-
-// class ImageGallery extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-
-//       photoIndex: 0
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <div id="image_gallery">
-//         <img src={""}></img>
-//       </div>
-//     )
-//   }
-// }
-
-// export default ImageGallery;
+// expanded view should span the entire screen
+// will have icons to toggle between images, but NO thumbnails
+// a click on expanded view will zoom 2.5x
+// mouse should be a + symbol when hovering over image
+// once clicked and zoomed, mouse should change to - symbol
+// user should be able to pan across entirety of photo showing zoomed in version as the cursor is moved
