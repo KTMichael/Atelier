@@ -13,15 +13,15 @@ class QuestionList extends React.Component {
 
   componentDidMount() {
     //TODO: Replace this get request with a dynamic url based on current viewing product
-    axios.get('http://localhost:3000/qa/questions/?product_id=42366')
+    axios.get(window.location.protocol + '//' + window.location.host + '/qa/questions/?product_id=42366')
     .then((result) => { this.setState({questions: result.data})})
   }
 
   render() {
     return (
-    <ul id='questionList'>
+    <div id='questionList'>
       {this.state.questions.map((question, index) => <Question key = {`question ${index}`} data={question} />)}
-    </ul>
+    </div>
     )
   }
 }

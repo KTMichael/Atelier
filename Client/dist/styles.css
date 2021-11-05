@@ -5,8 +5,8 @@ body {
 }
 
 div {
+  /* Why? */
   background-color: rgb(60, 75, 80)
-
 }
 
 #app {
@@ -22,6 +22,28 @@ div {
   border-radius: 5px;
   border-color: black;
   font-family: 'Ubuntu', sans-serif;
+}
+
+/*Popup styling*/
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
 }
 
 /* ---------------- Product Detail ------------------- */
@@ -117,6 +139,60 @@ div {
   background-color: rgb(32, 33, 34)
 }
 
+#questionList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.QAElement {
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionHelpful {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.questionHelpful:hover {
+  color: #202122;
+}
+
+.questionReport {
+  text-decoration: underline;
+  cursor: pointer;
+
+}.questionReport:hover {
+  color: #202122;
+}
+
+.answerList {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.answererDetails {
+  font-size: 70%;
+}
+
+.answerHelpful {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.answerHelpful:hover {
+  color: #202122;
+}
+
+.answerReport {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.answerReport:hover {
+  color: #202122;
+}
 
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {
