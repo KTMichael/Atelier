@@ -7,22 +7,21 @@ class Rating extends React.Component {
     this.state = {
       rating: 3.5
     }
-    this.changeRating = this.changeRating.bind(this);
+    // this.changeRating = this.changeRating.bind(this);
   }
 
-
-    changeRating( newRating, name ) { // Probably need to remove this functionality. User shouldn't be able to change rating here.
-      this.setState({
-        rating: newRating
-      });
-    }
+    // changeRating( newRating, name ) { // Probably need to remove this functionality. User shouldn't be able to change rating here.
+    //   this.setState({
+    //     rating: newRating
+    //   });
+    // }
 
     render() {
       return (
         <StarRatings
           rating={this.state.rating}
           starRatedColor="orange"
-          changeRating={this.changeRating}
+          // changeRating={this.changeRating}
           numberOfStars={5}
           name='rating'
           starDimension="20px"

@@ -72,7 +72,7 @@ class ProductDetail extends React.Component {
     })
   }
 
-  price () {
+  price () { // sets price to be displayed
     let onSale = !!this.state.selectedStyle.sale_price
     if(onSale) {
       return (

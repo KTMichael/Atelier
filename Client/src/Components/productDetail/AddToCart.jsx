@@ -9,7 +9,7 @@ class AddToCart extends React.Component {
     this.state = {
       size: '',
       maxQuantity: 0,
-      quantity: 0,
+      quantity: '-',
       sku: ''
     }
     this.handleSizeSelection = this.handleSizeSelection.bind(this);
@@ -79,7 +79,7 @@ class AddToCart extends React.Component {
   }
 
   handleAddItem () {
-    if (this.state.quantity === '-') {
+    if (this.state.quantity === '-' || this.state.size === '') {
       alert('Please select a quantity.')
     } else {
       axios({
