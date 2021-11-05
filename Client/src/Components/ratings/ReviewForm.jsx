@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
-import testData from '../../../../Data/testData.js';
 import { productId, productName } from './RatingsandReviews.jsx';
 import axios from 'axios'
 import { TOKEN } from '../../../../config.js';
+import Popup from 'reactjs-popup';
 
 
 
 const ReviewForm = ({ productId, productName }) => {
-  const [productInfo, setProductInfo] = useState(testData.testListProducts);
+
   // send review
   // const [review, setAddReview] = useState({});
   const [clickedAddReview, setForm] = useState(false);
@@ -342,10 +342,13 @@ const ReviewForm = ({ productId, productName }) => {
     )
   }
   return (
-    <span>
-      <button onClick={() => { setForm(true) }}>ADD REVIEW +</button>
-      {clickedAddReview ? showForm() : null}
-    </span>
+    <Popup trigger={<button > ADD REVIEW + </button>}>
+      {showForm()}
+    </Popup>
+    // <span>
+    //   <button onClick={() => { setForm(true) }}>ADD REVIEW +</button>
+    //   {clickedAddReview ? showForm() : null}
+    // </span>
   )
 }
 export default ReviewForm;

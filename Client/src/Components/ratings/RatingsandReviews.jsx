@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import CustomerReviews from './CustomerReviews.jsx';
 import OverallRatings from './OverallRatings.jsx';
 import ReviewForm from './ReviewForm.jsx';
-import testData from '../../../../Data/testData.js';
 import axios from 'axios';
 import { TOKEN } from '../../../../config.js';
 
