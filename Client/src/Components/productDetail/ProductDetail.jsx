@@ -72,6 +72,22 @@ class ProductDetail extends React.Component {
     })
   }
 
+  price () {
+    let onSale = !!this.state.selectedStyle.sale_price
+    if(onSale) {
+      return (
+        <div className="overview_price">
+          <span id="on_sale">${this.state.selectedStyle.original_price} </span>
+          <span>${this.state.selectedStyle.sale_price}</span>
+        </div>
+      )
+    } else {
+      return (
+        <div className="overview_price">${this.state.selectedStyle.original_price}</div>
+      )
+    }
+  }
+
   render() {
     return (
       <div id='ProductDetail'>
@@ -79,12 +95,12 @@ class ProductDetail extends React.Component {
         <div id="product_info">
           <h6 className="product_category">{this.state.product.category}</h6>
           <h3 className="product_title">{this.state.product.name}</h3>
+          {this.price()}
           <Rating />
-          <h4 className="price">{this.state.selectedStyle.sale_price}</h4>
           <p>{this.state.product.description}</p>
           <div>Share on Social Media</div>
           <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
-          <AddToCart />
+          <AddToCart selectedStyle={this.state.selectedStyle} />
         </div>
       </div>
     )
