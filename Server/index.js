@@ -7,14 +7,25 @@ app.use(express.json());
 app.use(express.static(__dirname + '/../Client/dist'));
 
 app.get('/qa/questions/', (req, res) => {
-  api.getQuestions(req.query.product_id, (err, results) => {
+  api.getQuestions(req.query.product_id, (err, response) => {
     if (!err) {
-      res.status(200).send(results);
+      res.status(response.status).send(response.data.results);
     } else {
       res.sendStatus(err.response.status)
     }
   });
 });
+
+app.post('/qa/questions', (req, res) => {
+  api.addQuestion(req.body, (err, response) => {
+    if (!err) {
+      res.status(response.status).send(response.data);
+    } else {
+      console.log(err);
+      res.sendStatus(err.response.status);
+    }
+  })
+})
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   api.helpfulAnswer(req.params.answer_id, (err) => {

@@ -13,7 +13,10 @@ class AddQuestionButton extends React.Component {
   render() {
     return (
       <Popup trigger={<button className="button"> Add Question </button>} modal>
-        <span> Modal content </span>
+        <form>
+          <input type='text' id='NewQuestion' name='NewQuestion'/>
+          <input type='submit' value='Add new question'/>
+        </form>
       </Popup>
     )
   }
