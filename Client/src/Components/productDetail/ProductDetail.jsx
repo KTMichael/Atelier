@@ -100,7 +100,7 @@ class ProductDetail extends React.Component {
           <p>{this.state.product.description}</p>
           <div>Share on Social Media</div>
           <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
-          <AddToCart selectedStyle={this.state.selectedStyle} />
+          <AddToCart skus={this.state.selectedStyle.skus} />
         </div>
       </div>
     )
