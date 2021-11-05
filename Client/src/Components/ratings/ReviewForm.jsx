@@ -49,18 +49,7 @@ const ReviewForm = ({ productId, productName }) => {
 
     setSelectedFile(URL.createObjectURL(event.target.files[0]))
   }
-
-
-  // // CHOOSE CHARACTERISTICS
-  // let possibleCharacteristics = ['size', 'width', 'comfort', 'quality'];
-  // let sizeFit = ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
-  // let widthFit = ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'];
-  // let comfortFit = ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'];
-  // let qualityFit = ['Poor', 'Below Average', 'What I expected', 'Pretty great', 'Perfect'];
-  // let lengthFit = ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'];
-  // let fitFit = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
-
-
+  //
   useEffect(() => {
     if (productId.toString().slice(-1) === '6') {
       setCharacteristicIds({
@@ -147,40 +136,40 @@ const ReviewForm = ({ productId, productName }) => {
   const validateForm = ({ rating, body, name, email, recommend, characteristics }) => {
     let isValid = true
     if (rating === '') {
-      console.log('rating')
+      // console.log('rating')
       setRatingError('Star Rating')
       isValid = false;
     }
 
     if (body.length < 50 || body.length > 1000) {
-      console.log('body')
+      // console.log('body')
       setBodyError('Review')
       isValid = false
     }
     if (name.length <= 0 || name.length > 60) {
-      console.log('name')
+      // console.log('name')
       setNameError('Your Nickname')
       isValid = false;
     }
 
     if (!email.includes('@') || !email.includes('.')) {
-      console.log('EMAIL')
+      // console.log('EMAIL')
       setEmailError('A Correctly Formatted Email')
       isValid = false;
     }
 
     if (recommend === null) {
-      console.log('recommend')
+      // console.log('recommend')
       setRecommendedError('If You Would Recommend This Product')
       isValid = false;
     }
 
     if (Object.values(characteristics).includes('')) {
       setCharacteristicsError('Fill Any Missing Characteristic Ratings')
-      console.log('char')
+      // console.log('char')
       isValid = false;
     }
-    console.log('isValid', isValid)
+    // console.log('isValid', isValid)
     setValidForm(isValid)
     return isValid;
   }
@@ -191,7 +180,6 @@ const ReviewForm = ({ productId, productName }) => {
     if (selectedFile !== null) {
       defaultPhotos = [selectedFile, ...selectedFiles]
     }
-    console.log('stars', newStarRating)
     const review = {
       product_id: productId,
       rating: newStarRating,
@@ -203,7 +191,6 @@ const ReviewForm = ({ productId, productName }) => {
       photos: defaultPhotos,
       characteristics: characteristicIds
     }
-    console.log(review)
     if (validateForm(review) === true) {
       const options = {
         url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews',
@@ -225,8 +212,6 @@ const ReviewForm = ({ productId, productName }) => {
   const showForm = () => {
     return (
       < div id='ReviewForm' >
-        {console.log(characteristicIds)}
-        {console.log('hi')}
         <h2>Write Your Review</h2>
         <h5>About the {productName}</h5>
         <form >
@@ -292,7 +277,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <input type="radio" value="5" name="Fit" onChange={(event) => setFit(event.target.value)} /> 5
               </label>
               : <div style={{ clear: 'none' }} />}
-            <br /> <br />
+
             <label id="summary" >
               Review Summary:  <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
             </label>

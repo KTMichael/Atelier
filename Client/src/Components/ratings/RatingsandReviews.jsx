@@ -16,8 +16,8 @@ const RatingsandReviews = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        setProductId(response.data[0].id);
-        setProductName(response.data[0].name);
+        setProductId(response.data[1].id);
+        setProductName(response.data[1].name);
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${productId}`,
           {
             headers: { Authorization: `${TOKEN}` }
@@ -31,7 +31,6 @@ const RatingsandReviews = () => {
 
   return (
     <div id="RatingsandReviews" >
-      {console.log(productId)}
       <div id="RRTitle">
         <h1> Ratings & Reviews</h1>
       </div>
