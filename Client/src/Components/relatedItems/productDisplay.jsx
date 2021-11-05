@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import ComparisonPopup from './ComparisonPopup.jsx';
 import { testContext } from './context.js';
 import { TOKEN } from '../../../../config.js';
 import { FaStar } from 'react-icons/fa';
@@ -7,13 +8,14 @@ import axios from 'axios';
 
 function ProductDisplay() {
   const [productInfo, setProductInfo] = useState({});
+  const [comparisonPopupState, setComparisonPopupState] = useState({open: false});
   const [price, setPrice] = useState(0);
   const [ image, setImage ] = useState(null);
   const [ isFavorite, setIsFavorite ] = useState(false);
   const [ rating, setRating ] = useState(0);
   const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
   const reviewsAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta";
-  const {product} = useContext(testContext);
+  const { mainProduct, product} = useContext(testContext);
 
   useEffect( () => {
     axios.get(`${productAPI}${product}`, { headers: { Authorization: `${TOKEN}`}})
@@ -35,7 +37,7 @@ function ProductDisplay() {
             extractRatingFrom(ratingsInfo);
           })
       })
-  }, [])
+  }, [comparisonPopupState])
 
   const extractRatingFrom = (info) => {
     var totalStars = 0;
@@ -62,13 +64,6 @@ function ProductDisplay() {
         <input id='favorite-radio' type='radio' onClick={toggleFavorite} />
         <FaStar id='favorite-star' color={isFavorite ? 'yellow' : '#e4e5e9'} />
       </label>
-      // <StarRatings
-      //   id='favorite-star'
-      //   starRatedColor='yellow'
-      //   numberOfStars={1}
-      //   changeRating={toggleFavorite}
-      //   starDimension='15px'
-      // />
     )
   }
 
@@ -84,14 +79,29 @@ function ProductDisplay() {
     )
   }
 
+  const showComparison = (main, related) => {
+    setComparisonPopupState({
+      open: true,
+      mainProduct: main,
+      relatedProduct: related
+    });
+  }
+
   return (
-    <div id='product-display'>
+    <div id='product-display' onClick={() => showComparison(mainProduct, product)}>
       <img id='product-image' src={image}/>
       <p>{productInfo.category}</p>
       <p>{productInfo.slogan}</p>
       <p>{`$${price}`}</p>
       {renderClickableStar()}
       {renderRating()}
+      {comparisonPopupState.open === true && (
+        <ComparisonPopup
+          mainProduct={comparisonPopupState.mainProduct}
+          related={comparisonPopupState.relatedProduct}
+          onClick={ () => setComparisonPopupState({ open: false })}
+        />
+      )}
     </div>
   )
 }

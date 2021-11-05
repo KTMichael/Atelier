@@ -301,8 +301,8 @@ border-color: black;
 #favorite-star:hover{
   cursor: pointer;
 }
-/* ---------------Five Star Rating --------------- */
-.star-overall-rating {
-  display: inline-block;
-  color: #ddd;
+/* ---------------comparison window popup --------------- */
+#comparison-popup {
+  width: 500px;
+  background-color: grey;
 }
