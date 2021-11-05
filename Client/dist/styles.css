@@ -109,7 +109,11 @@ div {
     margin-right: 5px;
   }
 
-  .select_size .select_quantity {
+  .select_size {
+    margin-left: 5px;
+  }
+
+  .select_quantity {
     margin-left: 5px;
   }
 

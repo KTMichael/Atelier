@@ -1,4 +1,6 @@
 import React from 'react';
+import { TOKEN } from '../../../../config.js';
+import axios from 'axios';
 
 class AddToCart extends React.Component {
   constructor (props) {
@@ -7,10 +9,12 @@ class AddToCart extends React.Component {
     this.state = {
       size: '',
       maxQuantity: 0,
-      quantity: 0
+      quantity: 0,
+      sku: ''
     }
     this.handleSizeSelection = this.handleSizeSelection.bind(this);
     this.handleQuantitySelection = this.handleQuantitySelection.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
   }
 
   sizeOptions () {
@@ -41,15 +45,18 @@ class AddToCart extends React.Component {
 
   handleSizeSelection (e) {
     var maxQuantity = '';
+    var sku = '';
     for (var key in this.props.skus) {
       if (this.props.skus[key].size === e.target.value) {
         maxQuantity = this.props.skus[key].quantity
+        sku = key
       }
     }
     this.setState ({
       size: e.target.value,
       maxQuantity: maxQuantity,
-      quantity: '-'
+      quantity: '-',
+      sku: sku
     })
   }
 
@@ -57,6 +64,39 @@ class AddToCart extends React.Component {
     this.setState ({
       quantity: e.target.value
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props !== prevProps)
+    {
+      this.setState({
+        size: '',
+        maxQuantity: 0,
+        quantity: 0,
+        sku: ''
+      })
+    }
+  }
+
+  handleAddItem () {
+    if (this.state.quantity === '-') {
+      alert('Please select a quantity.')
+    } else {
+      axios({
+        method: "post",
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/cart/`,
+        data: {
+          sku_id: this.state.sku,
+          quantity: this.state.quantity
+        },
+        headers: {
+          Authorization: `${TOKEN}`,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(alert('Item added to cart.'))
+        .catch( err => console.log(err));
+    }
   }
 
   render () {
@@ -74,7 +114,7 @@ class AddToCart extends React.Component {
             {this.quantityOptions()}
           </select>
         </label>
-        <button className="add_item">Add to Cart</button>
+        <button onClick={this.handleAddItem} className="add_item">Add to Cart</button>
       </div>
     )
   }
