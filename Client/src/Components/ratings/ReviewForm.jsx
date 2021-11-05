@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
+
 import testData from '../../../../Data/testData.js';
 import { sampleProductId } from './RatingsandReviews.jsx';
 import axios from 'axios'
@@ -7,38 +8,47 @@ import { TOKEN } from '../../../../config.js';
 
 
 
-const ReviewForm = ({ filled, onClick, val }) => {
+const ReviewForm = () => {
   const [productInfo, setProductInfo] = useState(testData.testListProducts);
   // send review
   // const [review, setAddReview] = useState({});
   const [clickedAddReview, setForm] = useState(false);
-  const [recommend, setRecommend] = useState(null);
+  const [recommended, setRecommended] = useState(null);
+  const [newStarRating, setNewStarRating] = useState('');
   //CHARACTERISTICS
   const [characteristics, setCharacteristics] = useState({});
   const [characteristicIds, setCharacteristicIds] = useState([]);
-  const [size, setSize] = useState(null);
-  const [width, setWidth] = useState(null);
-  const [comfort, setComfort] = useState(null);
-  const [quality, setQuality] = useState(null);
-  const [length, setLength] = useState(null);
-  const [fit, setFit] = useState(null);
+  const [size, setSize] = useState('');
+  const [width, setWidth] = useState('');
+  const [comfort, setComfort] = useState('');
+  const [quality, setQuality] = useState('');
+  const [length, setLength] = useState('');
+  const [fit, setFit] = useState('');
   // FILLABLE
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [charCount, setCharCount] = useState(50);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
+  //PHOTOS
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  // VALID
+  const [validForm, setValidForm] = useState(true);
+  const [ratingError, setRatingError] = useState(null)
+  const [bodyError, setBodyError] = useState(null)
+  const [nameError, setNameError] = useState(null)
+  const [emailError, setEmailError] = useState(null)
+  const [recommendedError, setRecommendedError] = useState(null)
+  const [characteristicsError, setCharacteristicsError] = useState(null)
 
-  // ///Photos
-
+  // PHOTOS
   const handleImageSelect = (event) => {
     if (selectedFile) {
       selectedFiles.push(selectedFile)
     }
 
-    selectedFiles.length < 5 ? setSelectedFile(URL.createObjectURL(event.target.files[0])) : alert('Only five images can be uploaded at a time');
+    setSelectedFile(URL.createObjectURL(event.target.files[0]))
   }
 
 
@@ -63,73 +73,85 @@ const ReviewForm = ({ filled, onClick, val }) => {
   //   setCharacteristics(characteristicsIdandValue);
   // }, [size, width, comfort, quality, length, fit])
 
+
+
+
+  //VALIDATE FORM
   const validateForm = ({ rating, body, name, email, recommend, characteristics }) => {
-    const isValid = true;
-    if (rating === undefined || rating === null) {
+    let isValid = true
+    if (rating === '') {
+      console.log('rating')
+      setRatingError('Star Rating')
       isValid = false;
     }
 
     if (body.length < 50 || body.length > 1000) {
+      console.log('body')
+      setBodyError('Review')
+      isValid = false
+    }
+    if (name.length <= 0 || name.length > 60) {
+      console.log('name')
+      setNameError('Your Nickname')
       isValid = false;
     }
 
-    if (name.length < 4 || name.length > 15) {
+    if (!email.includes('@') || !email.includes('.')) {
+      console.log('EMAIL')
+      setEmailError('A Correctly Formatted Email')
       isValid = false;
     }
 
-    if (email.length.includes('@') === -1 || email.length.includes('.') === -1) {
+    if (recommend === null) {
+      console.log('recommend')
+      setRecommendedError('If You Would Recommend This Product')
       isValid = false;
     }
 
-    if (recommend !== true || recommend !== false) {
+    if (Object.values(characteristics).includes('')) {
+      setCharacteristicsError('Fill Any Missing Characteristic Ratings')
+      console.log('char')
       isValid = false;
     }
-
-    if (!Object.values(characteristics).includes('')) {
-      isValid = false;
-    }
+    console.log('isValid', isValid)
+    setValidForm(isValid)
     return isValid;
   }
 
 
-
-
-
-
   let productName = productInfo[0].name
-  const handleSubmit = (event, val) => {
-    console.log(val)
+  const handleSubmit = () => {
     event.preventDefault();
-    if (validateForm) {
-      let defaultPhotos = [];
-      if (selectedFile !== null) {
-        defaultPhotos = [selectedFile, ...selectedFiles]
-      }
-      const review = {
-        product_id: sampleProductId,
-        rating: val.toString(),
-        summary: event.target.value,
-        body: event.target.value,
-        recommend: event.target.value,
-        name: event.target.value,
-        email: event.target.value,
-        photos: defaultPhotos,
-        characteristics: {
-          // size: event.target.value,
-          // width: event.target.value,
-          // comfort: event.target.value,
-          // quality: event.target.value,
-          // length: event.target.value,
-          fit: {
-            id: 142032,
-            value: event.target.value
-          }
-        }
-      }
-      sendReview(review);
+    let defaultPhotos = [];
+    if (selectedFile !== null) {
+      defaultPhotos = [selectedFile, ...selectedFiles]
     }
-    console.log('nope')
+    console.log('stars', newStarRating)
+    const review = {
+      product_id: sampleProductId,
+      rating: newStarRating,
+      summary: reviewSummary,
+      body: reviewBody,
+      recommend: recommended,
+      name: nickName,
+      email: email,
+      photos: defaultPhotos,
+      characteristics: {
+        size: size,
+        width: width,
+        comfort: comfort,
+        quality: quality,
+        length: length,
+        fit: fit
+      }
+    }
+    if (validateForm(review)) {
+      sendReview(review);
+    } else {
+      console.log('nope')
+    }
   }
+
 
   const sendReview = (data) => {
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews`, data, {
@@ -146,14 +168,14 @@ const ReviewForm = ({ filled, onClick, val }) => {
   const showForm = () => {
     return (
       < div id='ReviewForm' >
-        {console.log(val)}
         <h2>Write Your Review</h2>
         <h5>About the {productName}</h5>
         <form >
-          <StarRating /><br />
+          <StarRating onChange={setNewStarRating} />
+          <br />
           <label>Do you recommend this product?</label>
-          <input type="radio" value="true" name="recommend" onChange={(event) => setRecommend(event.target.value)} /> Yes
-          <input type="radio" value="false" name="recommend" onChange={(event) => setRecommend(event.target.value)} /> No <br /> <br />
+          <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
+          <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <label>Characteristics: </label> <br /> <br />
           <label>Size:
             <input type="radio" value="1" name="Size" onChange={(event) => setSize(event.target.value)} /> 1
@@ -203,12 +225,13 @@ const ReviewForm = ({ filled, onClick, val }) => {
             <input type="radio" value="5" name="Fit" onChange={(event) => setFit(event.target.value)} /> 5
           </label>
           <br /> <br />
-          <label id="summary">
-            Review Summary: {' '} <input type="text" value={reviewSummary} maxLength="60" onChange={(event) => setReviewSummary(event.target.value)} />
+          <label id="summary" >
+            Review Summary:  <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
           </label>
           <br /> <br />
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-            <label id="review" />      Review: {' '} <textarea type="text" maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
+            <label id="review" />
+            Review: <textarea type="text" placeholder="Why did you like the product or not?" style={{ width: '300px', height: '50px' }} maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
               setCharCount(50 - event.target.value.length)} />
           </div>
           <div>
@@ -216,31 +239,49 @@ const ReviewForm = ({ filled, onClick, val }) => {
               <p>Minimum Required Characters Left: {charCount}</p>
               : <p>Minimum Reached</p>}
           </div>
-          <br />
           <div>
             <h4>Add photos</h4>
-            <input type='file' accept='image/*' multiple onChange={handleImageSelect}>
+            {selectedFiles.length !== 4 ?
+              <label htmlFor="filePicker" style={{ background: 'grey', padding: "5px 10px" }} >
+                Upload Photos
+              </label>
+              : <p>Thank You For Uploading Photos!</p>}
+            <input type='file' id="filePicker" accept='image/*' name="file" multiple onChange={handleImageSelect} style={{ visibility: "hidden" }}>
+
             </input>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-              <img src={selectedFile} />
-              <img src={selectedFiles[0]} />
-              <img src={selectedFiles[1]} />
-              <img src={selectedFiles[2]} />
-              <img src={selectedFiles[3]} />
+            <div id="photoUploads" >
+              <img src={selectedFile} id="thumbnailsRR" />
+              <img src={selectedFiles[0]} id="thumbnailsRR" />
+              <img src={selectedFiles[1]} id="thumbnailsRR" />
+              <img src={selectedFiles[2]} id="thumbnailsRR" />
+              <img src={selectedFiles[3]} id="thumbnailsRR" />
             </div>
           </div>
-          <button type="submit" value="Submit"> Upload Photos </button>
+          <br />
           <br /> <br />
           <label id="nickname" >
-            Nickname: {''} <input type="text" placeholder="What is your Nickname?" style={{ width: '200px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
+            Nickname: <input type="text" placeholder="Example: jackson11!" style={{ width: '200px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
           </label>
-          <br /> <br />
+          <p>For privacy reasons, do not use your full name or email address.</p>
           <label id="email" >
-            Email: {''} <input type="text" placeholder="Example: jackson11!" style={{ width: '200px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
+            Email: <input type="text" placeholder="Example: jackson11@email.com" style={{ width: '200px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
           </label>
-          <br /> <br />
+          <p>For authentication reasons, you will not be emailed.</p>
+
         </form >
         <button onClick={(event) => handleSubmit(event)}> Submit Review </button>
+        <br />   <br />
+        <div >
+          {!validForm ? <div id="Error">
+            <h3>You must enter the following: </h3>
+            {ratingError} <br />
+            {bodyError} <br />
+            {nameError} <br />
+            {emailError} <br />
+            {recommendedError} <br />
+            {characteristicsError} <br />
+          </div> : null}
+        </div>
       </div >
     )
   }
@@ -253,3 +294,4 @@ const ReviewForm = ({ filled, onClick, val }) => {
 }
 
 export default ReviewForm;
+

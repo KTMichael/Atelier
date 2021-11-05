@@ -5,8 +5,7 @@ body {
 }
 
 div {
-  background-color: rgb(60, 75, 80)
-
+  background-color: rgb(60, 75, 80);
 }
 
 #app {
@@ -43,7 +42,7 @@ div {
   float: left;
   flex-flow: wrap;
   width: 60%;
-  height: 95%;
+  height: 90%;
   margin: 20px;
   padding: 5px;
   border-style: solid;
@@ -159,6 +158,7 @@ div {
 }
 
 #OverallRatings {
+  align-items: center;
   text-align: center;
   height: 70%;
   width: 40%;
@@ -170,6 +170,7 @@ div {
   border-color: black;
 }
 #OverallRatingsMain {
+  align-items: center;
   text-align: center;
   height: 70%;
   width: 92%;
@@ -186,6 +187,7 @@ div {
 }
 
 #CustomerReviewsMain {
+  align-items: center;
   height: 100%;
   width: 100%;
   margin: 5px;
@@ -205,7 +207,7 @@ div {
 #CustomerReviews {
   text-align: center;
   height: 100%;
-  width: 97.5%;
+  width: 100%;
   margin: 5px;
   padding: 5px;
   border-style: solid;
@@ -215,8 +217,9 @@ div {
 }
 
 #ReviewForm {
+  align-items: center;
 height: 94%;
-width: 160%;
+width: 100%;
 margin: 7px;
 padding: 6px;
 border-style: solid;
@@ -241,6 +244,33 @@ border-width: 1px;
 border-radius: 5px;
 border-color: black;
 }
+
+#Error {
+  padding: 2%;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: red;
+}
+
+#photoUploads {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 100%;
+  height: auto;
+}
+
+#thumbnailsRR {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 20%;
+  height: auto;
+}
+
 /* Styles specific to QUESTIONS & ANSWERS widget */
 
 
