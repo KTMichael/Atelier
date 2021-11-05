@@ -19,9 +19,9 @@ class QuestionList extends React.Component {
 
   render() {
     return (
-    <ul id='questionList'>
+    <div id='questionList'>
       {this.state.questions.map((question, index) => <Question key = {`question ${index}`} data={question} />)}
-    </ul>
+    </div>
     )
   }
 }

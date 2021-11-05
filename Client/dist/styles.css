@@ -5,6 +5,7 @@ body {
 }
 
 div {
+  /* Why? */
   background-color: rgb(60, 75, 80)
 }
 
@@ -21,15 +22,6 @@ div {
   border-radius: 5px;
   border-color: black;
   font-family: 'Ubuntu', sans-serif;
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 /*Popup styling*/
@@ -147,6 +139,34 @@ div {
   background-color: rgb(32, 33, 34)
 }
 
+#questionList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.QAElement {
+  display: flex;
+  justify-content: space-between;
+}
+
+.questionHelpful {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.questionHelpful:hover {
+  color: #202122;
+}
+
+.questionReport {
+  text-decoration: underline;
+  cursor: pointer;
+
+}.questionReport:hover {
+  color: #202122;
+}
+
 .answerList {
   padding-left: 40px;
   padding-right: 40px;
@@ -158,18 +178,20 @@ div {
 
 .answerHelpful {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .answerHelpful:hover {
-  color: #202122
+  color: #202122;
 }
 
 .answerReport {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .answerReport:hover {
-  color: #202122
+  color: #202122;
 }
 
   /* ---------------- Ratings and Reviews------------------- */

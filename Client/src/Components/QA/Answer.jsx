@@ -24,7 +24,7 @@ class Answer extends React.Component {
     }
   }
 
-  handleAnswerReport(e) {
+  handleAnswerReport() {
     if (!this.state.markedReport) {
       axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.props.data.id}/report`)
         .then(() => {
@@ -39,8 +39,11 @@ class Answer extends React.Component {
     return (
       <div className='answer'>
         <p className='answerText'>A: {this.props.data.body}</p>
-        <p className='answererDetails'>
-          by {username}, {date} | Helpful? <span className='answerHelpful noselect' onClick={this.handleAnswerHelpful}>Yes</span> {this.state.helpfulness} | <span className='answerReport noselect' onClick={this.handleAnswerReport}>{this.state.reportText}</span>
+        <p className='answererLinks'>
+          by {username}, {date} | Helpful?{' '}
+          <span className='answerHelpful' onClick={this.handleAnswerHelpful}>Yes</span>{' '}
+          {'(' + this.state.helpfulness + ')'}{' '}
+          | <span className='answerReport' onClick={this.handleAnswerReport}>{this.state.reportText}</span>
         </p>
       </div>
     )
