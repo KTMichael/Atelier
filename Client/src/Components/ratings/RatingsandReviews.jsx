@@ -8,18 +8,17 @@ import { TOKEN } from '../../../../config.js';
 
 const RatingsandReviews = () => {
   const [moreReviews, setMoreReviews] = useState([]);
-  const [sampleProductId, setSampleProductId] = useState(0);
-
+  const [productId, setProductId] = useState(0);
+  const [productName, setProductName] = useState('');
 
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        // console.log(response.data)
-        sampleProductId = response.data[0].id;
-        console.log(response.data)
-        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${sampleProductId}`,
+        setProductId(response.data[0].id);
+        setProductName(response.data[0].name);
+        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${productId}`,
           {
             headers: { Authorization: `${TOKEN}` }
           })
@@ -32,6 +31,7 @@ const RatingsandReviews = () => {
 
   return (
     <div id="RatingsandReviews" >
+      {console.log(productId)}
       <div id="RRTitle">
         <h1> Ratings & Reviews</h1>
       </div>
@@ -45,7 +45,7 @@ const RatingsandReviews = () => {
             <div id="btn">
               <button type="button" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
             </div>
-            <ReviewForm />
+            <ReviewForm productId={productId} productName={productName} />
           </div>
         </div>
       </div>

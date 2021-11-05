@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
-
 import testData from '../../../../Data/testData.js';
-import { sampleProductId } from './RatingsandReviews.jsx';
+import { productId, productName } from './RatingsandReviews.jsx';
 import axios from 'axios'
 import { TOKEN } from '../../../../config.js';
 
 
 
-const ReviewForm = () => {
+const ReviewForm = ({ productId, productName }) => {
   const [productInfo, setProductInfo] = useState(testData.testListProducts);
   // send review
   // const [review, setAddReview] = useState({});
@@ -17,13 +16,13 @@ const ReviewForm = () => {
   const [newStarRating, setNewStarRating] = useState('');
   //CHARACTERISTICS
   const [characteristics, setCharacteristics] = useState({});
-  const [characteristicIds, setCharacteristicIds] = useState([]);
-  const [size, setSize] = useState('');
-  const [width, setWidth] = useState('');
-  const [comfort, setComfort] = useState('');
-  const [quality, setQuality] = useState('');
-  const [length, setLength] = useState('');
-  const [fit, setFit] = useState('');
+  const [characteristicIds, setCharacteristicIds] = useState({});
+  const [size, setSize] = useState(null);
+  const [width, setWidth] = useState(null);
+  const [comfort, setComfort] = useState(null);
+  const [quality, setQuality] = useState(null);
+  const [length, setLength] = useState(null);
+  const [fit, setFit] = useState(null);
   // FILLABLE
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -62,18 +61,86 @@ const ReviewForm = () => {
   // let fitFit = ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'];
 
 
-  // useEffect(() => {
-  //   let characteristicsIdandValue = {};
-  //   size ? characteristicsIdandValue[characteristicIds[0]] = Number(size) : null;
-  //   width ? characteristicsIdandValue[characteristicIds[1]] = Number(width) : null;
-  //   comfort ? characteristicsIdandValue[characteristicIds[2]] = Number(comfort) : null;
-  //   quality ? characteristicsIdandValue[characteristicIds[3]] = Number(quality) : null;
-  //   length ? characteristicsIdandValue[characteristicIds[4]] = Number(length) : null;
-  //   fit ? characteristicsIdandValue[characteristicIds[5]] = Number(length) : null;
-  //   setCharacteristics(characteristicsIdandValue);
-  // }, [size, width, comfort, quality, length, fit])
+  useEffect(() => {
+    if (productId.toString().slice(-1) === '6') {
+      setCharacteristicIds({
+        '142032': Number(fit),
+        '142033': Number(length),
+        '142034': Number(comfort),
+        '142035': Number(quality),
+      })
+      setCharacteristics({
+        size: false,
+        width: false,
+        comfort: true,
+        quality: true,
+        length: true,
+        fit: true
+      })
+    }
+    if (productId.toString().slice(-1) === '7') {
+      setCharacteristicIds({
+        '142036': Number(quality),
+      })
+      setCharacteristics({
+        size: false,
+        width: false,
+        comfort: false,
+        quality: true,
+        length: false,
+        fit: false
+      })
+    }
+    if (productId.toString().slice(-1) === '8') {
+      setCharacteristicIds({
+        '142037': Number(fit),
+        '142038': Number(length),
+        '142039': Number(comfort),
+        '142040': Number(quality),
+      })
+      setCharacteristics({
+        size: false,
+        width: false,
+        comfort: true,
+        quality: true,
+        length: true,
+        fit: true
+      })
+    }
+    if (productId.toString().slice(-1) === '9') {
+      setCharacteristicIds({
+        '142041': Number(fit),
+        '142042': Number(length),
+        '142043': Number(comfort),
+        '142044': Number(quality),
+      })
+      setCharacteristics({
+        size: false,
+        width: false,
+        comfort: true,
+        quality: true,
+        length: true,
+        fit: true
+      })
+    }
+    if (productId.toString().slice(-1) === '0') {
+      setCharacteristicIds({
+        '142045': Number(size),
+        '142046': Number(width),
+        '142047': Number(comfort),
+        '142048': Number(quality),
+      })
+      setCharacteristics({
+        size: true,
+        width: true,
+        comfort: true,
+        quality: true,
+        length: false,
+        fit: false
+      })
+    }
 
-
+  }, [productId, size, fit, width, comfort, quality, length])
 
 
   //VALIDATE FORM
@@ -118,9 +185,7 @@ const ReviewForm = () => {
     return isValid;
   }
 
-
-  let productName = productInfo[0].name
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     let defaultPhotos = [];
     if (selectedFile !== null) {
@@ -128,46 +193,40 @@ const ReviewForm = () => {
     }
     console.log('stars', newStarRating)
     const review = {
-      product_id: sampleProductId,
+      product_id: productId,
       rating: newStarRating,
       summary: reviewSummary,
       body: reviewBody,
-      recommend: recommended,
+      recommend: JSON.parse(recommended),
       name: nickName,
       email: email,
       photos: defaultPhotos,
-      characteristics: {
-        size: size,
-        width: width,
-        comfort: comfort,
-        quality: quality,
-        length: length,
-        fit: fit
-      }
+      characteristics: characteristicIds
     }
-    if (validateForm(review)) {
-      sendReview(review);
-    } else {
-      console.log('nope')
+    console.log(review)
+    if (validateForm(review) === true) {
+      const options = {
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews',
+        method: 'post',
+        headers: {
+          Authorization: `${TOKEN}`,
+          ContentType: 'application/json',
+        },
+        data: review
+      };
+      axios(options)
+        .then((response) => console.log('Review Sent! ', response.data))
+        .catch((error) => console.log('POST REVIEW ERROR ', error));
+
     }
-  }
-
-
-  const sendReview = (data) => {
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews`, data, {
-      headers: {
-        Authorization: `${TOKEN}`,
-        ContentType: 'application/json',
-      }
-    })
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error));
   }
 
 
   const showForm = () => {
     return (
       < div id='ReviewForm' >
+        {console.log(characteristicIds)}
+        {console.log('hi')}
         <h2>Write Your Review</h2>
         <h5>About the {productName}</h5>
         <form >
@@ -176,58 +235,68 @@ const ReviewForm = () => {
           <label>Do you recommend this product?</label>
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
-          <label>Characteristics: </label> <br /> <br />
-          <label>Size:
-            <input type="radio" value="1" name="Size" onChange={(event) => setSize(event.target.value)} /> 1
-            <input type="radio" value="2" name="Size" onChange={(event) => setSize(event.target.value)} /> 2
-            <input type="radio" value="3" name="Size" onChange={(event) => setSize(event.target.value)} /> 3
-            <input type="radio" value="4" name="Size" onChange={(event) => setSize(event.target.value)} /> 4
-            <input type="radio" value="5" name="Size" onChange={(event) => setSize(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label>Width:
-            <input type="radio" value="1" name="Width" onChange={(event) => setWidth(event.target.value)} /> 1
-            <input type="radio" value="2" name="Width" onChange={(event) => setWidth(event.target.value)} /> 2
-            <input type="radio" value="3" name="Width" onChange={(event) => setWidth(event.target.value)} /> 3
-            <input type="radio" value="4" name="Width" onChange={(event) => setWidth(event.target.value)} /> 4
-            <input type="radio" value="5" name="Width" onChange={(event) => setWidth(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label>Comfort:
-            <input type="radio" value="1" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 1
-            <input type="radio" value="2" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 2
-            <input type="radio" value="3" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 3
-            <input type="radio" value="4" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 4
-            <input type="radio" value="5" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label>Quality:
-            <input type="radio" value="1" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 1
-            <input type="radio" value="2" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 2
-            <input type="radio" value="3" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 3
-            <input type="radio" value="4" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 4
-            <input type="radio" value="5" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label>Length:
-            <input type="radio" value="1" name="Length" onChange={(event) => setLength(event.target.value)} /> 1
-            <input type="radio" value="2" name="Length" onChange={(event) => setLength(event.target.value)} /> 2
-            <input type="radio" value="3" name="Length" onChange={(event) => setLength(event.target.value)} /> 3
-            <input type="radio" value="4" name="Length" onChange={(event) => setLength(event.target.value)} /> 4
-            <input type="radio" value="5" name="Length" onChange={(event) => setLength(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label>Fit:
-            <input type="radio" value="1" name="Fit" onChange={(event) => setFit(event.target.value)} /> 1
-            <input type="radio" value="2" name="Fit" onChange={(event) => setFit(event.target.value)} /> 2
-            <input type="radio" value="3" name="Fit" onChange={(event) => setFit(event.target.value)} /> 3
-            <input type="radio" value="4" name="Fit" onChange={(event) => setFit(event.target.value)} /> 4
-            <input type="radio" value="5" name="Fit" onChange={(event) => setFit(event.target.value)} /> 5
-          </label>
-          <br /> <br />
-          <label id="summary" >
-            Review Summary:  <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
-          </label>
+
+          <label>Characteristics: </label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} >
+            {characteristics.size ?
+              <label>Size:
+                <input type="radio" value="1" name="Size" onChange={(event) => setSize(event.target.value)} /> 1
+                <input type="radio" value="2" name="Size" onChange={(event) => setSize(event.target.value)} /> 2
+                <input type="radio" value="3" name="Size" onChange={(event) => setSize(event.target.value)} /> 3
+                <input type="radio" value="4" name="Size" onChange={(event) => setSize(event.target.value)} /> 4
+                <input type="radio" value="5" name="Size" onChange={(event) => setSize(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            {characteristics.width ?
+              <label>Width:
+                <input type="radio" value="1" name="Width" onChange={(event) => setWidth(event.target.value)} /> 1
+                <input type="radio" value="2" name="Width" onChange={(event) => setWidth(event.target.value)} /> 2
+                <input type="radio" value="3" name="Width" onChange={(event) => setWidth(event.target.value)} /> 3
+                <input type="radio" value="4" name="Width" onChange={(event) => setWidth(event.target.value)} /> 4
+                <input type="radio" value="5" name="Width" onChange={(event) => setWidth(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            {characteristics.comfort ?
+              <label>Comfort:
+                <input type="radio" value="1" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 1
+                <input type="radio" value="2" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 2
+                <input type="radio" value="3" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 3
+                <input type="radio" value="4" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 4
+                <input type="radio" value="5" name="Comfort" onChange={(event) => setComfort(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            {characteristics.quality ?
+              <label>Quality:
+                <input type="radio" value="1" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 1
+                <input type="radio" value="2" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 2
+                <input type="radio" value="3" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 3
+                <input type="radio" value="4" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 4
+                <input type="radio" value="5" name="Quality" onChange={(event) => setQuality(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            {characteristics.length ?
+              <label>Length:
+                <input type="radio" value="1" name="Length" onChange={(event) => setLength(event.target.value)} /> 1
+                <input type="radio" value="2" name="Length" onChange={(event) => setLength(event.target.value)} /> 2
+                <input type="radio" value="3" name="Length" onChange={(event) => setLength(event.target.value)} /> 3
+                <input type="radio" value="4" name="Length" onChange={(event) => setLength(event.target.value)} /> 4
+                <input type="radio" value="5" name="Length" onChange={(event) => setLength(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            {characteristics.fit ?
+              <label>Fit:
+                <input type="radio" value="1" name="Fit" onChange={(event) => setFit(event.target.value)} /> 1
+                <input type="radio" value="2" name="Fit" onChange={(event) => setFit(event.target.value)} /> 2
+                <input type="radio" value="3" name="Fit" onChange={(event) => setFit(event.target.value)} /> 3
+                <input type="radio" value="4" name="Fit" onChange={(event) => setFit(event.target.value)} /> 4
+                <input type="radio" value="5" name="Fit" onChange={(event) => setFit(event.target.value)} /> 5
+              </label>
+              : <div style={{ clear: 'none' }} />}
+            <br /> <br />
+            <label id="summary" >
+              Review Summary:  <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
+            </label>
+          </div>
           <br /> <br />
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
             <label id="review" />
@@ -268,19 +337,21 @@ const ReviewForm = () => {
           </label>
           <p>For authentication reasons, you will not be emailed.</p>
 
+          <button type="submit" onClick={(event) => handleSubmit(event)}> Submit Review </button>
         </form >
-        <button onClick={(event) => handleSubmit(event)}> Submit Review </button>
         <br />   <br />
         <div >
-          {!validForm ? <div id="Error">
-            <h3>You must enter the following: </h3>
-            {ratingError} <br />
-            {bodyError} <br />
-            {nameError} <br />
-            {emailError} <br />
-            {recommendedError} <br />
-            {characteristicsError} <br />
-          </div> : null}
+          {!validForm ?
+            <div id="Error">
+              <h3>You must enter the following: </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }} >
+                {{ ratingError } ? <div> {ratingError}</div> : <div style={{ clear: 'none' }} />}
+                <div> {bodyError} </div>
+                <div> {nameError} </div>
+                <div> {emailError} </div>
+                <div> {recommendedError} </div>
+                <div> {characteristicsError} </div>
+              </div></div> : <div style={{ clear: 'none' }} />}
         </div>
       </div >
     )
@@ -292,6 +363,5 @@ const ReviewForm = () => {
     </span>
   )
 }
-
 export default ReviewForm;
 
