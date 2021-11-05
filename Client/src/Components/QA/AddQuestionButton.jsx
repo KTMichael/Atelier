@@ -1,4 +1,5 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
 
 class AddQuestionButton extends React.Component {
   constructor(props) {
@@ -10,7 +11,14 @@ class AddQuestionButton extends React.Component {
   }
 
   render() {
-    return (<button id='addQuestion'>Add Question</button>)
+    return (
+      <Popup trigger={<button className="button"> Add Question </button>} modal>
+        <form>
+          <input type='text' id='NewQuestion' name='NewQuestion'/>
+          <input type='submit' value='Add new question'/>
+        </form>
+      </Popup>
+    )
   }
 }
 
