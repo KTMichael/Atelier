@@ -35,7 +35,7 @@ const CustomerReviews = () => {
           <br />        <br />
           <span>Review Summary</span>
           <p>Review Body</p>
-          <button>Helpful</button>  <button>Yes</button>  <button>No</button>  <button>Report</button>
+          <button >Helpful</button>  < button >Yes</button>  <button >No</button>  <button >Report</button>
         </div>
       </div>
     </div>

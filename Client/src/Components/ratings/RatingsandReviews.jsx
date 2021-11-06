@@ -15,8 +15,8 @@ const RatingsandReviews = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        setProductId(response.data[1].id);
-        setProductName(response.data[1].name);
+        setProductId(response.data[3].id);
+        setProductName(response.data[3].name);
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${productId}`,
           {
             headers: { Authorization: `${TOKEN}` }
@@ -41,7 +41,7 @@ const RatingsandReviews = () => {
           <CustomerReviews />
           <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
-              <button type="button" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
+              <button className="btn" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
             </div>
             <ReviewForm productId={productId} productName={productName} />
           </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import StarRating from './StarRating.jsx';
 import { productId, productName } from './RatingsandReviews.jsx';
 import axios from 'axios'
@@ -11,10 +11,10 @@ const ReviewForm = ({ productId, productName }) => {
 
   // send review
   // const [review, setAddReview] = useState({});
-  const [clickedAddReview, setForm] = useState(false);
   const [recommended, setRecommended] = useState(null);
   const [newStarRating, setNewStarRating] = useState('');
   //CHARACTERISTICS
+  const [clickedShowExplanations, setClickedShowExplanations] = useState(false);
   const [characteristics, setCharacteristics] = useState({});
   const [characteristicIds, setCharacteristicIds] = useState({});
   const [size, setSize] = useState(null);
@@ -40,7 +40,8 @@ const ReviewForm = ({ productId, productName }) => {
   const [emailError, setEmailError] = useState(null)
   const [recommendedError, setRecommendedError] = useState(null)
   const [characteristicsError, setCharacteristicsError] = useState(null)
-
+  const ref = useRef();
+  const closeTooltip = () => ref.current.close();
   // PHOTOS
   const handleImageSelect = (event) => {
     if (selectedFile) {
@@ -212,17 +213,75 @@ const ReviewForm = ({ productId, productName }) => {
   const showForm = () => {
     return (
       < div id='ReviewForm' >
-        <h2>Write Your Review</h2>
+        <h1>Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
           <StarRating onChange={setNewStarRating} />
-          <br />
-          <label>Do you recommend this product?</label>
+          <h3>Do you recommend this product?</h3>
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
-
-          <label>Characteristics: </label>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} >
+          <h2>Characteristics </h2>
+          <Popup trigger={<div className="btn"> See Characteristic Value Explanation </div>} position="right" nested>
+            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
+              <tr >
+                <th></th>
+                <th style={{ fontWeight: 'bold' }}>1</th>
+                <th style={{ fontWeight: 'bold' }}>2</th>
+                <th style={{ fontWeight: 'bold' }}>3</th>
+                <th style={{ fontWeight: 'bold' }}>4</th>
+                <th style={{ fontWeight: 'bold' }}>5</th>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 'bold' }}>Size</td>
+                <td>A Size Too Small</td>
+                <td>1⁄2 A Size Too Small</td>
+                <td>Perfect</td>
+                <td>1⁄2 A Size Too Big</td>
+                <td>A Size Too Wide</td>
+              </tr>
+              <tr >
+                <td style={{ fontWeight: 'bold' }}>Width</td>
+                <td>Too Narrow</td>
+                <td>Slightly Narrow</td>
+                <td>Perfect</td>
+                <td>Slightly Wide</td>
+                <td>Too Wide</td>
+              </tr>
+              <tr >
+                <td style={{ fontWeight: 'bold' }}>Comfort</td>
+                <td>Uncomfortable</td>
+                <td>Slightly Uncomfortable</td>
+                <td>Ok</td>
+                <td>Comfortable</td>
+                <td>Perfect</td>
+              </tr>
+              <tr >
+                <td style={{ fontWeight: 'bold' }}>Quality</td>
+                <td>Poor</td>
+                <td>Below Average</td>
+                <td>What I Expected</td>
+                <td>Pretty Great</td>
+                <td>Perfect</td>
+              </tr>
+              <tr >
+                <td style={{ fontWeight: 'bold' }}>Length</td>
+                <td>Runs Short</td>
+                <td>Runs Slightly Short</td>
+                <td>Perfect</td>
+                <td>Runs Slightly Long</td>
+                <td>Runs Long</td>
+              </tr>
+              <tr >
+                <td style={{ fontWeight: 'bold' }}>Fit</td>
+                <td>Runs Tight</td>
+                <td>Runs SlightlyTight</td>
+                <td>Perfect</td>
+                <td>Runs Slightly Loose</td>
+                <td>Runs Loose</td>
+              </tr>
+            </table>
+          </Popup>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }} >
             {characteristics.size ?
               <label>Size:
                 <input type="radio" value="1" name="Size" onChange={(event) => setSize(event.target.value)} /> 1
@@ -277,15 +336,15 @@ const ReviewForm = ({ productId, productName }) => {
                 <input type="radio" value="5" name="Fit" onChange={(event) => setFit(event.target.value)} /> 5
               </label>
               : <div style={{ clear: 'none' }} />}
-
-            <label id="summary" >
-              Review Summary:  <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
-            </label>
           </div>
-          <br /> <br />
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
-            <label id="review" />
-            Review: <textarea type="text" placeholder="Why did you like the product or not?" style={{ width: '300px', height: '50px' }} maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
+          <br />
+
+          <h2>Review Summary</h2>
+          <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
+
+          <div >
+            <h2>Review</h2>
+            <textarea type="text" placeholder="Why did you like the product or not?" style={{ width: '300px', height: '50px' }} maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
               setCharCount(50 - event.target.value.length)} />
           </div>
           <div>
@@ -293,13 +352,15 @@ const ReviewForm = ({ productId, productName }) => {
               <p>Minimum Required Characters Left: {charCount}</p>
               : <p>Minimum Reached</p>}
           </div>
+
+
           <div>
-            <h4>Add photos</h4>
+            <h2>Add photos</h2>
             {selectedFiles.length !== 4 ?
-              <label htmlFor="filePicker" style={{ background: 'grey', padding: "5px 10px" }} >
+              <label htmlFor="filePicker" className="btn" style={{ margin: '30%' }} >
                 Upload Photos
               </label>
-              : <p>Thank You For Uploading Photos!</p>}
+              : <h3>Thank You For Uploading Photos!</h3>}
             <input type='file' id="filePicker" accept='image/*' name="file" multiple onChange={handleImageSelect} style={{ visibility: "hidden" }}>
 
             </input>
@@ -311,18 +372,21 @@ const ReviewForm = ({ productId, productName }) => {
               <img src={selectedFiles[3]} id="thumbnailsRR" />
             </div>
           </div>
-          <br />
-          <br /> <br />
-          <label id="nickname" >
-            Nickname: <input type="text" placeholder="Example: jackson11!" style={{ width: '200px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
-          </label>
+
+
+          <h2>Nickname </h2>
+          <input type="text" placeholder="Example: jackson11!" style={{ width: '200px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
           <p>For privacy reasons, do not use your full name or email address.</p>
-          <label id="email" >
-            Email: <input type="text" placeholder="Example: jackson11@email.com" style={{ width: '200px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
-          </label>
+
+          <h2>Email</h2>
+          <input type="text" placeholder="Example: jackson11@email.com" style={{ width: '200px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
+
           <p>For authentication reasons, you will not be emailed.</p>
 
-          <button type="submit" onClick={(event) => handleSubmit(event)}> Submit Review </button>
+          <button className="btn" type="submit" onClick={(event) => {
+            handleSubmit(event); closeTooltip();
+          }} > Submit </button>
+
         </form >
         <br />   <br />
         <div >
@@ -342,13 +406,9 @@ const ReviewForm = ({ productId, productName }) => {
     )
   }
   return (
-    <Popup trigger={<button > ADD REVIEW + </button>}>
+    <Popup ref={ref} trigger={<button className="btn"> ADD REVIEW + </button>} modal>
       {showForm()}
     </Popup>
-    // <span>
-    //   <button onClick={() => { setForm(true) }}>ADD REVIEW +</button>
-    //   {clickedAddReview ? showForm() : null}
-    // </span>
   )
 }
 export default ReviewForm;
