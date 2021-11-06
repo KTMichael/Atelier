@@ -3,8 +3,8 @@ import { Cachet } from 'react-icons/fa';
 import Style from './Style.jsx';
 
 class Styles extends React.Component {
-  constructor (props) {
-    super (props)
+  constructor(props) {
+    super(props)
     this.state = {
 
     }
@@ -14,7 +14,7 @@ class Styles extends React.Component {
 
   }
 
-  render () {
+  render() {
     return (
       <div className="thumbnail_rows_container">
         {this.props.options.map( (element, index) => {

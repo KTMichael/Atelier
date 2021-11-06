@@ -1,18 +1,25 @@
 /* STYLES COMMON TO ENTIRE APP */
 
 body {
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(32, 33, 34);
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 div {
   /* Why? */
+  /* Remove it and refresh your page and you will see why */
   background-color: rgb(60, 75, 80)
 }
 
 #app {
-  margin: 5px;
-  color: ivory;
-  padding: 8px;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 10;
+  margin: 5;
 }
 
 .MainComponent {
@@ -65,7 +72,7 @@ div {
   float: left;
   flex-flow: wrap;
   width: 60%;
-  height: 95%;
+  height: 90%;
   margin: 20px;
   padding: 5px;
   border-style: solid;
@@ -230,10 +237,11 @@ div {
 
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {
+  margin: 10px;
+  padding: 10px;
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
-  padding: 10px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
@@ -245,10 +253,8 @@ div {
 #RRComp {
   display: flex;
   flex-flow: row;
-
-  width: 97.5%;
+  width: 100%;
   height: 100%;
-  padding: 10px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
@@ -257,8 +263,8 @@ div {
 }
 
 #RRTitle {
-
-  width: 97.5%;
+  font-size: 1vw;
+  width: auto;
   height: 100%;
   padding: 10px;
   border-style: solid;
@@ -269,6 +275,7 @@ div {
 }
 
 #OverallRatings {
+  align-items: center;
   text-align: center;
   height: 70%;
   width: 40%;
@@ -278,14 +285,47 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-
-
+}
+#OverallRatingsMain {
+  align-items: center;
+  text-align: center;
+  height: auto;
+  width: auto;
+  margin: 8px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
 }
 
+#ratingInt{
+  font-size: 100px;
+}
+
+#CustomerReviewsMain {
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+}
+#customerReviewsTitle{
+
+  text-align: left;
+}
+#sortReviewsBy {
+  float: left;
+  padding: 5px;
+}
 #CustomerReviews {
   text-align: center;
-  height: 100%;
-  width: 57%;
+  height: auto;
+  width: auto;
   margin: 5px;
   padding: 5px;
   border-style: solid;
@@ -294,9 +334,14 @@ div {
   border-color: black;
 }
 
-#ReviewForm {
+#ReviewForm, #popup-content {
+font-size: 1vw;
+color: white;
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+align-items: center;
 height: 100%;
-width: 98%;
+width: auto;
 margin: 7px;
 padding: 6px;
 border-style: solid;
@@ -305,14 +350,85 @@ border-radius: 5px;
 border-color: black;
 }
 
-#btn {
-
+#characteristics {
+    color: white;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    margin: 7px;
+    padding: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: black;
 
 }
 
-#StarRating{
-
+#reviewTile {
+padding: 2%;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: black;
 }
+
+#Error {
+padding: 2%;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: red;
+}
+
+#photoUploads {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 100%;
+  height: auto;
+}
+
+#thumbnailsRR {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 20%;
+  height: auto;
+}
+
+
+.btn{
+font-size: 1vw;
+font-weight: bolder;
+color: rgb(16, 24, 66);
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+align-items: center;
+height: auto;
+width: auto;
+margin: 15px;
+padding: 15px;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: black;
+background-color: white;
+}
+
+#popup-8{
+font-size: .5vw;
+height: auto;
+width: auto;
+margin: 30px;
+padding: 5px;
+color: black;
+}
+
+
+
 /* Styles specific to QUESTIONS & ANSWERS widget */
 
 
