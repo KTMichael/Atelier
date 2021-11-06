@@ -302,7 +302,3 @@ border-color: black;
   cursor: pointer;
 }
 /* ---------------comparison window popup --------------- */
-#comparison-popup {
-  width: 500px;
-  background-color: grey;
-}

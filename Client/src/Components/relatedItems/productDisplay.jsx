@@ -37,7 +37,7 @@ function ProductDisplay() {
             extractRatingFrom(ratingsInfo);
           })
       })
-  }, [comparisonPopupState])
+  }, [])
 
   const extractRatingFrom = (info) => {
     var totalStars = 0;
@@ -79,16 +79,16 @@ function ProductDisplay() {
     )
   }
 
-  const showComparison = (main, related) => {
+  const showComparison = (show, main, related) => {
     setComparisonPopupState({
-      open: true,
+      open: show,
       mainProduct: main,
       relatedProduct: related
     });
   }
 
   return (
-    <div id='product-display' onClick={() => showComparison(mainProduct, product)}>
+    <div id='product-display' onClick={() => showComparison( true, mainProduct, product)}>
       <img id='product-image' src={image}/>
       <p>{productInfo.category}</p>
       <p>{productInfo.slogan}</p>
@@ -96,12 +96,16 @@ function ProductDisplay() {
       {renderClickableStar()}
       {renderRating()}
       {comparisonPopupState.open === true && (
+        <ComparisonPopup state={comparisonPopupState} setComparisonState={setComparisonPopupState} />
+      )}
+      {/* <ComparisonPopup state={comparisonPopupState} setComparisonState={setComparisonPopupState} /> */}
+      {/* {comparisonPopupState.open === true && (
         <ComparisonPopup
           mainProduct={comparisonPopupState.mainProduct}
           related={comparisonPopupState.relatedProduct}
           onClick={ () => setComparisonPopupState({ open: false })}
         />
-      )}
+      )} */}
     </div>
   )
 }
