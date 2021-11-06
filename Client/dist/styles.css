@@ -528,3 +528,14 @@ color: black;
   cursor: pointer;
 }
 /* ---------------comparison window popup --------------- */
+#comparison-popup {
+  background-color: white;
+}
+#comparison-table {
+  width: 100%;
+  empty-cells: show;
+}
+#comparison-table
+td {
+  text-align: center;
+}
