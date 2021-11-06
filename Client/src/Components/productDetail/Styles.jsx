@@ -10,15 +10,14 @@ class Styles extends React.Component {
     }
   }
 
-  handleClick () {
+  handleMouseover () {
 
   }
 
   render () {
     return (
-      <div className="thumbnail_container">
+      <div className="thumbnail_rows_container">
         {this.props.options.map( (element, index) => {
-          console.log(element.style_id);
           if (element.style_id === this.props.selectedStyle.style_id) {
             var isSelected = true;
           } else {
@@ -27,7 +26,11 @@ class Styles extends React.Component {
 
           return (
             <React.Fragment key={element.style_id}>
-              <Style index={index} handleChangeStyle={this.props.handleChangeStyle} isSelected={isSelected} src={element.photos[0].thumbnail_url}/>
+              <Style
+                index={index}
+                isSelected={isSelected}
+                handleChangeStyle={this.props.handleChangeStyle}
+                src={element.photos[0].thumbnail_url}/>
             </React.Fragment>
           )
         })}

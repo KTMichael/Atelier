@@ -93,16 +93,50 @@ div {
     padding: 5px;
   }
 
-  .thumbnail_container {
+  .thumbnail_rows_container {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
-  .thumbnail {
-    float: left;
+  .thumbnail_column_container {
+    display: flex;
     position: relative;
     width: 23%;
     margin: 1%;
+    cursor: pointer;
+    object-fit: contain;
+  }
+
+  .thumbnail {
+    width: 100%
+  }
+
+  #add_to_cart {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .overview_price {
+    display: flex;
+    align-items: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  #on_sale {
+    text-decoration: line-through;
+    color: red;
+    margin-right: 5px;
+  }
+
+  .select_size {
+    margin-left: 5px;
+  }
+
+  .select_quantity {
+    margin-left: 5px;
   }
 
   /* ---------------- Related Features ------------------- */
