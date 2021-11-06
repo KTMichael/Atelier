@@ -5,7 +5,7 @@ import ScrollableProductContainer from './scrollableProductContainer.jsx';
 import { testContext } from './context.js';
 
 function MainRelatedFeature() {
-  const [product, setProduct] = useState({});
+  const [mainProduct, setMainProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [outfits, setOutfits] = useState([]);
   const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
@@ -14,19 +14,20 @@ function MainRelatedFeature() {
   useEffect( () => {
     axios.get(productAPI, { headers: { Authorization: `${TOKEN}`}})
       .then( results => {
+        setMainProduct(results.data[0].id)
         let sampleProductId = results.data[0].id;
         axios.get(`${productAPI}${sampleProductId}/related`, { headers: { Authorization: `${TOKEN}`}})
           .then( results => {
             setRelatedProducts(results.data);
           })
       });
-  }, [product]);
+  }, []);
 
   return (
     <div id='RelatedFeature'>
       <h1>Related Products</h1>
       <div>
-        <testContext.Provider value={{relatedProducts, outfits}}>
+        <testContext.Provider value={{mainProduct, relatedProducts, outfits}}>
           <ScrollableProductContainer  />
         </testContext.Provider>
       </div>
