@@ -1,5 +1,6 @@
 import React from 'react';
-import Answer from './Answer.jsx'
+import Answer from './Answer.jsx';
+import axios from 'axios';
 
 class Question extends React.Component {
   constructor(props) {
@@ -7,11 +8,18 @@ class Question extends React.Component {
 
     this.state = {
       answers: Object.values(this.props.data.answers).sort(this.sortAnswers),
-      answerListMax: 2
+      answerListMax: 2,
+      helpfulness: this.props.data.question_helpfulness,
+      markedHelpful: false,
+      reportText: 'Report',
+      markedReport: false
     }
 
+    this.handleQuestionHelpful = this.handleQuestionHelpful.bind(this);
+    this.handleQuestionReport = this.handleQuestionReport.bind(this);
     this.renderSeeMoreAnswers = this.renderSeeMoreAnswers.bind(this);
     this.handleSeeMoreAnswers = this.handleSeeMoreAnswers.bind(this);
+    this.handleAddAnswer = this.handleAddAnswer.bind(this);
   }
 
   sortAnswers(firstAns, secondAns) {
@@ -28,6 +36,23 @@ class Question extends React.Component {
     }
   }
 
+  handleQuestionHelpful() {
+    if (!this.state.markedHelpful) {
+      axios.put(window.location.protocol + '//' + window.location.host + `/qa/questions/${this.props.data.question_id}/helpful`)
+        .then(() => { console.log('was marked helpful'); this.setState({ helpfulness: this.state.helpfulness + 1, markedHelpful: true }) });
+    }
+  }
+
+  handleQuestionReport() {
+    if (!this.state.markedReport) {
+      axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.props.data.question_id}/report`)
+        .then(() => {
+          this.setState({ markedReport: true, reportText: 'Reported' });
+        });
+    }
+  }
+
+
   renderSeeMoreAnswers() {
     if (this.state.answers.length > 2) {
       if (this.state.answerListMax <= 2) {
@@ -38,17 +63,32 @@ class Question extends React.Component {
     }
   }
 
+  handleAddAnswer() {
+    console.error('Implementation not yet made');
+  }
+
   render() {
     let renderAnswers = this.state.answers.slice(0, this.state.answerListMax)
     return (
-      <div id="qa">
-        <p className='question'>Q: {this.props.data.question_body}</p>
-        <ul className='answerList'>
-          {
-            renderAnswers.map(answer => <Answer key={`Answer ${answer.id}`} data={answer} />)
-          }
-        </ul>
-        {this.renderSeeMoreAnswers()}
+      <div className="QAElement">
+        <div>
+          <p className='question'>Q: {this.props.data.question_body}</p>
+          <ul className='answerList'>
+            {
+              renderAnswers.map(answer => <Answer key={`Answer ${answer.id}`} data={answer} />)
+            }
+          </ul>
+          {this.renderSeeMoreAnswers()}
+        </div>
+        <p className='QuestionLinks'>
+          Helpful?{' '}
+          <span className='questionHelpful' onClick={this.handleQuestionHelpful}>Yes</span>{' '}
+          {'(' + this.state.helpfulness + ')'}{' '}
+          |{' '}
+          <span className='questionReport' onClick={this.handleQuestionReport}>{this.state.reportText}</span>{' '}
+          |{' '}
+          <span className='addAnswer' onClick={this.handleAddAnswer}>Add Answer</span>
+        </p>
       </div>
     )
   }

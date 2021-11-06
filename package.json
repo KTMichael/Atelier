@@ -36,11 +36,11 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.15",
     "nodemon": "^2.0.14",
-    "react": "^16.4",
+    "react": "^16.14.0",
     "react-dom": "^16.4",
     "react-icons": "^4.3.1",
     "react-responsive-carousel": "^3.2.22",
-    "react-star-ratings": "^2.3.0",
-    "reactjs-popup": "^2.0.5"
+    "reactjs-popup": "^2.0.5",
+    "react-star-ratings": "^2.3.0"
   }
 }

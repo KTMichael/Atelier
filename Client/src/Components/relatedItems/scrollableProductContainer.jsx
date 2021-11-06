@@ -15,36 +15,43 @@ function scrollableProductContainer() {
 
   const next = () => {
     if (currentIndex < (length - 1)) {
-        setCurrentIndex(prevState => prevState + 1)
+      setCurrentIndex(prevState => prevState + 1)
     }
   }
 
   const prev = () => {
-      if (currentIndex > 0) {
-          setCurrentIndex(prevState => prevState - 1)
-      }
+    if (currentIndex > 0) {
+      setCurrentIndex(prevState => prevState - 1)
+    }
   }
 
   return (
     <div className='scrolling-product-container'>
       <div className='scrolling-wrapper'>
-      {
-        currentIndex > 0 &&
-        <button className="left-arrow" onClick={prev}>
-          &lt;
-        </button>
-      }
-      <div className='scrolling-content-wrapper'>
-        <div className='scrolling-product-content' style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-          {relatedProducts.map(product => {
-            return (
-              <testContext.Provider value={{mainProduct, product}}>
-                <ProductDisplay />
-              </testContext.Provider>
-            )
-          })}
+        {
+          currentIndex > 0 &&
+          <button className="left-arrow" onClick={prev}>
+            &lt;
+          </button>
+        }
+        <div className='scrolling-content-wrapper'>
+          <div className='scrolling-product-content' style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            {relatedProducts.map((product, index) => {
+              return (
+                <testContext.Provider value={{mainProduct, product }} key={index}>
+                  <ProductDisplay />
+                </testContext.Provider>
+              )
+            })}
+            {relatedProducts.map((product, index) => {
+              return (
+                <testContext.Provider value={{mainProduct, product }} key={index}>
+                  <ProductDisplay />
+                </testContext.Provider>
+              )
+            })}
+          </div>
         </div>
-      </div>
         {
           currentIndex < (length - 1) &&
           <button className="right-arrow" onClick={next}>
