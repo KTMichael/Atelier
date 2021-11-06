@@ -216,12 +216,14 @@ const ReviewForm = ({ productId, productName }) => {
         <h1>Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
+          <h2>Overall Rating</h2>
           <StarRating onChange={setNewStarRating} />
+          {newStarRating === 1 ? <span>Poor</span> : newStarRating === 2 ? <span>Fair</span> : newStarRating === 3 ? <span>Average</span> : newStarRating === 4 ? <span>Good</span> : newStarRating === 5 ? <span>Great</span> : null}
           <h3>Do you recommend this product?</h3>
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
-          <Popup trigger={<div className="btn"> See Characteristic Value Explanation </div>} position="right" nested>
+          <Popup trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
             <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
               <tr >
                 <th></th>
@@ -281,6 +283,7 @@ const ReviewForm = ({ productId, productName }) => {
               </tr>
             </table>
           </Popup>
+          <br /> <br />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }} >
             {characteristics.size ?
               <label>Size:
@@ -340,11 +343,11 @@ const ReviewForm = ({ productId, productName }) => {
           <br />
 
           <h2>Review Summary</h2>
-          <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '200px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
+          <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '300px', height: '25px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
 
           <div >
             <h2>Review</h2>
-            <textarea type="text" placeholder="Why did you like the product or not?" style={{ width: '300px', height: '50px' }} maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
+            <textarea type="text" placeholder="Why did you like the product or not?" style={{ width: '500px', height: '100px' }} maxLength="1000" minLength="50" value={reviewBody} onChange={(event) => setReviewBody(event.target.value)} onKeyUp={(event) =>
               setCharCount(50 - event.target.value.length)} />
           </div>
           <div>
@@ -375,11 +378,11 @@ const ReviewForm = ({ productId, productName }) => {
 
 
           <h2>Nickname </h2>
-          <input type="text" placeholder="Example: jackson11!" style={{ width: '200px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
+          <input type="text" placeholder="Example: jackson11!" style={{ width: '300px', height: '25px' }} value={nickName} onChange={(event) => setNickName(event.target.value)} />
           <p>For privacy reasons, do not use your full name or email address.</p>
 
           <h2>Email</h2>
-          <input type="text" placeholder="Example: jackson11@email.com" style={{ width: '200px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
+          <input type="text" placeholder="Example: jackson11@email.com" style={{ width: '300px', height: '25px' }} value={email} onChange={(event) => setEmail(event.target.value)} />
 
           <p>For authentication reasons, you will not be emailed.</p>
 
