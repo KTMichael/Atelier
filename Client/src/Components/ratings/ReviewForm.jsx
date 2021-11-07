@@ -224,7 +224,7 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
           <Popup trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
+            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black', backgroundColor: 'white' }}>
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -415,4 +415,3 @@ const ReviewForm = ({ productId, productName }) => {
   )
 }
 export default ReviewForm;
-

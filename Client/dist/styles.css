@@ -334,7 +334,7 @@ div {
   border-color: black;
 }
 
-#ReviewForm, #popup-content {
+#ReviewForm{
 font-size: 1vw;
 color: white;
 font-family: 'Ubuntu', sans-serif;
@@ -343,11 +343,6 @@ align-items: center;
 height: 100%;
 width: auto;
 margin: 7px;
-padding: 6px;
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-border-color: black;
 }
 
 #characteristics {
@@ -418,15 +413,16 @@ border-color: black;
 background-color: white;
 }
 
-#popup-8{
+ .popup-content, #popup-8, #popup-12, #popup-16, #popup-20, #popup-24, #popup-28, #popup-32{
+background-color: white;
 font-size: .5vw;
 height: auto;
 width: auto;
 margin: 30px;
 padding: 5px;
 color: black;
+overflow: scroll;
 }
-
 
 
 /* Styles specific to QUESTIONS & ANSWERS widget */
