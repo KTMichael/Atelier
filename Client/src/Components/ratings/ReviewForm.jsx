@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import StarRating from './StarRating.jsx';
-import { productId, productName } from './RatingsandReviews.jsx';
+// import { productId, productName } from './RatingsandReviews.jsx';
 import axios from 'axios'
 import { TOKEN } from '../../../../config.js';
 import Popup from 'reactjs-popup';
@@ -203,7 +203,10 @@ const ReviewForm = ({ productId, productName }) => {
         data: review
       };
       axios(options)
-        .then((response) => console.log('Review Sent! ', response.data))
+        .then((response) => {
+          console.log('Review Sent! ', response.data);
+          closeTooltip();
+        })
         .catch((error) => console.log('POST REVIEW ERROR ', error));
 
     }
@@ -212,7 +215,7 @@ const ReviewForm = ({ productId, productName }) => {
 
   const showForm = () => {
     return (
-      < div id='ReviewForm' >
+      < div className='ReviewForm' >
         <h1>Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
@@ -224,7 +227,7 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
           <Popup trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
+            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black', backgroundColor: 'white' }}>
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -343,7 +346,7 @@ const ReviewForm = ({ productId, productName }) => {
           <br />
 
           <h2>Review Summary</h2>
-          <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '300px', height: '25px' }} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
+          <input type="text" placeholder="Example: Best purchase ever!" style={{ fontWeight: 'bold', width: '300px', height: '25px', margin: '2%'}} maxLength="60" value={reviewSummary} onChange={(event) => setReviewSummary(event.target.value)} />
 
           <div >
             <h2>Review</h2>
@@ -387,7 +390,7 @@ const ReviewForm = ({ productId, productName }) => {
           <p>For authentication reasons, you will not be emailed.</p>
 
           <button className="btn" type="submit" onClick={(event) => {
-            handleSubmit(event); closeTooltip();
+            handleSubmit(event)
           }} > Submit </button>
 
         </form >
@@ -396,7 +399,7 @@ const ReviewForm = ({ productId, productName }) => {
           {!validForm ?
             <div id="Error">
               <h3>You must enter the following: </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }} >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px'}} >
                 {{ ratingError } ? <div> {ratingError}</div> : <div style={{ clear: 'none' }} />}
                 <div> {bodyError} </div>
                 <div> {nameError} </div>
@@ -415,4 +418,3 @@ const ReviewForm = ({ productId, productName }) => {
   )
 }
 export default ReviewForm;
-
