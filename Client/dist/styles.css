@@ -334,7 +334,7 @@ div {
   border-color: black;
 }
 
-#ReviewForm-content, #popup-2 {
+.ReviewForm, #popup-2,  .popup-content {
 font-size: 1vw;
 color: white;
 font-family: 'Ubuntu', sans-serif;
@@ -371,6 +371,7 @@ border-color: black;
 
 #Error {
 padding: 2%;
+margin: 2%;
 border-style: solid;
 border-width: 1px;
 border-radius: 5px;
@@ -424,8 +425,9 @@ background-color: white;
   margin: 30px;
   padding: 5px;
   color: black;
+  overflow: scroll;
 }
- .popup-content, #popup-8, #popup-12, #popup-16, #popup-20, #popup-24, #popup-28, #popup-32{
+#popup-8, #popup-12, #popup-16, #popup-20, #popup-24, #popup-28, #popup-32{
 background-color: white;
 font-size: .5vw;
 height: auto;
@@ -433,7 +435,7 @@ width: auto;
 margin: 30px;
 padding: 5px;
 color: black;
-
+overflow: scroll;
 }
 
 
