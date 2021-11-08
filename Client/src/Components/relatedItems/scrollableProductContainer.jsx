@@ -5,7 +5,7 @@ import { testContext } from './context.js';
 
 //Container for Arrow keys and product diplay
 function scrollableProductContainer() {
-  const { relatedProducts, outfits } = useContext(testContext);
+  const { mainProduct, relatedProducts, outfits } = useContext(testContext);
   const [currentIndex, setCurrentIndex] = useState(0)
   const [length, setLength] = useState(relatedProducts.length)
 
@@ -38,14 +38,14 @@ function scrollableProductContainer() {
           <div className='scrolling-product-content' style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {relatedProducts.map((product, index) => {
               return (
-                <testContext.Provider value={{ product }} key={index}>
+                <testContext.Provider value={{mainProduct, product }} key={index}>
                   <ProductDisplay />
                 </testContext.Provider>
               )
             })}
             {relatedProducts.map((product, index) => {
               return (
-                <testContext.Provider value={{ product }} key={index}>
+                <testContext.Provider value={{mainProduct, product }} key={index}>
                   <ProductDisplay />
                 </testContext.Provider>
               )
@@ -53,7 +53,7 @@ function scrollableProductContainer() {
           </div>
         </div>
         {
-          currentIndex < (length - 3) &&
+          currentIndex < (length - 1) &&
           <button className="right-arrow" onClick={next}>
             &gt;
           </button>
