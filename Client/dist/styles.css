@@ -208,6 +208,10 @@ div {
   color: #202122;
 }
 
+.addAnswer {
+  cursor: pointer;
+}
+
 .answerList {
   padding-left: 40px;
   padding-right: 40px;
