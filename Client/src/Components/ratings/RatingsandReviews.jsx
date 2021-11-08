@@ -18,9 +18,9 @@ const RatingsandReviews = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        setProductId(response.data[0].id);
-        setProductName(response.data[0].name);
-        let product_id = response.data[0].id;
+        setProductId(response.data[2].id);
+        setProductName(response.data[2].name);
+        let product_id = response.data[2].id;
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${product_id}`,
           {
             headers: { Authorization: `${TOKEN}` }

@@ -334,15 +334,16 @@ div {
   border-color: black;
 }
 
-#ReviewForm{
+#ReviewForm-content, #popup-2 {
 font-size: 1vw;
 color: white;
 font-family: 'Ubuntu', sans-serif;
 text-align: center;
 align-items: center;
-height: 100%;
+height: auto;
 width: auto;
-margin: 7px;
+padding: 1%;
+overflow: scroll;
 }
 
 #characteristics {
@@ -413,6 +414,17 @@ border-color: black;
 background-color: white;
 }
 
+
+
+#popup-10, #popup-14, #popup-18, #popup-22, #popup-26 {
+  background-color: white;
+  font-size: .5vw;
+  height: auto;
+  width: auto;
+  margin: 30px;
+  padding: 5px;
+  color: black;
+}
  .popup-content, #popup-8, #popup-12, #popup-16, #popup-20, #popup-24, #popup-28, #popup-32{
 background-color: white;
 font-size: .5vw;
@@ -421,7 +433,7 @@ width: auto;
 margin: 30px;
 padding: 5px;
 color: black;
-overflow: scroll;
+
 }
 
 

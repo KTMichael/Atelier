@@ -122,7 +122,6 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
         <div>
           {` ${rec}% of reviews recommend this product`}
         </div>
-
         <div>
           <label>Size</label>
           <br /> <label>Comfort</label>
