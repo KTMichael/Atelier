@@ -111,24 +111,25 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
   }, [rating]);
 
 
+
   return (
     <div id='OverallRatingsMain' >
-      <h1> Overall Ratings</h1>
-      <span id="OverallRatingInt" />
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h1 id="ratingInt">{rating === 0 ? rating : rating.toFixed(1)}</h1>
-          <span style={{ display: 'flex' }} > {starArray}</span>
+          <span> {starArray}</span>
         </div>
         <div>
           {` ${rec}% of reviews recommend this product`}
         </div>
+
         <div>
           <label>Size</label>
           <br /> <label>Comfort</label>
         </div>
       </div>
     </div>
+
   )
 }
 
