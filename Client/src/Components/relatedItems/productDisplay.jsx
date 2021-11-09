@@ -54,16 +54,17 @@ function ProductDisplay() {
     setRating(totalStars / totalRatings);
   }
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e) => {
+    e.stopPropagation();
     setIsFavorite( isFavorite => !isFavorite );
   }
 
   const renderClickableStar = () => {
     return (
-      <label>
-        <input id='favorite-radio' type='radio' onClick={toggleFavorite} />
-        <FaStar id='favorite-star' color={isFavorite ? 'yellow' : '#e4e5e9'} />
-      </label>
+      <div>
+        <input id='favorite-radio' type='radio' />
+        <FaStar id='favorite-star' onClick={toggleFavorite} color={isFavorite ? 'yellow' : '#e4e5e9'} />
+      </div>
     )
   }
 
@@ -87,8 +88,12 @@ function ProductDisplay() {
     });
   }
 
+  const onProductDisplayClicked = (e) => {
+    showComparison(true, mainProduct, product);
+  }
+
   return (
-    <div id='product-display' onClick={() => showComparison( true, mainProduct, product)}>
+    <div id='product-display' onClick={onProductDisplayClicked}>
       <img id='product-image' src={image}/>
       <p>{productInfo.category}</p>
       <p>{productInfo.slogan}</p>
@@ -98,14 +103,6 @@ function ProductDisplay() {
       {comparisonPopupState.open === true && (
         <ComparisonPopup state={comparisonPopupState} setComparisonState={setComparisonPopupState} />
       )}
-      {/* <ComparisonPopup state={comparisonPopupState} setComparisonState={setComparisonPopupState} /> */}
-      {/* {comparisonPopupState.open === true && (
-        <ComparisonPopup
-          mainProduct={comparisonPopupState.mainProduct}
-          related={comparisonPopupState.relatedProduct}
-          onClick={ () => setComparisonPopupState({ open: false })}
-        />
-      )} */}
     </div>
   )
 }
