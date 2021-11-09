@@ -334,7 +334,7 @@ div {
   border-color: black;
 }
 
-.ReviewForm, #popup-2,  .popup-content {
+.ReviewForm-content {
 font-size: 1vw;
 color: white;
 font-family: 'Ubuntu', sans-serif;
