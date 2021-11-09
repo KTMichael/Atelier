@@ -15,7 +15,7 @@ function ProductDisplay() {
   const [ rating, setRating ] = useState(0);
   const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
   const reviewsAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta";
-  const { mainProduct, product} = useContext(testContext);
+  const { mainProduct, product } = useContext(testContext);
 
   useEffect( () => {
     axios.get(`${productAPI}${product}`, { headers: { Authorization: `${TOKEN}`}})
@@ -93,8 +93,8 @@ function ProductDisplay() {
   }
 
   return (
-    <div id='product-display' onClick={onProductDisplayClicked}>
-      <img id='product-image' src={image}/>
+    <div className='product-display' onClick={onProductDisplayClicked}>
+      <img className='product-image' src={image}/>
       <p>{productInfo.category}</p>
       <p>{productInfo.slogan}</p>
       <p>{`$${price}`}</p>
