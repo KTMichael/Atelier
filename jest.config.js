@@ -3,9 +3,14 @@
  * https://jestjs.io/docs/configuration
  */
 
+let path = require('path');
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
+
+
+
+
 
   // Stop running tests after `n` failures
   // bail: 0,
@@ -35,12 +40,12 @@ module.exports = {
   coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  coverageReporters: [
+    "json",
+    "text",
+    "lcov",
+    "clover"
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -70,19 +75,19 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: [
+    "node_modules"
+  ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+  moduleFileExtensions: [
+    "js",
+    "jsx",
+    "ts",
+    "tsx",
+    "json",
+    "node"
+  ],
 
   // A map from regular expressions to module names or to arrays of module
   // names that allow to stub out resources with a single module
@@ -99,7 +104,9 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+
+  // "preset": "./node_modules/foo-bar/jest-preset.js"
+
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -154,7 +161,7 @@ module.exports = {
   // Adds a location field to test results
   // testLocationInResults: false,
 
-  // The glob patterns Jest uses to detect test files
+  // // The glob patterns Jest uses to detect test files
   // testMatch: [
   //   "**/__tests__/**/*.[jt]s?(x)",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
@@ -167,7 +174,7 @@ module.exports = {
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
-  // testRegex: [],
+  // testRegex: [/\.(js | jsx)$/],
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
@@ -177,7 +184,7 @@ module.exports = {
 
   // This option sets the URL for the jsdom environment. It is reflected
   // in properties such as location.href
-  // testURL: "http://localhost",
+  // 'testURL': "http://localhost:3000",
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
@@ -205,4 +212,5 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
 };

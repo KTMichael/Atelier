@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import RatingsandReviews from './ratings/RatingsandReviews.jsx';
 import ProductDetail from './productDetail/ProductDetail.jsx';
 import QA from './QA/index.jsx';
-import RatingsandReviews from './ratings/RatingsandReviews.jsx';
 import MainRelatedFeature from './relatedItems/mainRelatedFeature.jsx';
 
 const App = () => {
