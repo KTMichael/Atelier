@@ -235,6 +235,40 @@ div {
   color: #202122;
 }
 
+.addAnswer-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+
+.addAnswer-content > form > * {
+  display: block;
+}
+
+.addAnswer-content > form > input[type=submit] {
+  display: inline-block;
+}
+
+.addAnswer-content > form > span {
+  display: inline-block;
+}
+
+.addAnswer-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].addAnswer-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.addAnswer-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].addAnswer-overlay {
+  background: transparent;
+}
+
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {
   margin: 10px;

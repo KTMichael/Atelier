@@ -1,6 +1,7 @@
 import React from 'react';
-import Answer from './Answer.jsx';
 import axios from 'axios';
+import Answer from './Answer.jsx';
+import AddAnswer from './AddAnswer.jsx';
 
 class Question extends React.Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class Question extends React.Component {
     this.handleQuestionReport = this.handleQuestionReport.bind(this);
     this.renderSeeMoreAnswers = this.renderSeeMoreAnswers.bind(this);
     this.handleSeeMoreAnswers = this.handleSeeMoreAnswers.bind(this);
-    this.handleAddAnswer = this.handleAddAnswer.bind(this);
   }
 
   sortAnswers(firstAns, secondAns) {
@@ -63,10 +63,6 @@ class Question extends React.Component {
     }
   }
 
-  handleAddAnswer() {
-    console.error('Implementation not yet made');
-  }
-
   render() {
     let renderAnswers = this.state.answers.slice(0, this.state.answerListMax)
     return (
@@ -87,7 +83,7 @@ class Question extends React.Component {
           |{' '}
           <span className='questionReport' onClick={this.handleQuestionReport}>{this.state.reportText}</span>{' '}
           |{' '}
-          <span className='addAnswer' onClick={this.handleAddAnswer}>Add Answer</span>
+          <AddAnswer/>
         </p>
       </div>
     )
