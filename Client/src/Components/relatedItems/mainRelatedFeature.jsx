@@ -27,13 +27,18 @@ function MainRelatedFeature() {
     <div id='RelatedFeature'>
       <h1>Related Products</h1>
       <div>
-        <testContext.Provider value={{mainProduct, relatedProducts, outfits}}>
+        {relatedProducts.length > 0 &&
+          <testContext.Provider value={{mainProduct, relatedProducts}}>
+            <ScrollableProductContainer  />
+          </testContext.Provider>
+        }
+        {/* <testContext.Provider value={{mainProduct, relatedProducts}}>
           <ScrollableProductContainer  />
-        </testContext.Provider>
+        </testContext.Provider> */}
       </div>
       <h1>Your Outfit</h1>
       <div>
-        <testContext.Provider value={{relatedProducts, outfits}}>
+        <testContext.Provider value={{mainProduct, outfits}}>
           <ScrollableProductContainer  />
         </testContext.Provider>
       </div>
@@ -43,18 +48,3 @@ function MainRelatedFeature() {
 
 
 export default MainRelatedFeature;
-
-// componentDidMount() {
-  //   console.log('mounted');
-  //   console.log(token);
-  //   axios({
-  //     method: "get",
-  //     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/`,
-  //     headers: {
-  //         Authorization: `${token.TOKEN}`
-  //     }
-  //   })
-  //   .then( results => {
-  //     console.log(results.data);
-  //   })
-  // }

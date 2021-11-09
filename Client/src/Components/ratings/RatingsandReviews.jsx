@@ -9,20 +9,27 @@ const RatingsandReviews = () => {
   const [moreReviews, setMoreReviews] = useState([]);
   const [productId, setProductId] = useState(0);
   const [productName, setProductName] = useState('');
+  const [overallStarRating, setOverallStarRating] = useState({});
+  const [overallRecommended, setOverallRecommended] = useState({});
+  const [overallCharacteristics, setOverallCharacteristics] = useState({});
 
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        setProductId(response.data[3].id);
-        setProductName(response.data[3].name);
-        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${productId}`,
+        setProductId(response.data[1].id);
+        setProductName(response.data[1].name);
+        let product_id = response.data[1].id;
+        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${product_id}`,
           {
             headers: { Authorization: `${TOKEN}` }
           })
           .then(response => {
-            setMoreReviews(response.data)
+            // console.log('response', response.data)
+            setOverallCharacteristics(response.data.characteristics)
+            setOverallRecommended(response.data.recommended)
+            setOverallStarRating(response.data.ratings)
           })
           .catch(error => console.log(error))
       });
@@ -35,10 +42,10 @@ const RatingsandReviews = () => {
       </div>
       <div id="RRComp">
         <div id="OverallRatings">
-          <OverallRatings />
+          <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} />
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews />
+          <CustomerReviews overallStarRating={overallStarRating}/>
           <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
               <button className="btn" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>

@@ -203,7 +203,10 @@ const ReviewForm = ({ productId, productName }) => {
         data: review
       };
       axios(options)
-        .then((response) => console.log('Review Sent! ', response.data))
+        .then((response) => {
+          console.log('Review Sent! ', response.data);
+          closeTooltip();
+        })
         .catch((error) => console.log('POST REVIEW ERROR ', error));
 
     }
@@ -212,8 +215,8 @@ const ReviewForm = ({ productId, productName }) => {
 
   const showForm = () => {
     return (
-      < div id='ReviewForm' >
-        <h1>Write Your Review</h1>
+      < div >
+        <div data-testid="reviewFormTitle" >Write Your Review</div>
         <h5>About the {productName}</h5>
         <form >
           <h2>Overall Rating</h2>
@@ -223,8 +226,8 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
-          <Popup trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
+          <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
+            <table style={{ color: 'black', width: '100%' }}>
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -239,7 +242,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <td>1⁄2 A Size Too Small</td>
                 <td>Perfect</td>
                 <td>1⁄2 A Size Too Big</td>
-                <td>A Size Too Wide</td>
+                <td>A Size Too Big</td>
               </tr>
               <tr >
                 <td style={{ fontWeight: 'bold' }}>Width</td>
@@ -386,9 +389,7 @@ const ReviewForm = ({ productId, productName }) => {
 
           <p>For authentication reasons, you will not be emailed.</p>
 
-          <button className="btn" type="submit" onClick={(event) => {
-            handleSubmit(event); closeTooltip();
-          }} > Submit </button>
+          <button className="btn" type="submit" onClick={(event => handleSubmit(event))} > Submit </button>
 
         </form >
         <br />   <br />
@@ -409,7 +410,7 @@ const ReviewForm = ({ productId, productName }) => {
     )
   }
   return (
-    <Popup ref={ref} trigger={<button className="btn"> ADD REVIEW + </button>} modal>
+    <Popup className='ReviewForm' ref={ref} trigger={<button className="btn" data-testid="addReviewBtn"> ADD REVIEW + </button>} modal>
       {showForm()}
     </Popup>
   )
