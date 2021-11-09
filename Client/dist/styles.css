@@ -241,6 +241,11 @@ div {
   width: 50%;
   padding: 5px;
 }
+
+.addAnswer-content > form > * {
+  display: block;
+}
+
 .addAnswer-arrow {
   color: rgb(255, 255, 255);
 }

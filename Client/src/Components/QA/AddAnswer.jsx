@@ -15,18 +15,16 @@ function AddAnswer() {
       modal={true}
       onClose={() => { setABody('') }}
     >
-      <div style={display}>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor='answerBody'>Answer *</label>
-          <textarea name='body' id='answerBody' rows={4} cols={50} maxLength={1000} value={answerBody} onChange={(e) => { setABody(e.target.value) }} />
-          <label htmlFor='answerNickname'>Nickname *</label>
-          <input type='text' name='nickname' id='answerNickname' maxLength={60} />
-          <label htmlFor='answerEmail'>E-mail *</label>
-          <input type='text' name='email' id='answerEmail' maxLength={60} placeholder='"Example: jack@email.com”' />
-          {/* Add Photo */}
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='answerBody'>Answer *</label>
+        <textarea name='body' id='answerBody' rows={4} cols={50} maxLength={1000} value={answerBody} onChange={(e) => { setABody(e.target.value) }} />
+        <label htmlFor='answerNickname'>Nickname *</label>
+        <input type='text' name='nickname' id='answerNickname' maxLength={60} />
+        <label htmlFor='answerEmail'>E-mail *</label>
+        <input type='text' name='email' id='answerEmail' maxLength={60} placeholder='"Example: jack@email.com”' />
+        {/* Add Photo */}
+        <input type="submit" value="Submit" />
+      </form>
     </Popup>
   )
 }
