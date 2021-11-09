@@ -215,7 +215,7 @@ const ReviewForm = ({ productId, productName }) => {
 
   const showForm = () => {
     return (
-      < div className='ReviewForm' >
+      < div >
         <h1>Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
@@ -226,8 +226,8 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
-          <Popup trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{ borderSpacing: '5px 10px', textAlign: 'center', border: '1px solid black' }}>
+          <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
+            <table style={{color: 'black'}}>
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -242,7 +242,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <td>1⁄2 A Size Too Small</td>
                 <td>Perfect</td>
                 <td>1⁄2 A Size Too Big</td>
-                <td>A Size Too Wide</td>
+                <td>A Size Too Big</td>
               </tr>
               <tr >
                 <td style={{ fontWeight: 'bold' }}>Width</td>
@@ -410,7 +410,7 @@ const ReviewForm = ({ productId, productName }) => {
     )
   }
   return (
-    <Popup ref={ref} trigger={<button className="btn"> ADD REVIEW + </button>} modal>
+    <Popup className='ReviewForm'  ref={ref} trigger={<button className="btn"> ADD REVIEW + </button>} modal>
       {showForm()}
     </Popup>
   )

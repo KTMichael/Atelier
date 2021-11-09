@@ -417,7 +417,7 @@ background-color: white;
 
 
 
-#popup-10, #popup-14, #popup-18, #popup-22, #popup-26 {
+ .charPop {
   background-color: white;
   font-size: .5vw;
   height: auto;
@@ -427,16 +427,7 @@ background-color: white;
   color: black;
   overflow: scroll;
 }
-#popup-8, #popup-12, #popup-16, #popup-20, #popup-24, #popup-28, #popup-32{
-background-color: white;
-font-size: .5vw;
-height: auto;
-width: auto;
-margin: 30px;
-padding: 5px;
-color: black;
-overflow: scroll;
-}
+
 
 
 /* Styles specific to QUESTIONS & ANSWERS widget */
