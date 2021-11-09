@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { item, ratingCnt, star } from './OverallRatings.jsx';
 
 
-const RatingsBar = ({ item, ratingCnt, star }) => {
+const StarRatingsBar = ({ item, ratingCnt, star }) => {
 
   return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -15,4 +15,4 @@ const RatingsBar = ({ item, ratingCnt, star }) => {
   );
 };
 
-export default RatingsBar;
+export default StarRatingsBar;

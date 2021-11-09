@@ -216,7 +216,7 @@ const ReviewForm = ({ productId, productName }) => {
   const showForm = () => {
     return (
       < div >
-        <h1>Write Your Review</h1>
+        <div data-testid="reviewFormTitle" >Write Your Review</div>
         <h5>About the {productName}</h5>
         <form >
           <h2>Overall Rating</h2>
@@ -227,7 +227,7 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
           <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{color: 'black'}}>
+            <table style={{ color: 'black', width: '100%' }}>
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -410,7 +410,7 @@ const ReviewForm = ({ productId, productName }) => {
     )
   }
   return (
-    <Popup className='ReviewForm'  ref={ref} trigger={<button className="btn"> ADD REVIEW + </button>} modal>
+    <Popup className='ReviewForm' ref={ref} trigger={<button className="btn" data-testid="addReviewBtn"> ADD REVIEW + </button>} modal>
       {showForm()}
     </Popup>
   )

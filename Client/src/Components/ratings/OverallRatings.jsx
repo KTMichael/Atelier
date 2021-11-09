@@ -3,7 +3,7 @@ import StarRating from './StarRating.jsx';
 import { overallStarRating, overallCharacteristics, overallRecommended } from './RatingsandReviews.jsx';
 import CustomerReviews from './CustomerReviews.jsx';
 import StarRatings from 'react-star-ratings';
-import RatingsBar from './RatingsBar.jsx';
+import StarRatingsBar from './StarRatingsBar.jsx';
 import CharacteristicsRatingBars from './CharacteristicsRatingBars.jsx';
 
 const OverallRatings = ({ overallStarRating, overallCharacteristics, overallRecommended }) => {
@@ -78,7 +78,7 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
 
             <div>
               {ratingArray.map((item, idx) => (
-                <RatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} />
+                <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} />
               ))}
             </div>
             {char.map((char, idx) => (<CharacteristicsRatingBars char={char} key={idx} ratingCnt={ratingCnt}/>
