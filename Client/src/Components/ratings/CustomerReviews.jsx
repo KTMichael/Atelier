@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
-import StarRating from './StarRating.jsx'
-const CustomerReviews = () => {
+import React, { useState, useEffect } from 'react';
+import StarRating from './StarRating.jsx';
+import { overallStarRating } from './RatingsandReviews.jsx'
+const CustomerReviews = ({ overallStarRating }) => {
+  const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    let ratingCount = 0;
+    Object.keys(overallStarRating).forEach((starValue) => {
+      ratingCount += Number(overallStarRating[starValue]);
+    });
+    setCount(ratingCount);
+  }, [overallStarRating]);
   return (
     <div id='CustomerReviews' >
       <h3 id="customerReviewsTitle"> Customer Reviews</h3>
-
       <div>
         <div id="sortReviewsBy">
-          <label>  39 reviews, sorted by </label>
+          <label>  {`${count} reviews, sorted by`} </label>
           <select>
             <option value="SortOn">Sort On</option>
             <option value="Relevant">Relevant</option>
