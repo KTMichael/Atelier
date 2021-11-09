@@ -246,6 +246,14 @@ div {
   display: block;
 }
 
+.addAnswer-content > form > input[type=submit] {
+  display: inline-block;
+}
+
+.addAnswer-content > form > span {
+  display: inline-block;
+}
+
 .addAnswer-arrow {
   color: rgb(255, 255, 255);
 }
