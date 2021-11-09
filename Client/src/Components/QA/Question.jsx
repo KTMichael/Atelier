@@ -20,7 +20,6 @@ class Question extends React.Component {
     this.handleQuestionReport = this.handleQuestionReport.bind(this);
     this.renderSeeMoreAnswers = this.renderSeeMoreAnswers.bind(this);
     this.handleSeeMoreAnswers = this.handleSeeMoreAnswers.bind(this);
-    this.handleAddAnswer = this.handleAddAnswer.bind(this);
   }
 
   sortAnswers(firstAns, secondAns) {

@@ -208,10 +208,6 @@ div {
   color: #202122;
 }
 
-.addAnswer {
-  cursor: pointer;
-}
-
 .answerList {
   padding-left: 40px;
   padding-right: 40px;
@@ -237,6 +233,27 @@ div {
 
 .answerReport:hover {
   color: #202122;
+}
+
+.addAnswer-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.addAnswer-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].addAnswer-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.addAnswer-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].addAnswer-overlay {
+  background: transparent;
 }
 
   /* ---------------- Ratings and Reviews------------------- */
