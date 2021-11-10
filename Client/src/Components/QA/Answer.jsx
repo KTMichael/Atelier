@@ -35,7 +35,7 @@ class Answer extends React.Component {
 
   render() {
     let username = this.props.data.answerer_name === 'Seller' ? <strong>Seller</strong> : this.props.data.answerer_name;
-    let date = moment(this.props.data.date).format('MMMM DD, YYYY');
+    let date = moment.utc(this.props.data.date).format('MMMM DD, YYYY');
     return (
       <div className='answer'>
         <p className='answerText'>A: {this.props.data.body}</p>
