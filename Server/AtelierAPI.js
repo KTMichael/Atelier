@@ -90,4 +90,13 @@ module.exports = {
       .catch(err => { callback(err) });
   },
 
+  // Related Products
+  getRelatedProducts: (product_id, callback) => {
+    let url = `${apiUrl}/products/${product_id}/related`;
+    axios.get(url, config)
+      .then(response => {
+        callback(null, response)
+      })
+      .catch(err => { callback(err) });
+  }
 }
