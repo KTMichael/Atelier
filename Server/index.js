@@ -142,3 +142,15 @@ let port = 3000;
 app.listen(port, () => {
   console.log("Listening on port:", port);
 });
+
+// Related Products
+app.get('/products/:product_id/related', (req, res) => {
+  console.log(req.params);
+  api.getRelatedProducts( req.params.product_id, (err, results) => {
+    if ( err ) {
+      res.status(400).send(err);
+    } else {
+      res.status(201).send(results.data);
+    }
+  })
+})

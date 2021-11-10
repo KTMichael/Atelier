@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import StarRatingsBar from './StarRatingsBar.jsx';
 import CharacteristicsRatingBars from './CharacteristicsRatingBars.jsx';
 
-const OverallRatings = ({ overallStarRating, overallCharacteristics, overallRecommended }) => {
+const OverallRatings = ({ overallStarRating, overallCharacteristics, overallRecommended, setStarFilter }) => {
   const [rating, setRating] = useState(NaN);
   const [ratingCnt, setRatingCnt] = useState(0);
   const [rec, setRec] = useState(0);
@@ -78,7 +78,7 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
 
             <div>
               {ratingArray.map((item, idx) => (
-                <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} />
+                <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} setStarFilter={setStarFilter}/>
               ))}
             </div>
             {char.map((char, idx) => (<CharacteristicsRatingBars char={char} key={idx} ratingCnt={ratingCnt}/>

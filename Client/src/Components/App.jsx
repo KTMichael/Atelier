@@ -23,9 +23,9 @@ const App = () => {
     <>
       <div id='Title'>Atelier</div>
       <div id="ProductDetailMain" className='MainComponent'>
-      {productId !== 0 &&
-        <ProductDetail productId={productId} allProductsData={allProductsData} />
-      }
+        {productId !== 0 &&
+          <ProductDetail productId={productId} allProductsData={allProductsData} />
+        }
       </div>
       <div id="MainRelatedFeatureMain" className='MainComponent'>
         <MainRelatedFeature productId={productId} allProductsData={allProductsData} />
@@ -34,9 +34,9 @@ const App = () => {
         <QA productId={productId} allProductsData={allProductsData} />
       </div>
       <div id="RatingsandReviewsMain">
-      {productId !== 0 &&
-        <RatingsandReviews productId={productId} allProductsData={allProductsData} />
-      }
+        {productId !== 0 &&
+          <RatingsandReviews productId={productId} allProductsData={allProductsData} />
+        }
       </div>
     </>
   )
