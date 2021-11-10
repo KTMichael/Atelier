@@ -461,8 +461,13 @@ border-Spacing: .5em;
 
 .revSum {
   font-weight: bolder;
+  font-size: 1vw;
 }
 
+.RHelpful, .RReport , .starRating, .reviewSort{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 
 

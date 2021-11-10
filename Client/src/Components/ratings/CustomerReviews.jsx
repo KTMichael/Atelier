@@ -37,7 +37,7 @@ const CustomerReviews = ({ overallStarRating, productId }) => {
       <div>
         <div id="sortReviewsBy">
           <label>  {`${count} reviews, sorted by`} </label>
-          <select>
+          <select className="reviewSort">
             <option value="SortOn">Sort On</option>
             <option value="Relevant">Relevant</option>
             <option value="Newest">Newest</option>
@@ -47,7 +47,7 @@ const CustomerReviews = ({ overallStarRating, productId }) => {
     <br/> <br/>
         <div>
           {
-            userReviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id} />)
+            userReviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id}  productId={productId}/>)
           }
         </div>
       </div>

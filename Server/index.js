@@ -73,6 +73,19 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 })
 
 
+// Ratings and Reviews
+
+app.get('/products', (req, res) => {
+  api.getProducts((err, response) => {
+    if (err) {
+      res.status(response.status).send(response.data.results);
+    } else {
+      res.sendStatus(err.response.status)
+    }
+  });
+});
+
+
 let port = 3000;
 app.listen(port, () => {
   console.log("Listening on port:", port);
