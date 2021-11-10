@@ -14,13 +14,14 @@ const RatingsandReviews = () => {
   const [overallCharacteristics, setOverallCharacteristics] = useState({});
 
 
+
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
       { headers: { Authorization: `${TOKEN}` } })
       .then(response => {
-        setProductId(response.data[1].id);
-        setProductName(response.data[1].name);
-        let product_id = response.data[1].id;
+        setProductId(response.data[0].id);
+        setProductName(response.data[0].name);
+        let product_id = response.data[0].id;
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${product_id}`,
           {
             headers: { Authorization: `${TOKEN}` }
@@ -35,6 +36,8 @@ const RatingsandReviews = () => {
       });
   }, []);
 
+
+
   return (
     <div id="RatingsandReviews" >
       <div id="RRTitle">
@@ -45,7 +48,7 @@ const RatingsandReviews = () => {
           <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} />
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews overallStarRating={overallStarRating}/>
+          <CustomerReviews overallStarRating={overallStarRating} productId={productId}/>
           <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
               <button className="btn" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>

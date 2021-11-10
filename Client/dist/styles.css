@@ -385,14 +385,13 @@ overflow: scroll;
     text-align: center;
     align-items: center;
     height: auto;
-    width: auto;
+    width: 100%;
     margin: 7px;
     padding: 6px;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
     border-color: black;
-
 }
 
 #reviewTile {
@@ -449,17 +448,25 @@ border-color: black;
 background-color: white;
 }
 
-
-
- .charPop {
-  background-color: white;
+.charTable {
+background-color: white;
   font-size: .5vw;
   height: auto;
   width: auto;
-  margin: 30px;
-  padding: 5px;
-  color: black;
-  overflow: scroll;
+color: black;
+width: auto;
+border-Collapse: seperate;
+border-Spacing: .5em;
+}
+
+.revSum {
+  font-weight: bolder;
+  font-size: 1vw;
+}
+
+.RHelpful, .RReport , .starRating, .reviewSort{
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 
