@@ -146,6 +146,16 @@ div {
     margin-left: 5px;
   }
 
+  .socialMediaButtonContainer {
+    display: flex;
+    justify-content: right;
+  }
+
+  .socialMediaButton {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   /* ---------------- Related Features ------------------- */
 
   #MainRelatedFeatureMain {
