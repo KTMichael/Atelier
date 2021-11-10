@@ -89,6 +89,38 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
   })
 })
 
+app.get('/products/:product_id', (req, res) => {
+  api.getProduct(req.params.product_id, (err, response) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(err.response.status);
+    } else {
+      res.status(response.status).send(response.data)
+    }
+  })
+})
+
+app.get('/products/:product_id/styles', (req, res) => {
+  api.getStyles(req.params.product_id, (err, response) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(err.response.status);
+    } else {
+      res.status(response.status).send(response.data.results)
+    }
+  })
+})
+
+app.post('/cart', (req, res) => {
+  api.addItemToCart(req.body, (err, response) => {
+    if (err) {
+      res.sendStatus(err.response.status);
+    } else {
+      res.status(response.status)
+    }
+  })
+})
+
 
 // Ratings and Reviews
 
