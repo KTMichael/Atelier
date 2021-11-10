@@ -3,6 +3,7 @@ import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import ProductDisplay from './productDisplay.jsx';
 import AddProductToOutfits from './AddProductToOutfits.jsx';
 import { testContext } from './context.js';
+import _ from 'lodash';
 
 //Container for Arrow keys and product diplay
 function scrollableProductContainer() {
@@ -11,12 +12,14 @@ function scrollableProductContainer() {
   const [ items, setItems ] = useState([]);
   const [ productsToDisplay, setProductsToDisplay ] = useState([]);
   const [ length, setLength ] = useState(0);
+  const [ isOutfit, setIsOutfit ] = useState(false);
 
   useEffect(() => {
     if ( relatedProducts ) {
       setProductsToDisplay(relatedProducts);
     } else {
       setProductsToDisplay(items);
+      setIsOutfit(true);
     }
     setLength(productsToDisplay.length)
   }, [items])
@@ -34,12 +37,23 @@ function scrollableProductContainer() {
   }
 
   const addItemToOutfit = (item) => {
+    if ( _.includes(productsToDisplay, item) ) {
+      alert ('Product already in outfits');
+      return;
+    }
     var currentOutfits = [];
     productsToDisplay.forEach(product => {
       currentOutfits.push(productsToDisplay);
     });
     currentOutfits.push(item);
     setItems(currentOutfits);
+  }
+
+  const removeItem = (item) => {
+    var outfits = _.remove(productsToDisplay, product => {
+      return product !== item;
+    })
+    setProductsToDisplay(outfits);
   }
 
   return (
@@ -58,14 +72,7 @@ function scrollableProductContainer() {
             }
             {productsToDisplay.map((product, index) => {
               return (
-                <testContext.Provider value={{mainProduct, product }} key={index}>
-                  <ProductDisplay />
-                </testContext.Provider>
-              )
-            })}
-            {productsToDisplay.map((product, index) => {
-              return (
-                <testContext.Provider value={{mainProduct, product }} key={index}>
+                <testContext.Provider value={{ mainProduct, product, isOutfit, removeItem}} key={index}>
                   <ProductDisplay />
                 </testContext.Provider>
               )
