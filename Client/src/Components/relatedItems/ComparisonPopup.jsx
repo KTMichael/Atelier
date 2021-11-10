@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import Popup from 'reactjs-popup';
-import { TOKEN } from '../../../../config.js';
 import axios from 'axios';
 import { FaCheck } from 'react-icons/fa';
 
@@ -8,15 +7,15 @@ function ComparisonPopup({state, setComparisonState}) {
   const [ mainProduct, setMainProduct ] = useState(null);
   const [ relatedProduct, setRelatedProduct ] = useState(null);
   const [ open, setOpen ] = useState(false);
-  const productAPI = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/";
+  const productAPI = "/products/";
 
   useEffect( () => {
-    axios.get(`${productAPI}${state.mainProduct}`, { headers: { Authorization: `${TOKEN}`}})
+    axios.get(`${productAPI}${state.mainProduct}`)
       .then( results => {
         setMainProduct(results.data);
       })
 
-    axios.get(`${productAPI}${state.relatedProduct}`, { headers: { Authorization: `${TOKEN}`}})
+    axios.get(`${productAPI}${state.relatedProduct}`)
     .then( results => {
       setRelatedProduct(results.data);
     })
