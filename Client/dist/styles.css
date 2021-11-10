@@ -563,6 +563,11 @@ background-color: white;
 #favorite-star:hover{
   cursor: pointer;
 }
+.close-outfit-display {
+  position: absolute;
+  top: 3%;
+  color: red;
+}
 /* ---------------comparison window popup --------------- */
 #comparison-popup {
   background-color: white;
