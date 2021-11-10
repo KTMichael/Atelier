@@ -1,7 +1,6 @@
 import React from 'react';
 import ImageGallery from './ImageGallery.jsx'
 import axios from 'axios';
-import { TOKEN } from '../../../../config.js';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
 import Rating from './Rating.jsx';
@@ -23,42 +22,36 @@ class ProductDetail extends React.Component {
   }
 
   getProduct() { // fetches product info
+    console.log('this.props', this.props)
     return axios({
       method: "get",
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/`,
-      headers: {
-        Authorization: `${TOKEN}`,
-        "Content-Type": "application/json"
-      }
+      url: `/products/${this.state.productId}`,
     });
   }
 
   getStyles() { // fetches all styles for currently selected product
     return axios({
       method: "get",
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/styles/`,
-      headers: {
-        Authorization: `${TOKEN}`,
-        "Content-Type": "application/json"
-      }
+      url: `/products/${this.state.productId}/styles`,
     });
   }
 
   componentDidMount() { // updates state with available styles and initializes to default style
+    console.log('componentDidMount is running!')
     Promise.all([this.getProduct(), this.getStyles()])
-    .then(result => {
+    .then(response => {
       let selected = {};
-      for (let i = 0; i < result[1].data.results.length; i++) {
-        if (result[1].data.results[i]['default?']) {
-          selected = result[1].data.results[i];
+      for (let i = 0; i < response[1].data.length; i++) {
+        if (response[1].data[i]['default?']) {
+          selected = response[1].data[i];
           break;
         }
       }
 
       this.setState(
         {
-          product: result[0].data,
-          styles: result[1].data.results,
+          product: response[0].data,
+          styles: response[1].data,
           selectedStyle: selected
         }
       )

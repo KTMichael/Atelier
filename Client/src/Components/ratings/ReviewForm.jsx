@@ -216,7 +216,7 @@ const ReviewForm = ({ productId, productName }) => {
   const showForm = () => {
     return (
       < div >
-        <div data-testid="reviewFormTitle" >Write Your Review</div>
+        <h1 data-testid="reviewFormTitle" >Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
           <h2>Overall Rating</h2>

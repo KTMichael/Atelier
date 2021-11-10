@@ -50,13 +50,30 @@ module.exports = {
   reportAnswer: (answer_id, callback) => {
     let url = `${apiUrl}/qa/answers/${answer_id}/report`;
     axios.put(url, '', config)
-      .then(() => { callback(null) })
-      .catch(err => { callback(err) });
+    .then(() => {callback(null)})
+    .catch(err => {callback(err)});
   },
 
+  getProduct: (product_id, callback) => {
+    let url = `${apiUrl}/products/${product_id}`
+    axios.get(url, config)
+      .then( response => {callback(null, response)})
+      .catch( err => {callback(err)})
+  },
 
+  getStyles: (product_id, callback) => {
+    let url = `${apiUrl}/products/${product_id}/styles`
+    axios.get(url, config)
+      .then( response => {callback(null, response)})
+      .catch( err => {callback(err)})
+  },
 
-
+  addItemToCart: (data, callback) => {
+    let url = `${apiUrl}/cart`
+    axios.post(url, data, config)
+      .then( response => {callback(null, response)})
+      .catch( err => {callback(err)})
+  },
 
   // Ratings and Reviews
   getProducts: (callback) => {
@@ -66,11 +83,11 @@ module.exports = {
       .catch(err => callback(err));
   },
 
-
   getReviews: (product_id, callback) => {
     let url = `${apiUrl}/reviews/meta/?product_id=${product_id}`;
     axios.get(url, config)
       .then(response => { callback(null, response) })
       .catch(err => { callback(err) });
   },
+
 }
