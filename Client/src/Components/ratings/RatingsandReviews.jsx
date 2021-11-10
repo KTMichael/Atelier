@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import CustomerReviews from './CustomerReviews.jsx';
 import OverallRatings from './OverallRatings.jsx';
 import ReviewForm from './ReviewForm.jsx';
+import { productId, allProductsData } from '../App.jsx';
 import axios from 'axios';
-import { TOKEN } from '../../../../config.js';
 
-const RatingsandReviews = () => {
+
+const RatingsandReviews = ({ productId, allProductsData }) => {
   const [moreReviews, setMoreReviews] = useState([]);
-  const [productId, setProductId] = useState(0);
+  const [product_Id, setProduct_Id] = useState(0);
   const [productName, setProductName] = useState('');
   const [overallStarRating, setOverallStarRating] = useState({});
   const [overallRecommended, setOverallRecommended] = useState({});
@@ -16,25 +17,18 @@ const RatingsandReviews = () => {
 
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products`,
-      { headers: { Authorization: `${TOKEN}` } })
+    setProduct_Id(productId);
+    console.log(allProductsData.name)
+    setProductName(allProductsData.name);
+    axios.get(`/reviews/meta/?product_id=${product_Id}`)
       .then(response => {
-        setProductId(response.data[0].id);
-        setProductName(response.data[0].name);
-        let product_id = response.data[0].id;
-        axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/meta/?product_id=${product_id}`,
-          {
-            headers: { Authorization: `${TOKEN}` }
-          })
-          .then(response => {
-            // console.log('response', response.data)
-            setOverallCharacteristics(response.data.characteristics)
-            setOverallRecommended(response.data.recommended)
-            setOverallStarRating(response.data.ratings)
-          })
-          .catch(error => console.log(error))
-      });
-  }, []);
+        // console.log('response', response.data)
+        setOverallCharacteristics(response.data.characteristics)
+        setOverallRecommended(response.data.recommended)
+        setOverallStarRating(response.data.ratings)
+      })
+      .catch(error => console.log(error))
+  }, [productId, allProductsData]);
 
 
 
@@ -48,7 +42,7 @@ const RatingsandReviews = () => {
           <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} />
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews overallStarRating={overallStarRating} productId={productId}/>
+          <CustomerReviews overallStarRating={overallStarRating} productId={product_Id} />
           <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
               <button className="btn" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
