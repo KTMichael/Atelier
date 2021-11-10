@@ -18,11 +18,12 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
 
   useEffect(() => {
     setProduct_Id(productId);
-    console.log(allProductsData.name)
     setProductName(allProductsData.name);
-    axios.get(`/reviews/meta/?product_id=${product_Id}`)
+    console.log(productId)
+    axios.get(`/reviews/meta/`, { params: { product_id: productId } })
       .then(response => {
-        // console.log('response', response.data)
+        console.log('hi')
+        console.log('response', response.data)
         setOverallCharacteristics(response.data.characteristics)
         setOverallRecommended(response.data.recommended)
         setOverallStarRating(response.data.ratings)

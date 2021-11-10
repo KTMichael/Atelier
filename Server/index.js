@@ -10,8 +10,7 @@ app.use(express.static(__dirname + '/../Client/dist'));
 // Get all products
 
 app.get('/products', (req, res) => {
-  // console.log('data', res.data)
-  api.getProducts((error, results) => {
+  api.getAllProducts((error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {
@@ -125,13 +124,15 @@ app.post('/cart', (req, res) => {
 // Ratings and Reviews
 
 
-app.get('/products', (req, res) => {
-  // console.log('data', res.data)
-  api.getProducts((error, results) => {
+app.get('/reviews/meta/', (req, res) => {
+
+  console.log(req.query.product_id)
+
+  api.getReviews(req.query.product_id, (error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {
-      // console.log('res', results.data)
+      console.log('res', results.data)
       res.status(201).send(results.data);
     }
   });

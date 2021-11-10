@@ -12,6 +12,12 @@ const config = {
 };
 
 module.exports = {
+  getAllProducts: (callback) => {
+    let url = `${apiUrl}/products`;
+    axios.get(url, config)
+      .then(response => callback(null, response))
+      .catch(err => callback(err));
+  },
   getQuestions: (product_id, callback) => {
     let url = `${apiUrl}/qa/questions/?product_id=${product_id}`;
     axios.get(url, config)
@@ -76,13 +82,6 @@ module.exports = {
   },
 
   // Ratings and Reviews
-  getProducts: (callback) => {
-    let url = `${apiUrl}/products`;
-    axios.get(url, config)
-      .then(response => callback(null, response))
-      .catch(err => callback(err));
-  },
-
   getReviews: (product_id, callback) => {
     let url = `${apiUrl}/reviews/meta/?product_id=${product_id}`;
     axios.get(url, config)
