@@ -6,9 +6,10 @@ import { overallStarRating } from './RatingsandReviews.jsx';
 import { productId } from './RatingsandReviews.jsx';
 import  IndividualRatings  from './IndividualRatings.jsx';
 
-const CustomerReviews = ({ overallStarRating, productId }) => {
+const CustomerReviews = ({ overallStarRating, productId, starFilter }) => {
   const [count, setCount] = useState(0);
   const [userReviews, setUserReviews] = useState([]);
+  const [filteredReviewsByStar, setFilteredReviewsByStar] = useState([]);
 
   useEffect(() => {
     let ratingCount = 0;
@@ -16,7 +17,12 @@ const CustomerReviews = ({ overallStarRating, productId }) => {
       ratingCount += Number(overallStarRating[starValue]);
     });
     setCount(ratingCount);
-  }, [overallStarRating]);
+
+    if ( starFilter ) {
+      var filteredReviews = _.filter(userReviews, { rating: starFilter} );
+      setFilteredReviewsByStar(filteredReviews);
+    }
+  }, [overallStarRating, starFilter]);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews?product_id=${productId}`,
@@ -46,7 +52,9 @@ const CustomerReviews = ({ overallStarRating, productId }) => {
         </div>
     <br/> <br/>
         <div>
-          {
+          { filteredReviewsByStar.length > 0  && starFilter !== null ?
+            filteredReviewsByStar.map((review, idx) => <IndividualRatings review={review} key={review.review_id}  productId={productId}/>) :
+
             userReviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id}  productId={productId}/>)
           }
         </div>
