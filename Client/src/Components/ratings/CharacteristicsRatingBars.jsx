@@ -6,8 +6,8 @@ import { char, ratingCnt } from './OverallRatings.jsx';
 const CharacteristicsRatingBars = ({ char, ratingCnt }) => {
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around'  }}>
-      <span>{`${char[0]}`}</span>
+    <div style={{ display: 'flex', flexDirection: 'column'}}>
+      <p style={{ display: 'flex', justifyContent: 'left'  }}>{`${char[0]}`}</p>
       <div style={{ height: 20, width: '75%', backgroundColor: "grey", borderRadius: 50, margin: 50 }}>
         <div style={{ height: '100%', width: `${char[1] / 5 * 100}%`, backgroundColor: 'grey', borderRadius: 'inherit', textAlign: 'right' }}>
           <FaArrowAltCircleDown />

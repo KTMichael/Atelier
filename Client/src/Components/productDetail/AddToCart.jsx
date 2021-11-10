@@ -1,5 +1,4 @@
 import React from 'react';
-import { TOKEN } from '../../../../config.js';
 import axios from 'axios';
 
 class AddToCart extends React.Component {
@@ -84,14 +83,10 @@ class AddToCart extends React.Component {
     } else {
       axios({
         method: "post",
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/cart/`,
+        url: `/cart`,
         data: {
           sku_id: this.state.sku,
           quantity: this.state.quantity
-        },
-        headers: {
-          Authorization: `${TOKEN}`,
-          "Content-Type": "application/json"
         }
       })
         .then(alert('Item added to cart.'))

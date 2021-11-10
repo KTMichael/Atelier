@@ -216,7 +216,7 @@ const ReviewForm = ({ productId, productName }) => {
   const showForm = () => {
     return (
       < div >
-        <div data-testid="reviewFormTitle" >Write Your Review</div>
+        <h1 data-testid="reviewFormTitle" >Write Your Review</h1>
         <h5>About the {productName}</h5>
         <form >
           <h2>Overall Rating</h2>
@@ -227,7 +227,7 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
           <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
-            <table style={{ color: 'black', width: '100%' }}>
+            <table className="charTable">
               <tr >
                 <th></th>
                 <th style={{ fontWeight: 'bold' }}>1</th>
@@ -236,7 +236,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <th style={{ fontWeight: 'bold' }}>4</th>
                 <th style={{ fontWeight: 'bold' }}>5</th>
               </tr>
-              <tr>
+              <tr >
                 <td style={{ fontWeight: 'bold' }}>Size</td>
                 <td>A Size Too Small</td>
                 <td>1⁄2 A Size Too Small</td>
