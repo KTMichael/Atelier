@@ -72,6 +72,17 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
   })
 })
 
+app.get('/products/:product_id', (req, res) => {
+  api.getProduct(req.params.product_id, (err, response) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(err.response.status);
+    } else {
+      res.status(response.status).send(response.data.results)
+    }
+  })
+})
+
 
 let port = 3000;
 app.listen(port, () => {

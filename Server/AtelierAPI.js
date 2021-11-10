@@ -52,5 +52,12 @@ module.exports = {
     axios.put(url, '', config)
     .then(() => {callback(null)})
     .catch(err => {callback(err)});
+  },
+
+  getProduct: (product_id, callback) => {
+    let url = `${apiUrl}/products/${product_id}`
+    axios.get(url, config)
+      .then( result => {callback(null, result)})
+      .catch( err => {callback(err)})
   }
 }

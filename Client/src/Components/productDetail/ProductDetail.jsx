@@ -25,11 +25,7 @@ class ProductDetail extends React.Component {
   getProduct() { // fetches product info
     return axios({
       method: "get",
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/products/${this.state.productId}/`,
-      headers: {
-        Authorization: `${TOKEN}`,
-        "Content-Type": "application/json"
-      }
+      url: `/products/${this.state.productId}`,
     });
   }
 
