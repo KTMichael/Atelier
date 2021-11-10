@@ -1,5 +1,4 @@
 import React from 'react';
-import { TOKEN } from '../../../../config.js';
 import axios from 'axios';
 
 class AddToCart extends React.Component {
