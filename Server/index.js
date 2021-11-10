@@ -78,7 +78,28 @@ app.get('/products/:product_id', (req, res) => {
       console.log(err)
       res.sendStatus(err.response.status);
     } else {
+      res.status(response.status).send(response.data)
+    }
+  })
+})
+
+app.get('/products/:product_id/styles', (req, res) => {
+  api.getStyles(req.params.product_id, (err, response) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(err.response.status);
+    } else {
       res.status(response.status).send(response.data.results)
+    }
+  })
+})
+
+app.post('/cart', (req, res) => {
+  api.addItemToCart(req.body, (err, response) => {
+    if (err) {
+      res.sendStatus(err.response.status);
+    } else {
+      res.status(response.status)
     }
   })
 })

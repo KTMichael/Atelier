@@ -57,7 +57,21 @@ module.exports = {
   getProduct: (product_id, callback) => {
     let url = `${apiUrl}/products/${product_id}`
     axios.get(url, config)
-      .then( result => {callback(null, result)})
+      .then( response => {callback(null, response)})
+      .catch( err => {callback(err)})
+  },
+
+  getStyles: (product_id, callback) => {
+    let url = `${apiUrl}/products/${product_id}/styles`
+    axios.get(url, config)
+      .then( response => {callback(null, response)})
+      .catch( err => {callback(err)})
+  },
+
+  addItemToCart: (data, callback) => {
+    let url = `${apiUrl}/cart`
+    axios.post(url, data, config)
+      .then( response => {callback(null, response)})
       .catch( err => {callback(err)})
   }
 }
