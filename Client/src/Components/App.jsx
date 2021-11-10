@@ -23,7 +23,9 @@ const App = () => {
     <>
       <div id='Title'>Atelier</div>
       <div id="ProductDetailMain" className='MainComponent'>
-        <ProductDetail productId={productId} allProductsData={allProductsData} />
+        {productId !== 0 &&
+          <ProductDetail productId={productId} allProductsData={allProductsData} />
+        }
       </div>
       <div id="MainRelatedFeatureMain" className='MainComponent'>
         <MainRelatedFeature productId={productId} allProductsData={allProductsData} />

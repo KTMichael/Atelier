@@ -10,7 +10,7 @@ class ProductDetail extends React.Component {
     super(props);
 
     this.state = {
-      productId: 42368, // REMOVE HARD-CODE
+      productId: 42366, // REMOVE HARD-CODE
       styleId: 253620, // REMOVE HARD-CODE
       selectedStyle: {},
       product: {},
@@ -22,6 +22,7 @@ class ProductDetail extends React.Component {
   }
 
   getProduct() { // fetches product info
+    console.log('this.props', this.props)
     return axios({
       method: "get",
       url: `/products/${this.state.productId}`,
@@ -36,6 +37,7 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() { // updates state with available styles and initializes to default style
+    console.log('componentDidMount is running!')
     Promise.all([this.getProduct(), this.getStyles()])
     .then(response => {
       let selected = {};
