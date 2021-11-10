@@ -13,7 +13,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
   const [overallStarRating, setOverallStarRating] = useState({});
   const [overallRecommended, setOverallRecommended] = useState({});
   const [overallCharacteristics, setOverallCharacteristics] = useState({});
-
+  const [starFilter, setStarFilter] = useState(null);
 
 
   useEffect(() => {
@@ -39,10 +39,10 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
       </div>
       <div id="RRComp">
         <div id="OverallRatings">
-          <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} />
+          <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} setStarFilter={setStarFilter} />
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews overallStarRating={overallStarRating} productId={product_Id} />
+          <CustomerReviews overallStarRating={overallStarRating} productId={product_Id} starFilter={starFilter}/>
           <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
             <div id="btn">
               <button className="btn" onClick={() => setMoreReviews(moreReviews + 2)}>MORE REVIEWS</button>
