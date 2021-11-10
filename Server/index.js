@@ -6,6 +6,23 @@ const app = express();
 app.use(express.json());
 app.use(express.static(__dirname + '/../Client/dist'));
 
+
+// Get all products
+
+app.get('/products', (req, res) => {
+  // console.log('data', res.data)
+  api.getProducts((error, results) => {
+    if (error) {
+      res.status(400).send(error);
+    } else {
+      // console.log('res', results.data)
+      res.status(201).send(results.data);
+    }
+  });
+});
+
+
+//Q&A
 app.get('/qa/questions/', (req, res) => {
   api.getQuestions(req.query.product_id, (err, response) => {
     if (!err) {
@@ -107,16 +124,18 @@ app.post('/cart', (req, res) => {
 
 // Ratings and Reviews
 
+
 app.get('/products', (req, res) => {
-  api.getProducts((err, response) => {
-    if (err) {
-      res.status(response.status).send(response.data.results);
+  // console.log('data', res.data)
+  api.getProducts((error, results) => {
+    if (error) {
+      res.status(400).send(error);
     } else {
-      res.sendStatus(err.response.status)
+      // console.log('res', results.data)
+      res.status(201).send(results.data);
     }
   });
 });
-
 
 let port = 3000;
 app.listen(port, () => {
