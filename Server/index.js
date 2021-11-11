@@ -122,35 +122,71 @@ app.post('/cart', (req, res) => {
 
 
 // Ratings and Reviews
-
-
 app.get('/reviews/meta/', (req, res) => {
-
-  console.log(req.query.product_id)
-
-  api.getReviews(req.query.product_id, (error, results) => {
+  api.getReviewData(req.query.product_id, (error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {
-      console.log('res', results.data)
       res.status(201).send(results.data);
     }
   });
 });
 
-let port = 3000;
-app.listen(port, () => {
-  console.log("Listening on port:", port);
+app.get('/reviews', (req, res) => {
+  api.getReviews(req.query.product_id, (error, results) => {
+    if (error) {
+      res.status(400).send(error);
+    } else {
+      res.status(201).send(results.data);
+    }
+  });
 });
+
+app.post('/reviews', (req, res) => {
+  api.addReview(req.body.data, (error, results) => {
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      res.status(201).send(results.statusText)
+    }
+  })
+})
+
+app.put('/reviews/:review_id/helpful', (req, res) => {
+
+  api.ReviewHelpful(req.params.review_id, (error, results) => {
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      res.status(201).send(results.statusText)
+    }
+  })
+})
+
+app.put('/reviews/:review_id/report', (req, res) => {
+  api.ReviewReported(req.params.review_id, (error, results) => {
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      res.status(201).send(results.statusText)
+    }
+  })
+})
+
 
 // Related Products
 app.get('/products/:product_id/related', (req, res) => {
-  console.log(req.params);
-  api.getRelatedProducts( req.params.product_id, (err, results) => {
-    if ( err ) {
+  // console.log(req.params);
+  api.getRelatedProducts(req.params.product_id, (err, results) => {
+    if (err) {
       res.status(400).send(err);
     } else {
       res.status(201).send(results.data);
     }
   })
 })
+
+let port = 3000;
+app.listen(port, () => {
+  console.log("Listening on port:", port);
+});

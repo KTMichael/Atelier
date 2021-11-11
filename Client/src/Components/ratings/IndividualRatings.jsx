@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { TOKEN } from '../../../../config.js';
 import StarRatings from 'react-star-ratings';
 import { review } from './CustomerReviews.jsx';
 import moment from 'moment';
@@ -17,41 +16,26 @@ const IndividualRatings = (review) => {
 
   const markReviewHelpful = (event) => {
     setMarkedHelpful(true);
-      const options = {
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${review.review.review_id}/helpful`,
-        method: 'put',
-        headers: {
-          Authorization: `${TOKEN}`,
-          ContentType: 'application/json',
-        },
-      };
-      axios(options)
-        .then(() => {
-          console.log('Yay review marked as helpful')
-          setMarkedHelpful(true);
-          setHelpful(helpful + 1);
-        })
-        .catch(error => console.log(error))
+    axios.put(`reviews/${review.review.review_id}/helpful`)
+      .then(() => {
+        console.log('Yay review marked as helpful')
+        setMarkedHelpful(true);
+        setHelpful(helpful + 1);
+      })
+      .catch(error => console.log(error))
 
   }
 
 
   const markReviewReported = (event) => {
     setReported(true)
-      const options = {
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews/${review.review.review_id}/report`,
-        method: 'put',
-        headers: {
-          Authorization: `${TOKEN}`,
-          ContentType: 'application/json',
-        },
-      };
-      axios(options)
-        .then(() => {
-          setReported(true);
-          setReport('Reported');
-        })
-        .catch(error => console.log(error))
+    axios.put(`reviews/${review.review.review_id}/report`)
+      .then((response) => {
+        console.log('Yay review reported')
+        setReported(true);
+        setReport('Reported');
+      })
+      .catch(error => console.log(error))
 
   }
 
@@ -73,11 +57,11 @@ const IndividualRatings = (review) => {
       <div>{review.review.photos}</div>
       <p>{review.review.response}</p>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left' }}>
-      <p> Helpful?{' '}
-        <span className='RHelpful' onClick={(event) => markReviewHelpful(event)}>Yes </span>
-        {`${helpful}`}{' '}
-        | <span className='RReport' onClick={(event) => markReviewReported(event)}>{`${report}`}{' '}</span>
-      </p>
+        <p> Helpful?{' '}
+          <span className='RHelpful' onClick={(event) => markReviewHelpful(event)}>Yes </span>
+          {`${helpful}`}{' '}
+          | <span className='RReport' onClick={(event) => markReviewReported(event)}>{`${report}`}{' '}</span>
+        </p>
       </div>
     </div>
 
