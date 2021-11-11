@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import StarRating from './StarRating.jsx';
 import { productId, productName } from './RatingsandReviews.jsx';
 import axios from 'axios'
-import { TOKEN } from '../../../../config.js';
 import Popup from 'reactjs-popup';
 
 
@@ -193,22 +192,12 @@ const ReviewForm = ({ productId, productName }) => {
       characteristics: characteristicIds
     }
     if (validateForm(review) === true) {
-      const options = {
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews',
-        method: 'post',
-        headers: {
-          Authorization: `${TOKEN}`,
-          ContentType: 'application/json',
-        },
-        data: review
-      };
-      axios(options)
+      axios.post('/reviews', { data: review })
         .then((response) => {
-          console.log('Review Sent! ', response.data);
+          console.log('Review Sent! ', response);
           closeTooltip();
         })
         .catch((error) => console.log('POST REVIEW ERROR ', error));
-
     }
   }
 

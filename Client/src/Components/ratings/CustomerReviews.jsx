@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { TOKEN } from '../../../../config.js';
 import StarRating from './StarRating.jsx';
 import { overallStarRating } from './RatingsandReviews.jsx';
 import { productId } from './RatingsandReviews.jsx';
@@ -25,15 +24,13 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter }) => {
   }, [overallStarRating, starFilter]);
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax/reviews?product_id=${productId}`,
-          {
-            headers: { Authorization: `${TOKEN}` }
-          })
-          .then(response => {
-            setUserReviews(response.data.results);
-          })
-          .catch(error => console.log(error))
-
+    if (productId !== 0) {
+    axios.get(`/reviews`, { params: { product_id: productId } })
+      .then(response => {
+        setUserReviews(response.data.results);
+      })
+      .catch(error => console.log(error))
+    }
   }, [productId])
 
 

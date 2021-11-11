@@ -34,7 +34,9 @@ const App = () => {
         <QA productId={productId} allProductsData={allProductsData} />
       </div>
       <div id="RatingsandReviewsMain">
-        <RatingsandReviews productId={productId} allProductsData={allProductsData} />
+        {productId !== 0 &&
+          <RatingsandReviews productId={productId} allProductsData={allProductsData} />
+        }
       </div>
     </>
   )
