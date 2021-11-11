@@ -83,7 +83,7 @@ class Question extends React.Component {
           |{' '}
           <span className='questionReport' onClick={this.handleQuestionReport}>{this.state.reportText}</span>{' '}
           |{' '}
-          <AddAnswer/>
+          <AddAnswer question_id={this.props.data.question_id}/>
         </p>
       </div>
     )
