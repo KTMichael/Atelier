@@ -60,6 +60,7 @@ class AddToCart extends React.Component {
   }
 
   handleQuantitySelection (e) {
+    console.log('clicked')
     this.setState ({
       quantity: e.target.value
     })
