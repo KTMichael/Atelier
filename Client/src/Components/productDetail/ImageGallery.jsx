@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 class ImageGallery extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             photos: []
@@ -17,7 +17,7 @@ class ImageGallery extends React.Component {
         if (this.props.photos) {
             return this.props.photos.map((x, index) => {
                 return <div key={`Product Image at index: ${index}`}>
-                    <img src={x.url}/>
+                    <img src={x.url} />
                 </div>
             })
         }

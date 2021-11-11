@@ -204,10 +204,10 @@ const ReviewForm = ({ productId, productName }) => {
 
   const showForm = () => {
     return (
-      < div >
+      < div className="RForm">
         <h1 data-testid="reviewFormTitle" >Write Your Review</h1>
         <h5>About the {productName}</h5>
-        <form >
+        <form className="Form">
           <h2>Overall Rating</h2>
           <StarRating onChange={setNewStarRating} />
           {newStarRating === 1 ? <span>Poor</span> : newStarRating === 2 ? <span>Fair</span> : newStarRating === 3 ? <span>Average</span> : newStarRating === 4 ? <span>Good</span> : newStarRating === 5 ? <span>Great</span> : null}
@@ -352,7 +352,7 @@ const ReviewForm = ({ productId, productName }) => {
           <div>
             <h2>Add photos</h2>
             {selectedFiles.length !== 4 ?
-              <label htmlFor="filePicker" className="btn" style={{ margin: '30%' }} >
+              <label htmlFor="filePicker" className="uploadPhoto" style={{ margin: '30%' }} >
                 Upload Photos
               </label>
               : <h3>Thank You For Uploading Photos!</h3>}

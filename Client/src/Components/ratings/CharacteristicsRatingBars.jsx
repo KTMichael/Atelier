@@ -6,49 +6,49 @@ import { char, ratingCnt } from './OverallRatings.jsx';
 const CharacteristicsRatingBars = ({ char, ratingCnt }) => {
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column'}}>
-      <p style={{ display: 'flex', justifyContent: 'left'  }}>{`${char[0]}`}</p>
-      <div style={{ height: 20, width: '75%', backgroundColor: "grey", borderRadius: 50, margin: 50 }}>
+    <div span={{margintop: '100px'}}>
+      <span style={{ display: 'flex', justifyContent: 'left', marginBottom:'-35px' , marginLeft:'30px' }}>{`${char[0]}`}</span>
+      <div style={{ height: 18, width: '75%', backgroundColor: "grey", borderRadius: 50, margin: 50 }}>
         <div style={{ height: '100%', width: `${char[1] / 5 * 100}%`, backgroundColor: 'grey', borderRadius: 'inherit', textAlign: 'right' }}>
           <FaArrowAltCircleDown />
         </div>
         {char[0] === 'Fit' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Runs Tight</span>
             <span>Perfect</span>
             <span>Runs Loose</span>
           </div>
           : <div style={{ clear: 'none' }} />}
         {char[0] === 'Size' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Too Small</span>
             <span>Perfect</span>
             <span>Too Big</span>
           </div>
           : <div style={{ clear: 'none' }} />}
         {char[0] === 'Width' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Too Narrow</span>
             <span>Perfect</span>
             <span>Too Wide</span>
           </div>
           : <div style={{ clear: 'none' }} />}
         {char[0] === 'Comfort' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Poor</span>
             <span>Ok</span>
             <span>Perfect</span>
           </div>
           : <div style={{ clear: 'none' }} />}
         {char[0] === 'Quality' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Poor</span>
             <span>What I Expected</span>
             <span>Perfect</span>
           </div>
           : <div style={{ clear: 'none' }} />}
         {char[0] === 'Length' ?
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '3px' }}>
             <span>Runs Short</span>
             <span>Perfect</span>
             <span>Runs Long</span>

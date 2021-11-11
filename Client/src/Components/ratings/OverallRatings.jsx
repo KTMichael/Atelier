@@ -72,11 +72,11 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
                 starSpacing='2px'
               />
             </div>
-            <div>
+            <div className="recTitle">
               {` ${rec}% of reviews recommend this product`}
             </div>
 
-            <div>
+            <div >
               {ratingArray.map((item, idx) => (
                 <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} setStarFilter={setStarFilter}/>
               ))}
