@@ -22,7 +22,9 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
     setCount(ratingCount);
 
     if (starFilter) {
-      var filteredReviews = _.filter(userReviews, { rating: starFilter });
+      var filteredReviews = _.filter(userReviews, review => {
+        return starFilter.indexOf(review.rating) >= 0;
+      });
       setFilteredReviewsByStar(filteredReviews);
     }
   }, [overallStarRating, starFilter]);
@@ -73,7 +75,7 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
     if (filter) {
       reviews = filteredReviews;
     } else {
-      if (filteredReviewsByStar.length > 0 && starFilter !== null) {
+      if (filteredReviewsByStar.length > 0 && starFilter.length > 0) {
         reviews = filteredReviewsByStar;
       } else {
         reviews = userReviews;
