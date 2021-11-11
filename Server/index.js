@@ -67,6 +67,19 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
   })
 })
 
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  console.log('Add Answer body:', req.body);
+  console.log('Question_id:', req.params.question_id)
+  api.addAnswer(req.params.question_id, req.body, (err) => {
+    if (!err) {
+      res.sendStatus(201);
+    } else {
+      console.log(err);
+      res.sendStatus(err.response.status);
+    }
+  })
+})
+
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   api.helpfulAnswer(req.params.answer_id, (err) => {
     if (!err) {

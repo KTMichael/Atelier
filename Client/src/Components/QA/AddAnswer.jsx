@@ -1,43 +1,44 @@
 import Popup from 'reactjs-popup';
 import React, { useState } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
-function AddAnswer() {
-  const [newAnswerStates, setAnswerState] = useState({ body: '', nickname: '', email: '' })
+function AddAnswer(props) {
+  const [newAnswerStates, setAnswerState] = useState({ body: '', name: '', email: '', photos: [] })
   const [errorMessage, setErrorMessageState] = useState('');
   const [timeoutID, setTimeoutIDState] = useState(null);
 
   function clearStates() {
     setAnswerState({
       body: '',
-      nickname: '',
-      email: ''
+      name: '',
+      email: '',
+      photos: []
     })
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e, callback) {
     e.preventDefault();
     let inputs = {
       body: e.target.body.value,
-      nickname: e.target.nickname.value,
-      email: e.target.email.value
+      name: e.target.nickname.value,
+      email: e.target.email.value,
+      photos: []
     }
 
     if (validateForm(inputs)) {
-
-    } else {
-      console.log('error');
+      axios.post(window.location.protocol + '//' + window.location.host + `/qa/questions/${props.question_id}/answers`, inputs);
+      callback();
     }
   }
 
   function validateForm(inputs) {
     if (inputs.body === '') {
-      setErrorMessage('Answer cannot be empty');
+      setErrorMessage('You must enter the following: Answer');
       return false;
     }
 
-    if (inputs.nickname === '') {
-      setErrorMessage('Nickname is required');
+    if (inputs.name === '') {
+      setErrorMessage('You must enter the following: Nickname');
       return false;
     }
 
@@ -45,6 +46,7 @@ function AddAnswer() {
       setErrorMessage('You have entered an invalid email address!')
       return false;
     }
+    return true;
   }
 
   function setErrorMessage(message) {
@@ -60,20 +62,23 @@ function AddAnswer() {
       modal={true}
       onClose={() => { clearStates() }}
     >
-      {console.log('rendered Popup')}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='answerBody'>Answer *</label>
-        <textarea name='body' id='answerBody' rows={4} cols={50} maxLength={1000} value={newAnswerStates.body} onChange={(e) => { setAnswerState({ ...newAnswerStates, body: e.target.value }) }} />
-        <label htmlFor='answerNickname'>Nickname *</label>
-        <input type='text' name='nickname' id='answerNickname' maxLength={60} placeholder='Example: jack543!' value={newAnswerStates.nickname} onChange={(e) => { setAnswerState({ ...newAnswerStates, nickname: e.target.value }) }} />
-        <p>“For privacy reasons, do not use your full name or email address”</p>
-        <label htmlFor='answerEmail'>E-mail *</label>
-        <input type='text' name='email' id='answerEmail' maxLength={60} placeholder='"Example: jack@email.com”' value={newAnswerStates.email} onChange={(e) => { setAnswerState({ ...newAnswerStates, email: e.target.value }) }} />
-        <p>“For authentication reasons, you will not be emailed”</p>
-        {/* Add Photo */}
-        <input type="submit" value="Submit" />
-        <span>&nbsp;{errorMessage}</span>
-      </form>
+      {close => (<>
+        <h1>Submit your Answer</h1>
+        <form onSubmit={(e) => {handleSubmit(e, close)}}>
+          <label htmlFor='answerBody'>Answer *</label>
+          <textarea name='body' id='answerBody' rows={4} cols={50} maxLength={1000} value={newAnswerStates.body} onChange={(e) => { setAnswerState({ ...newAnswerStates, body: e.target.value }) }} />
+          <label htmlFor='answerNickname'>Nickname *</label>
+          <input type='text' name='nickname' id='answerNickname' maxLength={60} placeholder='Example: jack543!' value={newAnswerStates.nickname} onChange={(e) => { setAnswerState({ ...newAnswerStates, name: e.target.value }) }} />
+          <p>“For privacy reasons, do not use your full name or email address”</p>
+          <label htmlFor='answerEmail'>E-mail *</label>
+          <input type='text' name='email' id='answerEmail' maxLength={60} placeholder='"Example: jack@email.com”' value={newAnswerStates.email} onChange={(e) => { setAnswerState({ ...newAnswerStates, email: e.target.value }) }} />
+          <p>“For authentication reasons, you will not be emailed”</p>
+          {/* Add Photo */}
+          <input type="submit" value="Submit" />
+          <span>&nbsp;{errorMessage}</span>
+        </form>
+      </>
+      )}
     </Popup>
   )
 }

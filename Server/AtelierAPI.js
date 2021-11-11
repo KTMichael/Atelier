@@ -20,7 +20,7 @@ module.exports = {
   },
 
   addQuestion: (data, callback) => {
-    let url = `${apiUrl}/qa/questions/`;
+    let url = `${apiUrl}/qa/questions`;
     axios.post(url, data, config)
       .then(response => { callback(null, response) })
       .catch(err => { callback(err) });
@@ -38,6 +38,13 @@ module.exports = {
     axios.put(url, '', config)
       .then(() => { callback(null) })
       .catch(err => { callback(err) });
+  },
+
+  addAnswer: (question_id, data, callback) => {
+    let url = `${apiUrl}/qa/questions/${question_id}/answers`;
+    axios.post(url, data, config)
+    .then(response => {callback(null, response)})
+    .catch(err => {callback(err)});
   },
 
   helpfulAnswer: (answer_id, callback) => {
