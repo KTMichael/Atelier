@@ -3,14 +3,25 @@ import axios from 'axios';
 import StarRating from './StarRating.jsx';
 import ReviewForm from './ReviewForm.jsx';
 import { overallStarRating } from './RatingsandReviews.jsx';
+<<<<<<< HEAD
 import { productId, productName } from './RatingsandReviews.jsx';
 import IndividualRatings from './IndividualRatings.jsx';
+=======
+import { productId } from './RatingsandReviews.jsx';
+import  IndividualRatings  from './IndividualRatings.jsx';
+import _ from 'lodash';
+>>>>>>> main
 
 const CustomerReviews = ({ overallStarRating, productId, starFilter, productName }) => {
   const [count, setCount] = useState(0);
   const [userReviews, setUserReviews] = useState([]);
   const [filteredReviewsByStar, setFilteredReviewsByStar] = useState([]);
+<<<<<<< HEAD
   const [showingReviews, setShowingReviews,] = useState(2);
+=======
+  const [filteredReviews, setFilteredReviews] = useState([]);
+  const [filter, setFilter] = useState(null);
+>>>>>>> main
 
   useEffect(() => {
     let ratingCount = 0;
@@ -35,6 +46,50 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
     }
   }, [productId])
 
+  const onFilterChange = (e) => {
+    var currentReviews = starFilter !== null ? filteredReviewsByStar : userReviews;
+    switch (e.target.value) {
+      case 'Relevant':
+        let sortByRelevance = _.orderBy(currentReviews, review => {
+          return review.recommend;
+        }, ['desc']);
+        setFilteredReviews(sortByRelevance);
+        setFilter('Relevant');
+        return;
+      case 'Helpful':
+        let sortedByHelp = _.orderBy(currentReviews, review => {
+          return review.helpfuln
+        }, ['desc']);
+        setFilteredReviews(sortedByHelp);
+        setFilter('Helpful');
+        return;
+      case 'Newest':
+        let sortedByDate = _.orderBy(currentReviews, review => {
+          return review.date;
+        }, ['desc']);
+        setFilteredReviews(sortedByDate);
+        setFilter('Newest');
+        return;
+      default:
+        setFilteredReviews(currentReviews);
+        setFilter(null);
+        return;
+    }
+  }
+
+  const displayReviews = () => {
+    var reviews = [];
+    if (filter) {
+      reviews = filteredReviews;
+    } else {
+      if (filteredReviewsByStar.length > 0 && starFilter !== null) {
+        reviews = filteredReviewsByStar;
+      } else {
+        reviews = userReviews;
+      }
+    }
+    return reviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id} productId={productId} />);
+  }
 
   const MoreReviews = (event) => {
     setShowingReviews(showingReviews + 2)
@@ -56,7 +111,7 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
       <div>
         <div id="sortReviewsBy">
           <label>  {`${count} reviews, sorted by`} </label>
-          <select className="reviewSort">
+          <select className="reviewSort" onChange={onFilterChange}>
             <option value="SortOn">Sort On</option>
             <option value="Relevant">Relevant</option>
             <option value="Newest">Newest</option>
@@ -64,12 +119,8 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
           </select>
         </div>
         <br /> <br />
-        <div className="renderedReviews">
-          {filteredReviewsByStar.length > 0 && starFilter !== null ?
-            filteredReviewsByStar.map((review, idx) => <IndividualRatings review={review} key={review.review_id} productId={productId} />) :
-
-            renderedReviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id} productId={productId} />)
-          }
+        <div>
+          {displayReviews()}
         </div>
         <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
           <div id="btn">
