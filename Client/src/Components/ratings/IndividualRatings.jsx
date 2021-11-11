@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const IndividualRatings = (review) => {
   const date = moment(review.review.date).format('MMMM DD, YYYY');
-  const [helpful, setHelpful] = useState(0);
+  const [helpful, setHelpful] = useState(review.review.helpfulness);
   const [markedHelpful, setMarkedHelpful] = useState(false);
   const [reported, setReported] = useState(false);
   const [report, setReport] = useState('Report');
@@ -26,7 +26,6 @@ const IndividualRatings = (review) => {
 
   }
 
-
   const markReviewReported = (event) => {
     setReported(true)
     axios.put(`reviews/${review.review.review_id}/report`)
@@ -36,11 +35,11 @@ const IndividualRatings = (review) => {
         setReport('Reported');
       })
       .catch(error => console.log(error))
-
   }
 
   return (
     <div id="reviewTile">
+      {console.log(review)}
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
         <StarRatings
           rating={review.review.rating}
@@ -53,10 +52,10 @@ const IndividualRatings = (review) => {
       </div>
       <br />        <br />
       <div className="revSum">{review.review.summary}</div>
-      <p>{review.review.body}</p>
+      <p className="sumBody">{review.review.body}</p>
       <div>{review.review.photos}</div>
-      <p>{review.review.response}</p>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left' }}>
+      <p style={{ backgroundcolor: "grey" }}>{review.review.response}</p>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left', fontsize: ".5vw" }}>
         <p> Helpful?{' '}
           <span className='RHelpful' onClick={(event) => markReviewHelpful(event)}>Yes </span>
           {`${helpful}`}{' '}
