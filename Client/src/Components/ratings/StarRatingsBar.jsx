@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { item, ratingCnt, star } from './OverallRatings.jsx';
+import _ from 'lodash';
 
 
 const StarRatingsBar = ({ item, ratingCnt, star, setStarFilter }) => {
@@ -7,7 +8,19 @@ const StarRatingsBar = ({ item, ratingCnt, star, setStarFilter }) => {
   const filterByStars = (e) => {
     e.stopPropagation();
     setStarFilter(filter => {
-      return filter === star ? null : star;
+      var starFilters;
+      if ( !filter ) {
+        starFilters = [];
+      } else {
+        starFilters = [...filter];
+      }
+
+      if ( !_.includes(starFilters, star) ) {
+        starFilters.push(star);
+      } else {
+        _.remove(starFilters, filter => filter === star);
+      }
+      return starFilters;
     });
   }
 
