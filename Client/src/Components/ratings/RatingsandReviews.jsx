@@ -19,7 +19,6 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
   useEffect(() => {
     setProduct_Id(productId);
     setProductName(allProductsData.name);
-    console.log(productId)
     axios.get(`/reviews/meta/`, { params: { product_id: productId } })
       .then(response => {
         setOverallCharacteristics(response.data.characteristics)
@@ -41,7 +40,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
           <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} setStarFilter={setStarFilter} />
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews overallStarRating={overallStarRating} productId={productId} starFilter={starFilter} productName={productName}/>
+          <CustomerReviews overallStarRating={overallStarRating} productId={productId} starFilter={starFilter} productName={productName} />
         </div>
       </div>
     </div>

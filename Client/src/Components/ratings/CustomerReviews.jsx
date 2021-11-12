@@ -2,26 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx';
 import ReviewForm from './ReviewForm.jsx';
-import { overallStarRating } from './RatingsandReviews.jsx';
-<<<<<<< HEAD
-import { productId, productName } from './RatingsandReviews.jsx';
+import { overallStarRating, productId, productName } from './RatingsandReviews.jsx';
 import IndividualRatings from './IndividualRatings.jsx';
-=======
-import { productId } from './RatingsandReviews.jsx';
-import  IndividualRatings  from './IndividualRatings.jsx';
 import _ from 'lodash';
->>>>>>> main
 
 const CustomerReviews = ({ overallStarRating, productId, starFilter, productName }) => {
   const [count, setCount] = useState(0);
   const [userReviews, setUserReviews] = useState([]);
   const [filteredReviewsByStar, setFilteredReviewsByStar] = useState([]);
-<<<<<<< HEAD
   const [showingReviews, setShowingReviews,] = useState(2);
-=======
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [filter, setFilter] = useState(null);
->>>>>>> main
 
   useEffect(() => {
     let ratingCount = 0;
@@ -125,8 +116,8 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
         <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
           <div id="btn">
             <button className="btn" onClick={(event) => {
-              console.log('clicked');
               MoreReviews(event)
+              console.log('clicked');
             }}>MORE REVIEWS</button>
           </div>
           <ReviewForm productId={productId} productName={productName} />
