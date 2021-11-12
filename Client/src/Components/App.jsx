@@ -12,9 +12,7 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(response => {
-        // console.log(response.data)
-        // console.log(response.data[0].id)
-        setAllProductsData(response.data[0])
+        setAllProductsData(response.data)
         setProductId(response.data[0].id)
       })
       .catch(error => console.log(error))
