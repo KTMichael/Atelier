@@ -5,7 +5,6 @@ import Question from './Question.jsx';
 class QuestionList extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       questions: []
     }
@@ -13,7 +12,7 @@ class QuestionList extends React.Component {
 
   componentDidMount() {
     //TODO: Replace this get request with a dynamic url based on current viewing product
-    axios.get(window.location.protocol + '//' + window.location.host + '/qa/questions/?product_id=42366')
+    axios.get(window.location.protocol + '//' + window.location.host + `/qa/questions/?product_id=${this.props.productId}`)
     .then((result) => { this.setState({questions: result.data})})
   }
 
