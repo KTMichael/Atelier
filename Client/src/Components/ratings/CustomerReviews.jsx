@@ -6,13 +6,12 @@ import { overallStarRating, productId, productName } from './RatingsandReviews.j
 import  IndividualRatings  from './IndividualRatings.jsx';
 import _ from 'lodash';
 
-const CustomerReviews = ({ overallStarRating, productId, starFilter, productName }) => {
+const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, productName }) => {
   const [count, setCount] = useState(0);
   const [userReviews, setUserReviews] = useState([]);
   const [filteredReviewsByStar, setFilteredReviewsByStar] = useState([]);
   const [showingReviews, setShowingReviews,] = useState(2);
   const [filteredReviews, setFilteredReviews] = useState([]);
-  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     let ratingCount = 0;
@@ -21,13 +20,8 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
     });
     setCount(ratingCount);
 
-    if (starFilter) {
-      var filteredReviews = _.filter(userReviews, review => {
-        return starFilter.indexOf(review.rating) >= 0;
-      });
-      setFilteredReviewsByStar(filteredReviews);
-    }
-  }, [overallStarRating, starFilter]);
+    filterReviews();
+  }, [overallStarRating, filters]);
 
   useEffect(() => {
     if (productId !== 0) {
@@ -39,44 +33,79 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
     }
   }, [productId])
 
-  const onFilterChange = (e) => {
-    var currentReviews = starFilter !== null ? filteredReviewsByStar : userReviews;
-    switch (e.target.value) {
+  const filterReviews = () => {
+    var reviews = [];
+    if ( filters.stars.length > 0  && filters.sort !== null ) {
+      var filteredByStars = _.filter(userReviews, review => {
+        return filters.stars.indexOf(review.rating) >= 0;
+      });
+      reviews = [...setReviewsBySort(filteredByStars, filters.sort)];
+    } else if ( filters.stars.length > 0 ) {
+      reviews = _.filter(userReviews, review => {
+        return filters.stars.indexOf(review.rating) >= 0;
+      });
+    } else if ( filters.sort !== null ) {
+      reviews = [...setReviewsBySort(userReviews, filters.sort)];
+    }
+    setFilteredReviews(reviews);
+  }
+
+  const setReviewsBySort = (reviews, sort) => {
+    switch (sort) {
       case 'Relevant':
-        let sortByRelevance = _.orderBy(currentReviews, review => {
+        let sortByRelevance = _.orderBy(reviews, review => {
           return review.recommend;
         }, ['desc']);
-        setFilteredReviews(sortByRelevance);
-        setFilter('Relevant');
-        return;
+        return sortByRelevance;
       case 'Helpful':
-        let sortedByHelp = _.orderBy(currentReviews, review => {
+        let sortedByHelp = _.orderBy(reviews, review => {
           return review.helpfuln
         }, ['desc']);
-        setFilteredReviews(sortedByHelp);
-        setFilter('Helpful');
-        return;
+        return sortedByHelp;
       case 'Newest':
-        let sortedByDate = _.orderBy(currentReviews, review => {
+        let sortedByDate = _.orderBy(reviews, review => {
           return review.date;
         }, ['desc']);
-        setFilteredReviews(sortedByDate);
-        setFilter('Newest');
+        return sortedByDate;
+      default:
+        return [];
+    }
+  }
+
+  const setSortFilter = (sortFilter) => {
+    setFilters(filters => {
+      let settings = {
+        stars: filters.stars,
+        sort: sortFilter
+      };
+      return settings;
+    })
+  }
+
+  const onFilterChange = (e) => {
+    switch (e.target.value) {
+      case 'Relevant':
+        setSortFilter('Relevant');
+        return;
+      case 'Helpful':
+        setSortFilter('Helpful');
+        return;
+      case 'Newest':
+        setSortFilter('Newest');
         return;
       default:
-        setFilteredReviews(currentReviews);
-        setFilter(null);
+        setSortFilter(null);
         return;
     }
   }
 
   const displayReviews = () => {
     var reviews = [];
-    if (filter) {
+    if (filters.sort) {
       reviews = filteredReviews;
     } else {
-      if (filteredReviewsByStar.length > 0 && starFilter.length > 0) {
-        reviews = filteredReviewsByStar;
+      if (filteredReviews.length > 0 && filters.stars.length > 0) {
+        reviews = filteredReviews;
       } else {
         reviews = userReviews;
       }
@@ -118,7 +147,6 @@ const CustomerReviews = ({ overallStarRating, productId, starFilter, productName
         <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
           <div id="btn">
             <button className="btn" onClick={(event) => {
-              console.log('clicked');
               MoreReviews(event)
             }}>MORE REVIEWS</button>
           </div>

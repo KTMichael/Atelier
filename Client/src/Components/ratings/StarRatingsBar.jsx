@@ -3,16 +3,14 @@ import { item, ratingCnt, star } from './OverallRatings.jsx';
 import _ from 'lodash';
 
 
-const StarRatingsBar = ({ item, ratingCnt, star, setStarFilter }) => {
+const StarRatingsBar = ({ item, ratingCnt, star, setFilters }) => {
 
   const filterByStars = (e) => {
     e.stopPropagation();
-    setStarFilter(filter => {
-      var starFilters;
-      if ( !filter ) {
-        starFilters = [];
-      } else {
-        starFilters = [...filter];
+    setFilters(filters => {
+      var starFilters = [];
+      if ( filters.stars.length > 0 ) {
+        starFilters = [...filters.stars]
       }
 
       if ( !_.includes(starFilters, star) ) {
@@ -20,8 +18,12 @@ const StarRatingsBar = ({ item, ratingCnt, star, setStarFilter }) => {
       } else {
         _.remove(starFilters, filter => filter === star);
       }
-      return starFilters;
-    });
+      let filterSettings = {
+        stars: starFilters,
+        sort: filters.sort
+      }
+      return filterSettings;
+    })
   }
 
   return (
