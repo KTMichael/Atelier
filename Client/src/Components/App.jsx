@@ -12,8 +12,8 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(response => {
-        setAllProductsData(response.data)
-        setProductId(response.data[0].id)
+        setAllProductsData(response.data[3])
+        setProductId(response.data[3].id)
       })
       .catch(error => console.log(error))
   }, []);

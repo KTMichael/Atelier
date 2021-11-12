@@ -1,12 +1,12 @@
 const api = require('./AtelierAPI');
-
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
 app.use(express.static(__dirname + '/../Client/dist'));
-
-
+app.use(cors());
+app.options('/reviews', cors())
 // Get all products
 
 app.get('/products', (req, res) => {
