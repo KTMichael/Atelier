@@ -11,6 +11,7 @@ import {
   PinterestIcon,
   TwitterShareButton,
   TwitterIcon } from 'react-share';
+import withCounter from './withCounter.jsx';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class ProductDetail extends React.Component {
   }
 
   getProduct() { // fetches product info
-    console.log('this.props', this.props)
     return axios({
       method: "get",
       url: `/products/${this.state.productId}`,
@@ -44,7 +44,6 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() { // updates state with available styles and initializes to default style
-    console.log('componentDidMount is running!')
     Promise.all([this.getProduct(), this.getStyles()])
     .then(response => {
       let selected = {};
@@ -89,9 +88,9 @@ class ProductDetail extends React.Component {
   }
 
   render() {
+    const { clickLog, incrementCount } = this.props;
     return (
-      <div id='ProductDetail'>
-         {console.log('WINDOW.LOCATION', window.location.href)}
+      <div onClick={incrementCount} id='ProductDetail'>
         <ImageGallery photos={this.state.selectedStyle.photos} />
         <div id="product_info">
           <h6 className="product_category">{this.state.product.category}</h6>
@@ -124,4 +123,4 @@ class ProductDetail extends React.Component {
   }
 }
 
-export default ProductDetail;
+export default withCounter(ProductDetail);

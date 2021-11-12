@@ -39,7 +39,6 @@ const IndividualRatings = (review) => {
 
   return (
     <div id="reviewTile">
-      {console.log(review)}
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
         <StarRatings
           rating={review.review.rating}
