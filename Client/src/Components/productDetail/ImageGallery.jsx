@@ -2,10 +2,12 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+
 class ImageGallery extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            expandedView: false,
             photos: []
         }
 
@@ -15,9 +17,9 @@ class ImageGallery extends React.Component {
     renderImages() {
         if (this.props.photos) {
             return this.props.photos.map((x, index) => {
-                return <div key={`Product Image at index: ${index}`}>
-                    <img src={x.url} />
-                </div>
+                return <div onClick={this.props.renderExpandedView} key={`Product Image at index: ${index}`}>
+                         <img src={x.url} />
+                       </div>
             })
         }
     }
@@ -31,7 +33,7 @@ class ImageGallery extends React.Component {
                 </Carousel>
             </div>
         )
-    };
+    }
 }
 
 export default ImageGallery;
