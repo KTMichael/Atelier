@@ -12,6 +12,7 @@ import {
   TwitterShareButton,
   TwitterIcon } from 'react-share';
 import withCounter from './withCounter.jsx';
+import Zoom from 'react-img-zoom';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class ProductDetail extends React.Component {
       selectedStyle: {},
       product: {},
       styles: [],
+      expandedView: false
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
@@ -87,11 +89,34 @@ class ProductDetail extends React.Component {
     }
   }
 
+  renderExpandedView = () => {
+    this.setState({
+      expandedView: true
+    })
+  }
+
+  renderDefaultView = () => {
+    this.setState({
+      expandedView: false
+    })
+  }
+
   render() {
     const { clickLog, incrementCount } = this.props;
     return (
       <div onClick={incrementCount} id='ProductDetail'>
-        <ImageGallery photos={this.state.selectedStyle.photos} />
+
+        {this.state.expandedView ?
+            <div onClick={this.renderDefaultView}>
+              <Zoom
+                id="imgGal"
+                img="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                zoomScale={3}
+                width={800}
+                height={800} />
+            </div> : <ImageGallery renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
+        }
+
         <div id="product_info">
           <h6 className="product_category">{this.state.product.category}</h6>
           <h3 className="product_title">{this.state.product.name}</h3>
