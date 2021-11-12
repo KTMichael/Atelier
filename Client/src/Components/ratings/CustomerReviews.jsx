@@ -3,7 +3,7 @@ import axios from 'axios';
 import StarRating from './StarRating.jsx';
 import ReviewForm from './ReviewForm.jsx';
 import { overallStarRating, productId, productName } from './RatingsandReviews.jsx';
-import  IndividualRatings  from './IndividualRatings.jsx';
+import IndividualRatings from './IndividualRatings.jsx';
 import _ from 'lodash';
 
 const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, productName }) => {
@@ -36,16 +36,16 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
 
   const filterReviews = () => {
     var reviews = [];
-    if ( filters.stars.length > 0  && filters.sort !== null ) {
+    if (filters.stars.length > 0 && filters.sort !== null) {
       var filteredByStars = _.filter(userReviews, review => {
         return filters.stars.indexOf(review.rating) >= 0;
       });
       reviews = [...setReviewsBySort(filteredByStars, filters.sort)];
-    } else if ( filters.stars.length > 0 ) {
+    } else if (filters.stars.length > 0) {
       reviews = _.filter(userReviews, review => {
         return filters.stars.indexOf(review.rating) >= 0;
       });
-    } else if ( filters.sort !== null ) {
+    } else if (filters.sort !== null) {
       reviews = [...setReviewsBySort(userReviews, filters.sort)];
     }
     setFilteredReviews(reviews);
@@ -111,6 +111,7 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
         reviews = userReviews;
       }
     }
+    reviews = reviews.slice(0, showingReviews);
     return reviews.map((review, idx) => <IndividualRatings review={review} key={review.review_id} productId={productId} />);
   }
 
@@ -119,16 +120,7 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
   }
 
 
-  // const renderedReviews = userReviews.slice(0, showingReviews);
-  // if (filteredReviewsByStar.length === 0) {
-  //   if (userReviews > 2) {
-  //     if (showingReviews < userReviews.length) {
-  //       MoreReviews()
-  //     } else {
-  //       showMoreButton = null;
-  //     }
-  //   }
-  // }
+
   return (
     <div id='CustomerReviews' >
       <div>
