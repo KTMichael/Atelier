@@ -535,6 +535,18 @@ border-Spacing: .5em;
   font-size: 1.5vw;
 }
 
+.displayedFilters {
+  font-weight: bolder;
+  font-size: 1vw;
+  list-style: none;
+}
+
+.displayedFilterTitle {
+  font-weight: bolder;
+  font-size: 1.25vw;
+  list-style: none;
+  text-decoration: underline;
+}
 .RHelpful, .RReport , .starRating, .reviewSort{
   text-decoration: underline;
   cursor: pointer;

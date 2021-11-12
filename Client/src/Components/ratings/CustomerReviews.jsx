@@ -119,16 +119,16 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
   }
 
 
-  const renderedReviews = userReviews.slice(0, showingReviews);
-  if (filteredReviewsByStar.length === 0) {
-    if (userReviews > 2) {
-      if (showingReviews < userReviews.length) {
-        MoreReviews()
-      } else {
-        showMoreButton = null;
-      }
-    }
-  }
+  // const renderedReviews = userReviews.slice(0, showingReviews);
+  // if (filteredReviewsByStar.length === 0) {
+  //   if (userReviews > 2) {
+  //     if (showingReviews < userReviews.length) {
+  //       MoreReviews()
+  //     } else {
+  //       showMoreButton = null;
+  //     }
+  //   }
+  // }
   return (
     <div id='CustomerReviews' >
       <div>
