@@ -13,7 +13,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
   const [overallStarRating, setOverallStarRating] = useState({});
   const [overallRecommended, setOverallRecommended] = useState({});
   const [overallCharacteristics, setOverallCharacteristics] = useState({});
-  const [starFilter, setStarFilter] = useState(null);
+  const [starFilter, setStarFilter] = useState([]);
 
 
   useEffect(() => {
