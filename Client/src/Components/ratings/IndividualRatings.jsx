@@ -47,9 +47,9 @@ const IndividualRatings = (review) => {
 
   if (body.length > 250) {
     if (expand) {
-      showButton = <button className="uploadPhoto" aria-label="shrink review body" type="button" onClick={() => { setExpand(!expand); }}>Show Less</button>;
+      showButton = <button className="showMore" aria-label="shrink review body" type="button" onClick={() => { setExpand(!expand); }}>Show Less</button>;
     } else {
-      showButton = <button className="uploadPhoto" aria-label="expand review body" type="button" onClick={() => { setExpand(!expand); }}>Show More</button>;
+      showButton = <button className="showMore" aria-label="expand review body" type="button" onClick={() => { setExpand(!expand); }}>Show More</button>;
     }
   } else {
     showButton;
