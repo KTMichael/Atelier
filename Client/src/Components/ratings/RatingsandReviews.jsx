@@ -13,7 +13,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
   const [overallStarRating, setOverallStarRating] = useState({});
   const [overallRecommended, setOverallRecommended] = useState({});
   const [overallCharacteristics, setOverallCharacteristics] = useState({});
-  const [starFilter, setStarFilter] = useState(null);
+  const [filters, setFilters] = useState({stars:[], sort: null})
 
 
   useEffect(() => {
@@ -37,10 +37,10 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
       </div>
       <div id="RRComp">
         <div id="OverallRatings">
-          <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} setStarFilter={setStarFilter} />
+          <OverallRatings overallRecommended={overallRecommended} overallCharacteristics={overallCharacteristics} overallStarRating={overallStarRating} filters={filters} setFilters={setFilters}/>
         </div>
         <div id="CustomerReviewsMain">
-          <CustomerReviews overallStarRating={overallStarRating} productId={productId} starFilter={starFilter} productName={productName} />
+          <CustomerReviews overallStarRating={overallStarRating} productId={productId} filters={filters} setFilters={setFilters} productName={productName}/>
         </div>
       </div>
     </div>

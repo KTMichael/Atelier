@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import StarRatingsBar from './StarRatingsBar.jsx';
 import CharacteristicsRatingBars from './CharacteristicsRatingBars.jsx';
 
-const OverallRatings = ({ overallStarRating, overallCharacteristics, overallRecommended, setStarFilter }) => {
+const OverallRatings = ({ overallStarRating, overallCharacteristics, overallRecommended, setStarFilter, setFilters, filters }) => {
   const [rating, setRating] = useState(NaN);
   const [ratingCnt, setRatingCnt] = useState(0);
   const [rec, setRec] = useState(0);
@@ -54,7 +54,29 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
     setRec(Math.floor(recCount));
   }, [overallRecommended]);
 
+  const clearFilters = (e) => {
+    e.stopPropagation();
+    setFilters({stars:[], sort: null});
+  }
 
+  const displayFilters = () => {
+    let numFilters = filters.stars.length;
+    if ( filters.sort !== null ) {
+      numFilters++;
+    }
+    if ( numFilters >= 2 ) {
+      return <ul>
+        <label>Filters</label>
+        {filters.stars.map(star => {
+          return <li>{star} Star</li>
+        })}
+        {filters.sort !== null &&
+          <li>{filters.sort}</li>
+        }
+        <button onClick={clearFilters}>Clear Filters</button>
+      </ul>
+    }
+  }
 
   return (
     <>
@@ -78,9 +100,10 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
 
             <div >
               {ratingArray.map((item, idx) => (
-                <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} setStarFilter={setStarFilter}/>
+                <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} setStarFilter={setStarFilter} setFilters={setFilters}/>
               ))}
             </div>
+            {displayFilters()}
             {char.map((char, idx) => (<CharacteristicsRatingBars char={char} key={idx} ratingCnt={ratingCnt}/>
             ))}
           </div>
