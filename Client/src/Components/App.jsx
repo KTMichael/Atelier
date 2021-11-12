@@ -31,7 +31,9 @@ const App = () => {
         <MainRelatedFeature productId={productId} allProductsData={allProductsData} />
       </div>
       <div id="QAMain" className='MainComponent'>
-        <QA productId={productId} allProductsData={allProductsData} />
+        {productId !== 0 &&
+          <QA productId={productId} allProductsData={allProductsData} />
+        }
       </div>
       <div id="RatingsandReviewsMain">
         {productId !== 0 &&
