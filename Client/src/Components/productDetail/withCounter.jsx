@@ -12,6 +12,9 @@ const withCounter = (WrappedComponent) => {
     }
 
     incrementCount (e) {
+      if(e.target.nodeName === 'SELECT') {
+        return
+      }
       var newClick = {
         element: e.target,
         time: new Date(),
