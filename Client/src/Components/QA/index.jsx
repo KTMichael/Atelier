@@ -7,10 +7,6 @@ import AddQuestionButton from './AddQuestionButton.jsx';
 class QA extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-
-    }
   }
 
   render() {
@@ -18,7 +14,7 @@ class QA extends React.Component {
       <div id='QA'>
         <h1>Questions & Answers</h1>
         <QuestionSearch />
-        <QuestionList />
+        <QuestionList productId={this.props.productId} />
         <MoreQuestionsButton />
         <AddQuestionButton />
       </div>
