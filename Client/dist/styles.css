@@ -492,7 +492,7 @@ border-color: black;
 background-color: white;
 }
 
-uploadPhoto{
+.uploadPhoto{
   font-size: 1vw;
 font-weight: bolder;
 color: rgb(16, 24, 66);
@@ -509,6 +509,12 @@ border-radius: 5px;
 border-color: black;
 background-color: white;
 }
+
+.uploadPhoto:hover, .btn:hover, .photos:hover  {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
 .charTable {
 background-color: white;
   font-size: .5vw;
@@ -529,11 +535,39 @@ border-Spacing: .5em;
   font-size: 1.5vw;
 }
 
+.displayedFilters {
+  font-weight: bolder;
+  font-size: 1vw;
+  list-style: none;
+}
+
+.displayedFilterTitle {
+  font-weight: bolder;
+  font-size: 1.25vw;
+  list-style: none;
+  text-decoration: underline;
+}
 .RHelpful, .RReport , .starRating, .reviewSort{
   text-decoration: underline;
   cursor: pointer;
 }
 
+.photos {
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-left: 10px;
+border: none;
+border-radius: 4px;
+background: white;
+display: block;
+object-fit: contain;
+width: 5%;
+max-height: 69px;
+min-height: 0;
+transition-duration: 0.3s;
+}
 
 
 /* Styles specific to QUESTIONS & ANSWERS widget */

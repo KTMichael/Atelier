@@ -14,8 +14,8 @@ const App = () => {
       .then(response => {
         // console.log(response.data)
         // console.log(response.data[0].id)
-        setAllProductsData(response.data[0])
-        setProductId(response.data[0].id)
+        setAllProductsData(response.data[3])
+        setProductId(response.data[3].id)
       })
       .catch(error => console.log(error))
   }, []);
