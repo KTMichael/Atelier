@@ -8,11 +8,7 @@ body {
   margin: 0;
 }
 
-div {
-  /* Why? */
-  /* Remove it and refresh your page and you will see why */
-  background-color: rgb(60, 75, 80)
-}
+
 
 #app {
   color: white;
@@ -79,7 +75,7 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(60, 75, 80);
 }
 
 
@@ -93,7 +89,7 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(60, 75, 80);
   }
   .sub_component {
     margin: 8px;
@@ -105,6 +101,7 @@ div {
     flex-wrap: wrap;
     margin-top: 15px;
     margin-bottom: 15px;
+
   }
 
   .thumbnail_column_container {
@@ -114,6 +111,7 @@ div {
     margin: 1%;
     cursor: pointer;
     object-fit: contain;
+
   }
 
   .thumbnail {
@@ -123,6 +121,7 @@ div {
   #add_to_cart {
     display: flex;
     justify-content: space-around;
+
   }
 
   .overview_price {
@@ -130,6 +129,7 @@ div {
     align-items: left;
     margin-top: 5px;
     margin-bottom: 5px;
+
   }
 
   #on_sale {
@@ -149,6 +149,7 @@ div {
   .socialMediaButtonContainer {
     display: flex;
     justify-content: right;
+    background-color: transparent;
   }
 
   .socialMediaButton {
@@ -156,6 +157,16 @@ div {
     margin-right: 5px;
   }
 
+
+
+  .product_category{
+    font-size: 1vw;
+  }
+
+  .star-container {
+  background-color: transparent;
+
+  }
   /* ---------------- Related Features ------------------- */
 
   #MainRelatedFeatureMain {
@@ -187,7 +198,7 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(60, 75, 80);
 }
 
 #questionList {
@@ -199,7 +210,16 @@ div {
 .QAElement {
   display: flex;
   justify-content: space-between;
+  padding: 2%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(32, 33, 34);
+  margin: 5px;
 }
+
+
 
 .questionHelpful {
   text-decoration: underline;
@@ -264,6 +284,10 @@ div {
   display: inline-block;
 }
 
+.answerText, .answer {
+  background-color: rgb(32, 33, 34)
+}
+
 .addAnswer-arrow {
   color: rgb(255, 255, 255);
 }
@@ -286,11 +310,7 @@ div {
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-  background-color: rgb(60, 75, 80);
+  background-color: rgb(32, 33, 34)
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -299,11 +319,7 @@ div {
   flex-flow: row;
   width: 100%;
   height: 100%;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
-  background-color: rgb(32, 33, 34)
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #RRTitle {
@@ -311,17 +327,14 @@ div {
   width: auto;
   height: 100%;
   padding: 10px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
+  font-family: 'Ubuntu', sans-serif;
   background-color: rgb(32, 33, 34)
 }
 
 #OverallRatings {
   align-items: center;
   text-align: center;
-  height: 70%;
+  height: 50%;
   width: 50%;
   margin: 8px;
   padding: 5px;
@@ -329,6 +342,8 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(60, 75, 80);
+
   }
 
 #OverallRatingsMain {
@@ -358,6 +373,7 @@ div {
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
+  background-color: rgb(60, 75, 80);
 }
 #customerReviewsTitle{
   text-align: left;
@@ -383,8 +399,7 @@ width: auto;
 border-style: solid;
 border-width: 1px;
 border-radius: 5px;
-border-color: rgb(60, 75, 80);
-background-color: rgb(60, 75, 80);
+
 }
 #CustomerReviews {
   text-align: center;
@@ -392,7 +407,6 @@ background-color: rgb(60, 75, 80);
   width: auto;
   margin: 5px;
   padding: 5px;
-  overflow: scroll;
 }
 
 .ReviewForm-content {
@@ -444,6 +458,7 @@ border-style: solid;
 border-width: 1px;
 border-radius: 5px;
 border-color: black;
+background-color: rgb(32, 33, 34);
 }
 
 #Error {
@@ -547,9 +562,29 @@ border-Spacing: .5em;
   list-style: none;
   text-decoration: underline;
 }
-.RHelpful, .RReport , .starRating, .reviewSort{
+.RHelpful, .RReport , .starRating{
   text-decoration: underline;
   cursor: pointer;
+}
+
+.reviewSort{
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(32, 33, 34);
+  border-color: rgb(32, 33, 34);
+}
+
+.showMore {
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(32, 33, 34);
+  border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: black;
+
 }
 
 .photos {
@@ -582,7 +617,7 @@ transition-duration: 0.3s;
 #RelatedFeature {
   flex-flow: wrap;
   flex-direction: column;
-
+  background-color: rgb(60, 75, 80);
   width: 97.5%;
   height: 100%;
   padding: 10px;

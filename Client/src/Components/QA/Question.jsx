@@ -67,7 +67,7 @@ class Question extends React.Component {
     let renderAnswers = this.state.answers.slice(0, this.state.answerListMax)
     return (
       <div className="QAElement">
-        <div>
+        <div className="Q">
           <p className='question'>Q: {this.props.data.question_body}</p>
           <ul className='answerList'>
             {
