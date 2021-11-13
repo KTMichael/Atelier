@@ -19,8 +19,8 @@ module.exports = {
       .catch(err => callback(err));
   },
   getQuestions: (product_id, callback) => {
-    let url = `${apiUrl}/qa/questions/?product_id=${product_id}`;
-    axios.get(url, config)
+    let url = `${apiUrl}/qa/questions/?product_id=${product_id}&count=100`; //Count of 100 to attempt to retrive all questions of a product for sorting,
+    axios.get(url, config)                                                  //Sorting would normaly be done server side
       .then(response => { callback(null, response) })
       .catch(err => { callback(err) });
   },
