@@ -62,7 +62,8 @@ class ProductDetail extends React.Component {
         {
           product: response[0].data,
           styles: response[1].data,
-          selectedStyle: selected
+          selectedStyle: selected,
+          currentPhoto: selected.photos[this.state.currentPhotoIndex].url
         }
       )
     });
@@ -109,6 +110,12 @@ class ProductDetail extends React.Component {
     console.log("Click Log:", this.props.clickLog)
   }
 
+  changeCurrentPhoto = (url) => {
+    this.setState({
+      currentPhoto: url
+    })
+  }
+
   render() {
     const { clickLog, incrementCount } = this.props;
     return (
@@ -122,7 +129,7 @@ class ProductDetail extends React.Component {
                 zoomScale={1.5}
                 width={800}
                 height={800} />
-            </div> : <ImageGallery currentPhotoIndex={this.state.currentPhotoIndex} renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
+            </div> : <ImageGallery title={this.state.product.name} changeCurrentPhoto={this.changeCurrentPhoto} currentPhotoIndex={this.state.currentPhotoIndex} renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
         }
 
         <div id="product_info" className="productDetailTier2">
@@ -133,24 +140,22 @@ class ProductDetail extends React.Component {
           <p>{this.state.product.description}</p>
           <div className='socialMediaButtonContainer'>
             <FacebookShareButton
-              url={'https://www.geeksforgeeks.org/how-to-set-space-between-the-flexbox/'}>
-              {/* TODO: change to window.location.href to use in EC2 instance */}
-              <FacebookIcon size={32} round={true} className='socialMediaButton'/>
+              url={window.location.href} >
+              <FacebookIcon size={24} round={true} className='socialMediaButton'/>
             </FacebookShareButton>
             <PinterestShareButton
               url={'https://www.geeksforgeeks.org/how-to-set-space-between-the-flexbox/'}
-              media={'https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/'}>
-                {/* TODO: remove hard-coded image */}
-              <PinterestIcon size={32} round={true} className='socialMediaButton'/>
+              media={this.state.currentPhoto}>
+              <PinterestIcon size={24} round={true} className='socialMediaButton'/>
             </PinterestShareButton>
             <TwitterShareButton
-              url={'https://www.geeksforgeeks.org/how-to-set-space-between-the-flexbox/'}>
-              <TwitterIcon size={32} round={true} className='socialMediaButton'/>
+              url={window.location.href}>
+              <TwitterIcon size={24} round={true} className='socialMediaButton'/>
             </TwitterShareButton>
           </div>
           <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
           <AddToCart skus={this.state.selectedStyle.skus} />
-          <button onClick={this.showClickLog} >Dev Button to Show Click Log</button>
+          {/* <button onClick={this.showClickLog} >Dev Button to Show Click Log</button> */}
         </div>
       </div>
     )

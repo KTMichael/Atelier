@@ -18,8 +18,8 @@ class ImageGallery extends React.Component {
     render() {
         return (
             <div id="imgGal" className="productDetailTier2">
-                <h1>My Image Gallery</h1>
-                    <Carousel onClickItem={(index, item) => this.props.renderExpandedView(index, item.props.children.props.src)} selectedItem={this.props.currentPhotoIndex} transitionTime="500">
+                <h1>{this.props.title}</h1>
+                    <Carousel onChange={(index, item) => {this.props.changeCurrentPhoto(item.props.children.props.src)}} onClickItem={(index, item) => this.props.renderExpandedView(index, item.props.children.props.src)} selectedItem={this.props.currentPhotoIndex} transitionTime="500">
                         {this.renderImages()}
                     </Carousel>
             </div>
