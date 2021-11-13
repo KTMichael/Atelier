@@ -10,12 +10,17 @@ const App = () => {
   const [productId, setProductId] = useState(0);
 
   useEffect(() => {
-    axios.get('/products')
+    axios.get('/products', {
+      params: {
+        page: 0,
+        count: 100,
+      }
+    })
       .then(response => {
-        // console.log(response.data)
+        console.log(response.data)
         // console.log(response.data[0].id)
-        setAllProductsData(response.data[3])
-        setProductId(response.data[3].id)
+        setAllProductsData(response.data[1])
+        setProductId(response.data[1].id)
       })
       .catch(error => console.log(error))
   }, []);

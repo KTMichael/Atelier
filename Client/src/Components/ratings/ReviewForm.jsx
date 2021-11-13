@@ -379,10 +379,8 @@ const ReviewForm = ({ productId, productName }) => {
           <p>For authentication reasons, you will not be emailed.</p>
 
           <button className="btn" type="submit" onClick={(event => handleSubmit(event))} > Submit </button>
-
-        </form >
-        <br />   <br />
-        <div >
+          <br />   <br />
+          <div >
           {!validForm ?
             <div id="Error">
               <h3>You must enter the following: </h3>
@@ -395,6 +393,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <div> {characteristicsError} </div>
               </div></div> : <div style={{ clear: 'none' }} />}
         </div>
+        </form >
       </div >
     )
   }

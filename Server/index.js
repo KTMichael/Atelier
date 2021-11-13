@@ -146,7 +146,7 @@ app.get('/reviews/meta/', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
-  api.getReviews(req.query.product_id, (error, results) => {
+  api.getReviews(req.query, (error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {

@@ -21,6 +21,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
     setProductName(allProductsData.name);
     axios.get(`/reviews/meta/`, { params: { product_id: productId } })
       .then(response => {
+        console.log('data', response.data)
         setOverallCharacteristics(response.data.characteristics)
         setOverallRecommended(response.data.recommended)
         setOverallStarRating(response.data.ratings)
