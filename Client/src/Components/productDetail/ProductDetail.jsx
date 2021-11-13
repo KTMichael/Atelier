@@ -19,8 +19,8 @@ class ProductDetail extends React.Component {
     super(props);
 
     this.state = {
-      productId: 42366, // REMOVE HARD-CODE
-      styleId: 253620, // REMOVE HARD-CODE
+      productId: this.props.currentProduct.id,
+      styleId: '',
       selectedStyle: {},
       product: {},
       styles: [],
@@ -63,6 +63,7 @@ class ProductDetail extends React.Component {
           product: response[0].data,
           styles: response[1].data,
           selectedStyle: selected,
+          styleId: selected.style_id,
           currentPhoto: selected.photos[this.state.currentPhotoIndex].url
         }
       )
