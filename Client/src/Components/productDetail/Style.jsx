@@ -3,7 +3,6 @@ import { AiOutlineCheckSquare } from 'react-icons/ai';
 
 
 function Style (props) {
-
   if (props.isSelected) {
     return (
       <div className="thumbnail_column_container" >
@@ -26,7 +25,6 @@ function Style (props) {
       </div>
     )
   }
-
 }
 
 export default Style;

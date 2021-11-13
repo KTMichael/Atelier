@@ -99,17 +99,17 @@ class AddToCart extends React.Component {
       <div id="add_to_cart">
         <label>
           Size:
-          <select onChange={this.handleSizeSelection} value={this.state.size} className="select_size">
+          <select style={{cursor: 'pointer'}} onChange={this.handleSizeSelection} value={this.state.size} className="select_size">
             {this.sizeOptions()}
           </select>
         </label>
         <label>
           Quantity:
-          <select onChange={this.handleQuantitySelection} value={this.state.quantity} className="select_quantity">
+          <select style={{cursor: 'pointer'}} onChange={this.handleQuantitySelection} value={this.state.quantity} className="select_quantity">
             {this.quantityOptions()}
           </select>
         </label>
-        <button onClick={this.handleAddItem} className="add_item">Add to Cart</button>
+        <button style={{cursor: 'pointer'}} onClick={this.handleAddItem} className="add_item">Add to Cart</button>
       </div>
     )
   }
