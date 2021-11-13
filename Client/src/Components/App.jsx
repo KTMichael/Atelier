@@ -13,7 +13,7 @@ const App = () => {
     axios.get('/products')
       .then(response => {
         setAllProductsData(response.data[3])
-        setCurrentProduct(response.data[3])
+        setCurrentProduct(response.data[2])
       })
       .catch(error => console.log(error))
   }, []);

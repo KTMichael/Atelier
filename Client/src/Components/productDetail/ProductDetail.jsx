@@ -19,8 +19,8 @@ class ProductDetail extends React.Component {
     super(props);
 
     this.state = {
-      productId: 42366, // REMOVE HARD-CODE
-      styleId: 253620, // REMOVE HARD-CODE
+      productId: this.props.currentProduct.id,
+      styleId: '',
       selectedStyle: {},
       product: {},
       styles: [],
@@ -48,12 +48,14 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() { // updates state with available styles and initializes to default style
+    console.log(this.props.currentProduct.id, this.state.selectedStyle.style_id)
     Promise.all([this.getProduct(), this.getStyles()])
     .then(response => {
       let selected = {};
       for (let i = 0; i < response[1].data.length; i++) {
         if (response[1].data[i]['default?']) {
           selected = response[1].data[i];
+          console.log(selected)
           break;
         }
       }
@@ -63,6 +65,7 @@ class ProductDetail extends React.Component {
           product: response[0].data,
           styles: response[1].data,
           selectedStyle: selected,
+          styleId: selected.style_id,
           currentPhoto: selected.photos[this.state.currentPhotoIndex].url
         }
       )
