@@ -24,7 +24,8 @@ class ProductDetail extends React.Component {
       selectedStyle: {},
       product: {},
       styles: [],
-      expandedView: false
+      expandedView: false,
+      currentPhoto: "" // remove hard-code
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
@@ -89,9 +90,10 @@ class ProductDetail extends React.Component {
     }
   }
 
-  renderExpandedView = () => {
+  renderExpandedView = (e) => {
     this.setState({
-      expandedView: true
+      expandedView: true,
+      currentPhoto: e.target.children[0].currentSrc
     })
   }
 
@@ -99,6 +101,10 @@ class ProductDetail extends React.Component {
     this.setState({
       expandedView: false
     })
+  }
+
+  showClickLog = () => {
+    console.log("Click Log:", this.props.clickLog)
   }
 
   render() {
@@ -110,7 +116,7 @@ class ProductDetail extends React.Component {
             <div onClick={this.renderDefaultView}>
               <Zoom
                 id="imgGal"
-                img="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                img={this.state.currentPhoto}
                 zoomScale={1.5}
                 width={800}
                 height={800} />
@@ -142,6 +148,7 @@ class ProductDetail extends React.Component {
           </div>
           <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
           <AddToCart skus={this.state.selectedStyle.skus} />
+          <button onClick={this.showClickLog} >Dev Button to Show Click Log</button>
         </div>
       </div>
     )
