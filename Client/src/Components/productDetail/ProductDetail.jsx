@@ -48,14 +48,12 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() { // updates state with available styles and initializes to default style
-    console.log(this.props.currentProduct.id, this.state.selectedStyle.style_id)
     Promise.all([this.getProduct(), this.getStyles()])
     .then(response => {
       let selected = {};
       for (let i = 0; i < response[1].data.length; i++) {
         if (response[1].data[i]['default?']) {
           selected = response[1].data[i];
-          console.log(selected)
           break;
         }
       }
