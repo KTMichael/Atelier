@@ -4,20 +4,11 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 class ImageGallery extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            expandedView: false,
-            photos: []
-        }
-
-        this.renderImages = this.renderImages.bind(this);
-    }
 
     renderImages() {
         if (this.props.photos) {
             return this.props.photos.map((x, index) => {
-                return <div onClick={this.props.renderExpandedView} key={`Product Image at index: ${index}`}>
+                return <div style={{cursor: 'zoom-in'}}  key={`Product Image at index: ${index}`}>
                          <img style={{height: 'auto', width: '80%'}} src={x.url} />
                        </div>
             })
@@ -28,24 +19,12 @@ class ImageGallery extends React.Component {
         return (
             <div id="imgGal" className="productDetailTier2">
                 <h1>My Image Gallery</h1>
-                <Carousel transitionTime="500">
-                    {this.renderImages()}
-                </Carousel>
+                    <Carousel onClickItem={(index, item) => this.props.renderExpandedView(index, item.props.children.props.src)} selectedItem={this.props.currentPhotoIndex} transitionTime="500">
+                        {this.renderImages()}
+                    </Carousel>
             </div>
         )
     }
 }
 
 export default ImageGallery;
-
-
-// keep track of photo index and make default when new style is chosen
-// hovering over image should turn mouse into magnifying glass
-//   and a click should go to expanded view
-
-// expanded view should span the entire screen
-// will have icons to toggle between images, but NO thumbnails
-// a click on expanded view will zoom 2.5x
-// mouse should be a + symbol when hovering over image
-// once clicked and zoomed, mouse should change to - symbol
-// user should be able to pan across entirety of photo showing zoomed in version as the cursor is moved

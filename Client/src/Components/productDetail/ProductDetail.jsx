@@ -25,7 +25,8 @@ class ProductDetail extends React.Component {
       product: {},
       styles: [],
       expandedView: false,
-      currentPhoto: "" // remove hard-code
+      currentPhoto: "",
+      currentPhotoIndex: 0
     }
     this.getProduct = this.getProduct.bind(this);
     this.getStyles = this.getStyles.bind(this);
@@ -90,10 +91,11 @@ class ProductDetail extends React.Component {
     }
   }
 
-  renderExpandedView = (e) => {
+  renderExpandedView = (index, url) => {
     this.setState({
       expandedView: true,
-      currentPhoto: e.target.children[0].currentSrc
+      currentPhoto: url,
+      currentPhotoIndex: index
     })
   }
 
@@ -113,14 +115,14 @@ class ProductDetail extends React.Component {
       <div onClick={incrementCount} id='ProductDetail'>
 
         {this.state.expandedView ?
-            <div onClick={this.renderDefaultView}>
+            <div style={{cursor: 'zoom-out'}} onClick={this.renderDefaultView}>
               <Zoom
                 id="imgGal"
                 img={this.state.currentPhoto}
                 zoomScale={1.5}
                 width={800}
                 height={800} />
-            </div> : <ImageGallery renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
+            </div> : <ImageGallery currentPhotoIndex={this.state.currentPhotoIndex} renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
         }
 
         <div id="product_info" className="productDetailTier2">
