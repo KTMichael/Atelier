@@ -176,10 +176,39 @@ body {
 
   .select_size {
     margin-left: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: rgb(60, 75, 80);
+    text-decoration: underline;
   }
 
   .select_quantity {
     margin-left: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: rgb(60, 75, 80);
+    text-decoration: underline;
   }
 
   .socialMediaButtonContainer {
@@ -194,10 +223,23 @@ body {
   }
 
 
+.add_item {
+font-size: 20px;
+font-weight: bolder;
+color: white;
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+align-items: center;
+height: auto;
+width: auto;
+border-style: solid;
+border-width: 3px;
+border-radius: 5px;
+border-color: transparent;
+background-color: transparent;
+text-decoration: underline;
+}
 
-  /* .product_category{
-    font-size: 1vw;
-  } */
 
   .star-container {
   background-color: transparent;
@@ -433,13 +475,13 @@ body {
   margin: 10px;
 }
 #sortReviewsBy {
-  font-size: 30px;
+  font-size: 20px;
   float: left;
   padding: 5px;
 }
 
 .reviewSort {
-  font-size: 30px;
+  font-size: 20px;
 font-weight: bolder;
 color: white;
 font-family: 'Ubuntu', sans-serif;
@@ -467,7 +509,7 @@ color: white;
 font-family: 'Ubuntu', sans-serif;
 text-align: center;
 align-items: center;
-height: 95%;
+height: 80%;
 width: auto;
 padding: 1%;
 overflow: scroll;
@@ -477,6 +519,7 @@ border-width: 1px;
 border-radius: 5px;
 border-color: white;
 }
+
 .RForm, .Form{
 background-color: rgb(60, 75, 80);
 font-size: 1.5vw;
@@ -529,6 +572,7 @@ border-color: red;
   justify-content: space-evenly;
   max-width: 100%;
   height: auto;
+
 }
 
 #thumbnailsRR {
@@ -544,7 +588,7 @@ border-color: red;
 .btn{
 font-size: 20px;
 font-weight: bolder;
-color: rgb(16, 24, 66);
+color: black;
 font-family: 'Ubuntu', sans-serif;
 text-align: center;
 align-items: center;
@@ -553,10 +597,10 @@ width: auto;
 margin: 15px;
 padding: 15px;
 border-style: solid;
-border-width: 1px;
+border-width: 3px;
 border-radius: 5px;
 border-color: black;
-background-color: white;
+background-color: rgb(248,248,255);
 }
 
 .uploadPhoto{
@@ -571,7 +615,7 @@ width: auto;
 margin: 5px;
 padding: 5px;
 border-style: solid;
-border-width: 1px;
+border-width: 3px;
 border-radius: 5px;
 border-color: black;
 background-color: white;
@@ -595,11 +639,13 @@ border-Spacing: .5em;
 
 .sumBody{
   font-size: 1vw;
+  margin-bottom: 20px;
 }
 
 .revSum {
   font-weight: bolder;
   font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .displayedFilters {

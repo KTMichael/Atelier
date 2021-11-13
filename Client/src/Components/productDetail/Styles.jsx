@@ -3,17 +3,6 @@ import { Cachet } from 'react-icons/fa';
 import Style from './Style.jsx';
 
 class Styles extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
-  }
-
-  handleMouseover () {
-
-  }
-
   render() {
     return (
       <div className="thumbnail_rows_container">
