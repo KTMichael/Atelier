@@ -310,7 +310,7 @@ body {
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(32, 33, 34);
   font-family: 'Ubuntu', sans-serif;
 }
 
