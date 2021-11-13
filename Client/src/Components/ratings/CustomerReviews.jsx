@@ -10,7 +10,7 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
   const [count, setCount] = useState(0);
   const [userReviews, setUserReviews] = useState([]);
   const [filteredReviewsByStar, setFilteredReviewsByStar] = useState([]);
-  const [showingReviews, setShowingReviews,] = useState(2);
+  const [showingReviews, setShowingReviews] = useState(2);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [filter, setFilter] = useState(null);
 
@@ -26,7 +26,7 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
 
   useEffect(() => {
     if (productId !== 0) {
-      axios.get(`/reviews`, { params: { product_id: productId } })
+      axios.get(`/reviews/`, { params: { product_id: productId, count: 100 } })
         .then(response => {
           setUserReviews(response.data.results);
         })
@@ -119,11 +119,13 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
     setShowingReviews(showingReviews + 2)
   }
 
-
+  const LessReviews = (event) => {
+    setShowingReviews(2)
+  }
 
   return (
     <div id='CustomerReviews' >
-      <div>
+      <div >
         <div id="sortReviewsBy">
           <label>  {`${count} reviews, sorted by`} </label>
           <select className="reviewSort" onChange={onFilterChange}>
@@ -134,15 +136,18 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
           </select>
         </div>
         <br /> <br />
-        <div>
+        <div style={{ marginTop: '60px' }} className="revs">
           {displayReviews()}
         </div>
         <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
           <div id="btn">
+            {showingReviews < userReviews.length ?
             <button className="btn" onClick={(event) => {
               MoreReviews(event)
-              console.log('clicked');
             }}>MORE REVIEWS</button>
+          : <button className="btn" style={{ display: 'flex', flexDirection: 'row' }} onClick={(event) => {
+            LessReviews(event)
+          }}>SHOW LESS</button>}
           </div>
           <ReviewForm productId={productId} productName={productName} />
         </div>

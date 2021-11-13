@@ -17,12 +17,16 @@ function QA(props) {
   }, [])
 
   return (
-    <div id='QA'>
-      <h1>Questions & Answers</h1>
-      <QuestionSearch value={search} change={setSearchText} />
-      <QuestionList questions={questionArr} />
-      <MoreQuestionsButton />
-      <AddQuestionButton />
+    <div>
+      <div id="ComponentTitle">
+        <h1>Questions & Answers</h1>
+      </div>
+      <div id='QA'>
+        <QuestionSearch value={search} change={setSearchText} />
+        <QuestionList questions={questionArr} />
+        <MoreQuestionsButton />
+        <AddQuestionButton />
+      </div>
     </div>
   )
 }

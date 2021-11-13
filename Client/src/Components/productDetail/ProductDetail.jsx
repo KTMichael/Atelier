@@ -10,7 +10,8 @@ import {
   PinterestShareButton,
   PinterestIcon,
   TwitterShareButton,
-  TwitterIcon } from 'react-share';
+  TwitterIcon
+} from 'react-share';
 import withCounter from './withCounter.jsx';
 import Zoom from 'react-img-zoom';
 
@@ -49,37 +50,37 @@ class ProductDetail extends React.Component {
 
   componentDidMount() { // updates state with available styles and initializes to default style
     Promise.all([this.getProduct(), this.getStyles()])
-    .then(response => {
-      let selected = {};
-      for (let i = 0; i < response[1].data.length; i++) {
-        if (response[1].data[i]['default?']) {
-          selected = response[1].data[i];
-          break;
+      .then(response => {
+        let selected = {};
+        for (let i = 0; i < response[1].data.length; i++) {
+          if (response[1].data[i]['default?']) {
+            selected = response[1].data[i];
+            break;
+          }
         }
-      }
 
-      this.setState(
-        {
-          product: response[0].data,
-          styles: response[1].data,
-          selectedStyle: selected,
-          styleId: selected.style_id,
-          currentPhoto: selected.photos[this.state.currentPhotoIndex].url
-        }
-      )
-    });
+        this.setState(
+          {
+            product: response[0].data,
+            styles: response[1].data,
+            selectedStyle: selected,
+            styleId: selected.style_id,
+            currentPhoto: selected.photos[this.state.currentPhotoIndex].url
+          }
+        )
+      });
   }
 
-  handleChangeStyle (e) { // updates selected style when thumbnail is clicked
+  handleChangeStyle(e) { // updates selected style when thumbnail is clicked
     var newStyle = this.state.styles[e.target.dataset.index]
     this.setState({
       selectedStyle: newStyle
     })
   }
 
-  price () { // sets price to be displayed
+  price() { // sets price to be displayed
     let onSale = !!this.state.selectedStyle.sale_price
-    if(onSale) {
+    if (onSale) {
       return (
         <div className="overview_price">
           <span id="on_sale">${this.state.selectedStyle.original_price} </span>
@@ -123,14 +124,14 @@ class ProductDetail extends React.Component {
       <div onClick={incrementCount} id='ProductDetail'>
 
         {this.state.expandedView ?
-            <div style={{cursor: 'zoom-out'}} onClick={this.renderDefaultView}>
-              <Zoom
-                id="imgGal"
-                img={this.state.currentPhoto}
-                zoomScale={1.5}
-                width={800}
-                height={800} />
-            </div> : <ImageGallery title={this.state.product.name} changeCurrentPhoto={this.changeCurrentPhoto} currentPhotoIndex={this.state.currentPhotoIndex} renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
+          <div style={{ cursor: 'zoom-out' }} onClick={this.renderDefaultView}>
+            <Zoom
+              id="imgGal"
+              img={this.state.currentPhoto}
+              zoomScale={1.5}
+              width={800}
+              height={800} />
+          </div> : <ImageGallery title={this.state.product.name} changeCurrentPhoto={this.changeCurrentPhoto} currentPhotoIndex={this.state.currentPhotoIndex} renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
         }
 
         <div id="product_info" className="productDetailTier2">
@@ -142,16 +143,16 @@ class ProductDetail extends React.Component {
           <div className='socialMediaButtonContainer'>
             <FacebookShareButton
               url={window.location.href} >
-              <FacebookIcon size={24} round={true} className='socialMediaButton'/>
+              <FacebookIcon size={24} round={true} className='socialMediaButton' />
             </FacebookShareButton>
             <PinterestShareButton
               url={'https://www.geeksforgeeks.org/how-to-set-space-between-the-flexbox/'}
               media={this.state.currentPhoto}>
-              <PinterestIcon size={24} round={true} className='socialMediaButton'/>
+              <PinterestIcon size={24} round={true} className='socialMediaButton' />
             </PinterestShareButton>
             <TwitterShareButton
               url={window.location.href}>
-              <TwitterIcon size={24} round={true} className='socialMediaButton'/>
+              <TwitterIcon size={24} round={true} className='socialMediaButton' />
             </TwitterShareButton>
           </div>
           <Styles handleChangeStyle={this.handleChangeStyle} options={this.state.styles} selectedStyle={this.state.selectedStyle} />
