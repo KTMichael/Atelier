@@ -56,7 +56,8 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 })
 
 app.put('/qa/questions/:question_id/report', (req, res) => {
-  api.reportQuestion(req.params.answer_id, (err) => {
+  console.log('Got a reported question');
+  api.reportQuestion(req.params.question_id, (err) => {
     if (!err) {
       res.sendStatus(204);
     } else {
