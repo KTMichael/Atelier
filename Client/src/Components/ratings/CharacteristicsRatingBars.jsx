@@ -6,10 +6,12 @@ import { char, ratingCnt } from './OverallRatings.jsx';
 const CharacteristicsRatingBars = ({ char, ratingCnt }) => {
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',   flexdirection: 'row', padding: '-45px', margin:'-10px'}}>
-      <span style={{ display: 'flex', justifyContent: 'left', marginBottom:'-35px' , marginLeft:'30px' }}>{`${char[0]}`}</span>
-      <div style={{ height: 18, width: '50%', backgroundColor: "grey", borderRadius: 50, margin: 50 }}>
-        <div style={{ height: '100%', width: `${char[1] / 5 * 100}%`, backgroundColor: 'grey', borderRadius: 'inherit', textAlign: 'right' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexdirection: 'row', padding: '-45px', margin: '-10px' }}>
+      {char[0] === 'Fit' ?
+        <span style={{ display: 'flex', justifyContent: 'left', marginBottom: '-35px', paddingLeft: '90px' }}>{`${char[0]}`}</span>
+        : <span style={{ display: 'flex', justifyContent: 'left', marginBottom: '-35px', paddingLeft: '60px' }}>{`${char[0]}`}</span>}
+      <div style={{ height: 20, width: '300px', backgroundColor: "grey", borderRadius: 50, margin: 60 }}>
+        <div style={{ height: '100%', width: `${char[1] / 5 * 100}%`, backgroundColor: 'grey', borderRadius: 50, }}>
           <FaArrowAltCircleDown />
         </div>
         {char[0] === 'Fit' ?

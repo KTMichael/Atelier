@@ -21,7 +21,6 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
     setProductName(allProductsData.name);
     axios.get(`/reviews/meta/`, { params: { product_id: productId } })
       .then(response => {
-        console.log('data', response.data)
         setOverallCharacteristics(response.data.characteristics)
         setOverallRecommended(response.data.recommended)
         setOverallStarRating(response.data.ratings)
@@ -33,7 +32,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
 
   return (
     <div id="RatingsandReviews" >
-      <div id="RRTitle">
+      <div id="ComponentTitle">
         <h1> Ratings & Reviews</h1>
       </div>
       <div id="RRComp">

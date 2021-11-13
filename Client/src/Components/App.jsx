@@ -12,7 +12,6 @@ const App = () => {
   useEffect(() => {
     axios.get('/products')
       .then(response => {
-        console.log(response.data)
         setAllProductsData(response.data[3])
         setCurrentProduct(response.data[3])
       })

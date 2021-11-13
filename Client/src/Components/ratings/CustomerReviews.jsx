@@ -28,7 +28,6 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
     if (productId !== 0) {
       axios.get(`/reviews/`, { params: { product_id: productId, count: 100 } })
         .then(response => {
-          console.log(response.data.results)
           setUserReviews(response.data.results);
         })
         .catch(error => console.log(error))
