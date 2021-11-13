@@ -6,7 +6,7 @@ import AddQuestionButton from './AddQuestionButton.jsx';
 function QA(props) {
   const [questionArr, setQuestionArr] = useState([]);
 
-  let comparitor = (a, b) => { return a.question_helpfulness - b.question_helpfulness };
+  let comparitor = (a, b) => { return b.question_helpfulness - a.question_helpfulness };
 
   useEffect(() => {
     console.log('using effect');
