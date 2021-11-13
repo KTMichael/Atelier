@@ -7,13 +7,13 @@ import axios from 'axios';
 
 const App = () => {
   const [allProductsData, setAllProductsData] = useState([])
-  const [productId, setProductId] = useState(0);
+  const [currentProduct, setCurrentProduct] = useState({});
 
   useEffect(() => {
     axios.get('/products')
       .then(response => {
         setAllProductsData(response.data[3])
-        setProductId(response.data[3].id)
+        setCurrentProduct(response.data[3])
       })
       .catch(error => console.log(error))
   }, []);
@@ -21,21 +21,21 @@ const App = () => {
     <>
       <div id='Title'>Atelier</div>
       <div id="ProductDetailMain" className='MainComponent'>
-        {productId !== 0 &&
-          <ProductDetail productId={productId} allProductsData={allProductsData} />
+        {currentProduct.id &&
+          <ProductDetail currentProduct={currentProduct}/>
         }
       </div>
       <div id="MainRelatedFeatureMain" className='MainComponent'>
-        <MainRelatedFeature productId={productId} allProductsData={allProductsData} />
+        <MainRelatedFeature productId={currentProduct.id} allProductsData={allProductsData} />
       </div>
       <div id="QAMain" className='MainComponent'>
-        {productId !== 0 &&
-          <QA productId={productId} allProductsData={allProductsData} />
+        {currentProduct.id &&
+          <QA productId={currentProduct.id} allProductsData={allProductsData} />
         }
       </div>
       <div id="RatingsandReviewsMain">
-        {productId !== 0 &&
-          <RatingsandReviews productId={productId} allProductsData={allProductsData} />
+        {currentProduct.id &&
+          <RatingsandReviews productId={currentProduct.id} allProductsData={allProductsData} />
         }
       </div>
     </>
