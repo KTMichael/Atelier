@@ -63,12 +63,22 @@ body {
   flex-direction: row;
 }
 
+#ProductDetail {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+}
+
+.productDetailTier2 {
+  width: 48%;
+}
 
 #imgGal {
   float: left;
   flex-flow: wrap;
   width: 60%;
-  height: 95%;
+  max-width: 400px;
+  height: auto;
   margin: 20px;
   padding: 5px;
   border-style: solid;
@@ -76,6 +86,10 @@ body {
   border-radius: 5px;
   border-color: black;
   background-color: rgb(60, 75, 80);
+}
+
+.carousel-slider {
+  height: 600px;
 }
 
 
@@ -112,6 +126,14 @@ body {
     cursor: pointer;
     object-fit: contain;
 
+  }
+
+  .h-128px {
+    height: 128 px;
+  }
+
+  .full100 {
+    height: 50%;
   }
 
   .thumbnail {
@@ -310,7 +332,7 @@ body {
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
-  background-color: rgb(32, 33, 34)
+  background-color: rgb(32, 33, 34);
   font-family: 'Ubuntu', sans-serif;
 }
 

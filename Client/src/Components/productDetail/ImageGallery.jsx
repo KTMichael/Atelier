@@ -18,7 +18,7 @@ class ImageGallery extends React.Component {
         if (this.props.photos) {
             return this.props.photos.map((x, index) => {
                 return <div onClick={this.props.renderExpandedView} key={`Product Image at index: ${index}`}>
-                         <img src={x.url} />
+                         <img style={{height: 'auto', width: '80%'}} src={x.url} />
                        </div>
             })
         }
@@ -26,7 +26,7 @@ class ImageGallery extends React.Component {
 
     render() {
         return (
-            <div id="imgGal">
+            <div id="imgGal" className="productDetailTier2">
                 <h1>My Image Gallery</h1>
                 <Carousel transitionTime="500">
                     {this.renderImages()}

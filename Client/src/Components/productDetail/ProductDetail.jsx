@@ -111,13 +111,13 @@ class ProductDetail extends React.Component {
               <Zoom
                 id="imgGal"
                 img="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-                zoomScale={3}
+                zoomScale={1.5}
                 width={800}
                 height={800} />
             </div> : <ImageGallery renderExpandedView={this.renderExpandedView} photos={this.state.selectedStyle.photos} />
         }
 
-        <div id="product_info">
+        <div id="product_info" className="productDetailTier2">
           <h6 className="product_category">{this.state.product.category}</h6>
           <h3 className="product_title">{this.state.product.name}</h3>
           {this.price()}
