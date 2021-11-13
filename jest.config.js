@@ -5,12 +5,14 @@
 
 let path = require('path');
 module.exports = {
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
-
-
-
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|less)$": "identity-obj-proxy"
+  },
 
   // Stop running tests after `n` failures
   // bail: 0,
