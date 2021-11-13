@@ -12,20 +12,28 @@ body {
 
 #app {
   color: white;
-  height: 100%;
-  width: 100%;
-  padding: 10;
-  margin: 5;
+  height: auto;
+  min-width: 1200px;
+  max-width:1200px;
+  margin: auto;
+  padding: 10px;
 }
 
 .MainComponent {
-  padding: 5px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: black;
   font-family: 'Ubuntu', sans-serif;
+  height: auto;
+  min-width: 100%;
+  max-width: 100%;
 }
+
+#ComponentTitle {
+  font-size: 15px;
+  width: auto;
+  padding: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(32, 33, 34)
+}
+
 
 /*Popup styling*/
 .popup-content {
@@ -52,34 +60,39 @@ body {
 /* ---------------- Product Detail ------------------- */
 #Title {
   font-family: 'Major Mono Display', monospace;
-  font-size: 7vw;
-  margin-left: 30%;
-  color:whitesmoke
+  font-size: 150px;
+  color:whitesmoke;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 #ProductDetailMain {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
+  margin: 1px;
 }
 
 #ProductDetail {
   display: flex;
-  flex-flow: wrap;
   flex-direction: row;
+  justify-content: space-between;
+  margin:auto;
 }
 
 .productDetailTier2 {
-  width: 48%;
+  width: 75%;
+  height: auto;
 }
 
 #imgGal {
   float: left;
   flex-flow: wrap;
-  width: 60%;
-  max-width: 400px;
+  width: auto;
   height: auto;
-  margin: 20px;
+  max-width: 600px;
+  max-height: 1000px;
+  margin: 6px;
   padding: 5px;
   border-style: solid;
   border-width: 1px;
@@ -95,10 +108,11 @@ body {
 
 #product_info {
   float: right;
-  width: 30%;
-  height: 95%;
-  margin: 20px;
-  padding: 5px;
+  width: auto;
+  height: auto;
+  max-height: 1000px;
+  margin: 6px;
+  padding: 10px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
@@ -162,10 +176,39 @@ body {
 
   .select_size {
     margin-left: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: rgb(60, 75, 80);
+    text-decoration: underline;
   }
 
   .select_quantity {
     margin-left: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: rgb(60, 75, 80);
+    text-decoration: underline;
   }
 
   .socialMediaButtonContainer {
@@ -180,19 +223,34 @@ body {
   }
 
 
+.add_item {
+font-size: 20px;
+font-weight: bolder;
+color: white;
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+align-items: center;
+height: auto;
+width: auto;
+border-style: solid;
+border-width: 3px;
+border-radius: 5px;
+border-color: transparent;
+background-color: transparent;
+text-decoration: underline;
+}
 
-  .product_category{
-    font-size: 1vw;
-  }
 
   .star-container {
   background-color: transparent;
-
   }
+
   /* ---------------- Related Features ------------------- */
 
   #MainRelatedFeatureMain {
-
+    width: auto;
+    height: auto;
+    padding: 2px;
   }
 
   #RelatedFeature {
@@ -210,7 +268,9 @@ body {
 
   /* ---------------- Questions and Answers------------------- */
 #QAMain {
-
+  width: auto;
+  height: auto;
+  margin: 3px;
 }
 
 #QA {
@@ -329,14 +389,15 @@ body {
 
   /* ---------------- Ratings and Reviews------------------- */
 #RatingsandReviews {
-  margin: 10px;
-  padding: 10px;
   display: flex;
   flex-flow: wrap;
   flex-direction: column;
   background-color: rgb(32, 33, 34);
   font-family: 'Ubuntu', sans-serif;
+  width: auto;
+  height: auto;
 }
+
 
 #RRComp {
   display: flex;
@@ -346,19 +407,11 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-#RRTitle {
-  font-size: 1vw;
-  width: auto;
-  height: 100%;
-  padding: 10px;
-  font-family: 'Ubuntu', sans-serif;
-  background-color: rgb(32, 33, 34)
-}
 
 #OverallRatings {
   align-items: center;
   text-align: center;
-  height: 50%;
+  height: auto;
   width: 50%;
   margin: 8px;
   padding: 5px;
@@ -373,31 +426,49 @@ body {
 #OverallRatingsMain {
   align-items: center;
   text-align: center;
-  height: auto;
+  max-height: auto;
   width: auto;
   margin: 8px;
   padding: 5px;
-
 }
 
 #ratingInt{
-  font-size: 100px;
+  font-size: 80px;
+  margin-top: 10px;
 }
 
 .recTitle{
-  font-size: 1.25vw;
+  font-size: 20px;
+  margin-top: -50px;
+  margin-bottom: 30px;
 }
+
+.OverallStarRatingBars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-left: 60px;
+  margin-top: -50px;
+}
+
 #CustomerReviewsMain {
   align-items: center;
   height: 100%;
   width: 100%;
-  margin: 5px;
+  margin: 7px;
   padding: 5px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
   background-color: rgb(60, 75, 80);
+
+}
+.revs {
+  overflow: scroll;
+  max-height: 1060px;
+  width: auto;
 }
 #customerReviewsTitle{
   text-align: left;
@@ -406,13 +477,13 @@ body {
   margin: 10px;
 }
 #sortReviewsBy {
-  font-size: 1.5vw;
+  font-size: 20px;
   float: left;
   padding: 5px;
 }
 
 .reviewSort {
-  font-size: 1.5vw;
+  font-size: 20px;
 font-weight: bolder;
 color: white;
 font-family: 'Ubuntu', sans-serif;
@@ -431,6 +502,7 @@ border-radius: 5px;
   width: auto;
   margin: 5px;
   padding: 5px;
+
 }
 
 .ReviewForm-content {
@@ -439,7 +511,7 @@ color: white;
 font-family: 'Ubuntu', sans-serif;
 text-align: center;
 align-items: center;
-height: 95%;
+height: 80%;
 width: auto;
 padding: 1%;
 overflow: scroll;
@@ -449,6 +521,7 @@ border-width: 1px;
 border-radius: 5px;
 border-color: white;
 }
+
 .RForm, .Form{
 background-color: rgb(60, 75, 80);
 font-size: 1.5vw;
@@ -501,6 +574,7 @@ border-color: red;
   justify-content: space-evenly;
   max-width: 100%;
   height: auto;
+
 }
 
 #thumbnailsRR {
@@ -514,9 +588,9 @@ border-color: red;
 
 
 .btn{
-font-size: 1vw;
+font-size: 20px;
 font-weight: bolder;
-color: rgb(16, 24, 66);
+color: black;
 font-family: 'Ubuntu', sans-serif;
 text-align: center;
 align-items: center;
@@ -525,10 +599,10 @@ width: auto;
 margin: 15px;
 padding: 15px;
 border-style: solid;
-border-width: 1px;
+border-width: 3px;
 border-radius: 5px;
 border-color: black;
-background-color: white;
+background-color: rgb(248,248,255);
 }
 
 .uploadPhoto{
@@ -543,7 +617,7 @@ width: auto;
 margin: 5px;
 padding: 5px;
 border-style: solid;
-border-width: 1px;
+border-width: 3px;
 border-radius: 5px;
 border-color: black;
 background-color: white;
@@ -567,11 +641,13 @@ border-Spacing: .5em;
 
 .sumBody{
   font-size: 1vw;
+  margin-bottom: 20px;
 }
 
 .revSum {
   font-weight: bolder;
-  font-size: 1.5vw;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .displayedFilters {
@@ -595,8 +671,8 @@ border-Spacing: .5em;
   text-decoration: underline;
   cursor: pointer;
   color: white;
-  background-color: rgb(32, 33, 34);
-  border-color: rgb(32, 33, 34);
+  background-color: rgb(60, 75, 80);
+  border-color: rgb(60, 75, 80);
 }
 
 .showMore {
@@ -605,27 +681,27 @@ border-Spacing: .5em;
   color: white;
   background-color: rgb(32, 33, 34);
   border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: rgb(32, 33, 34);
 
 }
 
 .photos {
   display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-margin-left: 10px;
-border: none;
-border-radius: 4px;
-background: white;
-display: block;
-object-fit: contain;
-width: 5%;
-max-height: 69px;
-min-height: 0;
-transition-duration: 0.3s;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  display: block;
+  object-fit: contain;
+  width: 5%;
+  max-height: 69px;
+  min-height: 0;
+  transition-duration: 0.3s;
 }
 
 

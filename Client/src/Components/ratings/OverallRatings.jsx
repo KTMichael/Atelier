@@ -66,14 +66,14 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
     }
     if ( numFilters >= 2 ) {
       return <ul>
-        <label className="displayedFilterTitle" >Filters</label>
+        <label>Filters</label>
         {filters.stars.map(star => {
-          return <li className="displayedFilters" >{star} Star</li>
+          return <li>{star} Star</li>
         })}
         {filters.sort !== null &&
-          <li className="displayedFilters" >{filters.sort}</li>
+          <li>{filters.sort}</li>
         }
-        <button className="uploadPhoto" onClick={clearFilters}>Clear Filters</button>
+        <button onClick={clearFilters}>Clear Filters</button>
       </ul>
     }
   }
@@ -85,7 +85,6 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <h1 id="ratingInt">{rating === 0 ? rating : rating.toFixed(1)}</h1>
-              {/* <span> {starArray}</span> */}
               <StarRatings
                 rating={rating || 0}
                 starRatedColor='gold'
@@ -102,7 +101,7 @@ const OverallRatings = ({ overallStarRating, overallCharacteristics, overallReco
               {ratingArray.map((item, idx) => (
                 <StarRatingsBar key={idx} item={item} ratingCnt={ratingCnt} star={idx + 1} setStarFilter={setStarFilter} setFilters={setFilters}/>
               ))}
-            </div >
+            </div>
             {displayFilters()}
             {char.map((char, idx) => (<CharacteristicsRatingBars char={char} key={idx} ratingCnt={ratingCnt}/>
             ))}

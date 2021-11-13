@@ -27,9 +27,9 @@ const StarRatingsBar = ({ item, ratingCnt, star, setFilters }) => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexdirection: 'row', padding: '-45px', margin: '-10px' }}>
+    <div className="OverallStarRatingBars">
       <span className="starRating" onClick={filterByStars}>{`${star} Stars`}</span>
-      <div style={{ height: 20, width: '40%', backgroundColor: "grey", borderRadius: 50, margin: 50 }}>
+      <div style={{ height: 20, width: '300px', backgroundColor: "grey", borderRadius: 50, margin: 60 }}>
         <div style={{ height: '100%', width: `${item / ratingCnt * 100}%`, backgroundColor: 'black', borderRadius: 50 }}>
         </div>
       </div>

@@ -89,8 +89,8 @@ module.exports = {
   },
 
   // Ratings and Reviews
-  getReviews: (product_id, callback) => {
-    let url = `${apiUrl}/reviews/?product_id=${product_id}`;
+  getReviews: (data, callback) => {
+    let url = `${apiUrl}/reviews/?product_id=${data.product_id}&count=${data.count}`;
     axios.get(url, config)
       .then(response => callback(null, response))
       .catch(err => callback(err));

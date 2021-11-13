@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {TOKEN} from '../../../../config.js';
+import { TOKEN } from '../../../../config.js';
 import ScrollableProductContainer from './scrollableProductContainer.jsx';
 import { testContext } from './context.js';
 
@@ -11,33 +11,37 @@ function MainRelatedFeature() {
   const productAPI = "/products/";
 
 
-  useEffect( () => {
+  useEffect(() => {
     axios.get(`${productAPI}`)
-      .then( results => {
+      .then(results => {
         setMainProduct(results.data[0].id)
         let sampleProductId = results.data[0].id;
-        axios.get(`${productAPI}${sampleProductId}/related`, { params: { id: sampleProductId }})
-          .then( results => {
+        axios.get(`${productAPI}${sampleProductId}/related`, { params: { id: sampleProductId } })
+          .then(results => {
             setRelatedProducts(results.data);
           })
       });
   }, []);
 
   return (
-    <div id='RelatedFeature'>
-      <h1>Related Products</h1>
-      <div>
-        {relatedProducts.length > 0 &&
-          <testContext.Provider value={{mainProduct, relatedProducts}}>
-            <ScrollableProductContainer  />
-          </testContext.Provider>
-        }
+    <div>
+      <div id="ComponentTitle">
+        <h1>Related Products</h1>
       </div>
-      <h1>Your Outfit</h1>
-      <div>
-        <testContext.Provider value={{mainProduct, outfits}}>
-          <ScrollableProductContainer  />
-        </testContext.Provider>
+      <div id='RelatedFeature'>
+        <div>
+          {relatedProducts.length > 0 &&
+            <testContext.Provider value={{ mainProduct, relatedProducts }}>
+              <ScrollableProductContainer />
+            </testContext.Provider>
+          }
+        </div>
+        <h1>Your Outfit</h1>
+        <div>
+          <testContext.Provider value={{ mainProduct, outfits }}>
+            <ScrollableProductContainer />
+          </testContext.Provider>
+        </div>
       </div>
     </div>
   );

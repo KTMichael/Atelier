@@ -45,7 +45,7 @@ class Question extends React.Component {
 
   handleQuestionReport() {
     if (!this.state.markedReport) {
-      axios.put(window.location.protocol + '//' + window.location.host + `/qa/answers/${this.props.data.question_id}/report`)
+      axios.put(`/qa/questions/${this.props.data.question_id}/report`)
         .then(() => {
           this.setState({ markedReport: true, reportText: 'Reported' });
         });

@@ -15,11 +15,15 @@ function QA(props) {
   }, [])
 
   return (
-    <div id='QA'>
-      <h1>Questions & Answers</h1>
-      {questionArr.length > 0 && <QuestionList questions={questionArr} />}
-      <AddQuestionButton />
-    </div>
+    <>
+      <div id="ComponentTitle">
+        <h1>Questions & Answers</h1>
+      </div>
+      <div id='QA'>
+        {questionArr.length > 0 && <QuestionList questions={questionArr} />}
+        <AddQuestionButton />
+      </div>
+    </>
   )
 }
 

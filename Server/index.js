@@ -56,7 +56,8 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 })
 
 app.put('/qa/questions/:question_id/report', (req, res) => {
-  api.reportQuestion(req.params.answer_id, (err) => {
+  console.log('Got a reported question');
+  api.reportQuestion(req.params.question_id, (err) => {
     if (!err) {
       res.sendStatus(204);
     } else {
@@ -146,7 +147,7 @@ app.get('/reviews/meta/', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
-  api.getReviews(req.query.product_id, (error, results) => {
+  api.getReviews(req.query, (error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {

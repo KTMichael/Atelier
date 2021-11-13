@@ -215,7 +215,7 @@ const ReviewForm = ({ productId, productName }) => {
           <input type="radio" value="true" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> Yes
           <input type="radio" value="false" name="recommend" onChange={(event) => setRecommended(event.target.value)} /> No <br /> <br />
           <h2>Characteristics </h2>
-          <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw' }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
+          <Popup className="charPop" trigger={<span style={{ backgroundColor: 'white', color: 'black', padding: '5px', fontSize: '.75vw', border: 'solid', borderRadius: '5px'  }}> Click Here To See Characteristic Value Explanation </span>} position="right" nested>
             <table className="charTable">
               <tr >
                 <th></th>
@@ -379,10 +379,9 @@ const ReviewForm = ({ productId, productName }) => {
           <p>For authentication reasons, you will not be emailed.</p>
 
           <button className="btn" type="submit" onClick={(event => handleSubmit(event))} > Submit </button>
-
-        </form >
-        <br />   <br />
-        <div >
+          { ratingError  ? <span>Error! Please scroll down</span> : <div style={{ clear: 'none' }} />}
+          <br />   <br />
+          <div >
           {!validForm ?
             <div id="Error">
               <h3>You must enter the following: </h3>
@@ -395,6 +394,7 @@ const ReviewForm = ({ productId, productName }) => {
                 <div> {characteristicsError} </div>
               </div></div> : <div style={{ clear: 'none' }} />}
         </div>
+        </form >
       </div >
     )
   }

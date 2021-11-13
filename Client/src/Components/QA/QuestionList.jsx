@@ -5,6 +5,11 @@ function QuestionList({ questions }) {
   const [listCount, setListCount] = useState(2);
   const [search, setSearchText] = useState('');
 
+  useEffect(() => {
+    let list = document.getElementById('questionList');
+    list.scrollTop = list.scrollHeight;
+  })
+
   let renderCount = 0;
 
   function renderListCount(arr, count, callback) {
@@ -38,7 +43,6 @@ function QuestionList({ questions }) {
 
   return (
     <>
-      {console.log('QuestionList', 'listCount:', listCount, 'questions:', questions)}
       <input type='text' id='questionSearch' value={search} onChange={(e) => setSearchText(e.target.value)}/>
 
       <div id='questionList'>

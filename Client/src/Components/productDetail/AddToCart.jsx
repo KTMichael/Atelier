@@ -26,7 +26,7 @@ class AddToCart extends React.Component {
   }
 
   quantityOptions () {
-    var options = [<option key={'default-quantity'} >-</option>];
+    var options = [<option key={'default-quantity'} >Quantity</option>];
     if (this.state.maxQuantity > 15) {
       var displayQuantity = 15;
     } else {
@@ -98,13 +98,11 @@ class AddToCart extends React.Component {
     return (
       <div id="add_to_cart">
         <label>
-          Size:
           <select style={{cursor: 'pointer'}} onChange={this.handleSizeSelection} value={this.state.size} className="select_size">
             {this.sizeOptions()}
           </select>
         </label>
         <label>
-          Quantity:
           <select style={{cursor: 'pointer'}} onChange={this.handleQuantitySelection} value={this.state.quantity} className="select_quantity">
             {this.quantityOptions()}
           </select>

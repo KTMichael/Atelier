@@ -22,7 +22,7 @@ const App = () => {
       <div id='Title'>Atelier</div>
       <div id="ProductDetailMain" className='MainComponent'>
         {currentProduct.id &&
-          <ProductDetail currentProduct={currentProduct}/>
+          <ProductDetail currentProduct={currentProduct} />
         }
       </div>
       <div id="MainRelatedFeatureMain" className='MainComponent'>
