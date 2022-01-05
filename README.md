@@ -2,14 +2,14 @@
 ## Overview
 A complete redesign of the front-end of a single-page e-commerce web app/retail portal to modernize the site.
 ## Table of Contents
-[ Description ](Description)
+[ Description ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Description)
 Demo
 Installation
 Usage
 Team Members
 Contributing
 Roadmap
-[License](License)
+[License](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#License)
 
 ## Description
 This project was an assignment at Hack Reactor to develop and attach the front end of an e-commerce web app to an existing API and backend. The goal was to deliver a fully functional web application that met the specifications and requirements outlined by project stakeholders. 
