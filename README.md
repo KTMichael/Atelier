@@ -6,7 +6,7 @@ A complete redesign of the front-end of a single-page e-commerce web app/retail 
 - [ Demo ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Demo)
 - [ Installation ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Installation)
 - [ Usage ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Usage)
-- [ Team Members ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#TeamMembers)
+- [ Team ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Team)
 - [ Roadmap ](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#Roadmap)
 - [License](https://github.com/KTMichael/front-end-capstone-project/blob/main/README.md/#License)
 
@@ -34,7 +34,7 @@ To run app with npm, run:
 ## Usage
 Navigate to http://localhost:3000 in your browser for a demo.
 
-## Team Members
+## Team
 - Kaitlyn Gill
 - Charlie Paik
 - Edwin Baranov
