@@ -1,39 +1,37 @@
 /* STYLES COMMON TO ENTIRE APP */
 
+html,
 body {
   background-color: rgb(32, 33, 34);
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   padding: 0;
   margin: 0;
 }
 
-
-
 #app {
   color: white;
+  width: auto;
   height: auto;
-  min-width: 1200px;
-  max-width:1200px;
   margin: auto;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .MainComponent {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   height: auto;
-  min-width: 100%;
-  max-width: 100%;
+  width: 100vw;
 }
 
 #ComponentTitle {
-  font-size: 15px;
+  font-size: 0.75rem;
   width: auto;
   padding: 10px;
-  font-family: 'Ubuntu', sans-serif;
-  background-color: rgb(32, 33, 34)
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(32, 33, 34);
 }
-
 
 /*Popup styling*/
 .popup-content {
@@ -45,7 +43,7 @@ body {
 .popup-arrow {
   color: rgb(255, 255, 255);
 }
-[role='tooltip'].popup-content {
+[role="tooltip"].popup-content {
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
@@ -53,36 +51,42 @@ body {
 .popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
-[data-popup='tooltip'].popup-overlay {
+[data-popup="tooltip"].popup-overlay {
   background: transparent;
 }
 
 /* ---------------- Product Detail ------------------- */
 #Title {
-  font-family: 'Major Mono Display', monospace;
-  font-size: 150px;
-  color:whitesmoke;
+  font-family: "Major Mono Display", monospace;
+  font-size: 10vw;
+  color: whitesmoke;
   text-align: center;
   margin-bottom: 50px;
 }
 
 #ProductDetailMain {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  margin: 1px;
+  width: auto;
+  height: auto;
+  margin: 10px;
 }
 
 #ProductDetail {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin:auto;
+  margin: auto;
 }
 
 .productDetailTier2 {
-  width: 75%;
   height: auto;
+  width: 60%;
+  margin: 8px;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(60, 75, 80);
 }
 
 #imgGal {
@@ -93,7 +97,7 @@ body {
   max-width: 600px;
   max-height: 1000px;
   margin: 6px;
-  padding: 5px;
+  padding: 10px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
@@ -105,172 +109,193 @@ body {
   height: 600px;
 }
 
-
 #product_info {
   float: right;
   width: auto;
   height: auto;
   max-height: 1000px;
   margin: 6px;
-  padding: 10px;
+  padding: 20px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
   background-color: rgb(60, 75, 80);
-  }
-  .sub_component {
-    margin: 8px;
-    padding: 5px;
-  }
-
-  .thumbnail_rows_container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
-  }
-
-  .thumbnail_column_container {
-    display: flex;
-    position: relative;
-    width: 23%;
-    margin: 1%;
-    cursor: pointer;
-    object-fit: contain;
-
-  }
-
-  .h-128px {
-    height: 128 px;
-  }
-
-  .full100 {
-    height: 50%;
-  }
-
-  .thumbnail {
-    width: 100%
-  }
-
-  #add_to_cart {
-    display: flex;
-    justify-content: space-around;
-
-  }
-
-  .overview_price {
-    display: flex;
-    align-items: left;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-  }
-
-  #on_sale {
-    text-decoration: line-through;
-    color: red;
-    margin-right: 5px;
-  }
-
-  .select_size {
-    margin-left: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    color: white;
-    font-family: 'Ubuntu', sans-serif;
-    text-align: center;
-    align-items: center;
-    height: auto;
-    width: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: transparent;
-    background-color: rgb(60, 75, 80);
-    text-decoration: underline;
-  }
-
-  .select_quantity {
-    margin-left: 5px;
-    margin-left: 5px;
-    font-size: 20px;
-    font-weight: bolder;
-    color: white;
-    font-family: 'Ubuntu', sans-serif;
-    text-align: center;
-    align-items: center;
-    height: auto;
-    width: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: transparent;
-    background-color: rgb(60, 75, 80);
-    text-decoration: underline;
-  }
-
-  .socialMediaButtonContainer {
-    display: flex;
-    justify-content: right;
-    background-color: transparent;
-  }
-
-  .socialMediaButton {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-
-.add_item {
-font-size: 20px;
-font-weight: bolder;
-color: white;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: auto;
-width: auto;
-border-style: solid;
-border-width: 3px;
-border-radius: 5px;
-border-color: transparent;
-background-color: transparent;
-text-decoration: underline;
+}
+.sub_component {
+  margin: 8px;
+  padding: 5px;
 }
 
+.thumbnail_rows_container {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  flex-direction: row;
+}
 
-  .star-container {
+.thumbnail_column_container {
+  display: flex;
+  max-width: 100%;
+  margin: 1%;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.h-128px {
+  height: 128 px;
+}
+
+.full100 {
+  height: 50%;
+}
+
+.thumbnail {
+  width: 100%;
+}
+
+#add_to_cart {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
+
+.productSelect {
+  border: solid white 3px;
+  background-color: rgb(60, 75, 80);
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.25rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.cartItems {
+  font-size: 1rem;
+  text-align: left;
+}
+.overview_price {
+  display: flex;
+  align-items: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#on_sale {
+  text-decoration: line-through;
+  color: red;
+  margin-right: 5px;
+}
+
+.select_size {
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: rgb(60, 75, 80);
+}
+
+.select_quantity {
+  margin-left: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: rgb(60, 75, 80);
+}
+
+.socialMediaButtonContainer {
+  display: flex;
+  justify-content: center;
   background-color: transparent;
-  }
+  margin-top: 4rem;
+}
 
-  /* ---------------- Related Features ------------------- */
+.socialMediaButton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
-  #MainRelatedFeatureMain {
-    width: auto;
-    height: auto;
-    padding: 2px;
-  }
+.add_item {
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: transparent;
+}
 
-  #RelatedFeature {
-    margin-right: 8px;
-    margin-left: 8px;
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: black;
-    background-color: rgb(32, 33, 34)
-  }
+.star-container {
+  background-color: transparent;
+}
 
-  /* ---------------- Questions and Answers------------------- */
+/* ---------------- Related Features ------------------- */
+
+#MainRelatedFeatureMain {
+  width: auto;
+  height: auto;
+  padding: 10px;
+}
+
+#RelatedFeature {
+  margin-right: 8px;
+  margin-left: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(32, 33, 34);
+}
+
+/* ---------------- Questions and Answers------------------- */
+#q {
+  font-size: 0.75rem;
+}
+
+#questionSearch {
+  padding: 10px;
+}
+.searchbar {
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+}
+
 #QAMain {
   width: auto;
   height: auto;
   margin: 3px;
+  border-color: white;
 }
 
 #QA {
@@ -289,6 +314,7 @@ text-decoration: underline;
   justify-content: space-between;
   max-height: 100vh;
   overflow: auto;
+  font-size: 0.75rem;
 }
 
 .QAElement {
@@ -303,23 +329,13 @@ text-decoration: underline;
   margin: 5px;
 }
 
-
-
-.questionHelpful {
+.click {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.questionHelpful:hover {
-  color: #202122;
-}
-
-.questionReport {
-  text-decoration: underline;
-  cursor: pointer;
-
-}.questionReport:hover {
-  color: #202122;
+.click:hover {
+  color: #3c4b4f;
 }
 
 .answerList {
@@ -360,7 +376,7 @@ text-decoration: underline;
   display: block;
 }
 
-.addAnswer-content > form > input[type=submit] {
+.addAnswer-content > form > input[type="submit"] {
   display: inline-block;
 }
 
@@ -368,14 +384,15 @@ text-decoration: underline;
   display: inline-block;
 }
 
-.answerText, .answer {
-  background-color: rgb(32, 33, 34)
+.answerText,
+.answer {
+  background-color: rgb(32, 33, 34);
 }
 
 .addAnswer-arrow {
   color: rgb(255, 255, 255);
 }
-[role='tooltip'].addAnswer-content {
+[role="tooltip"].addAnswer-content {
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
@@ -383,188 +400,237 @@ text-decoration: underline;
 .addAnswer-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
-[data-popup='tooltip'].addAnswer-overlay {
+[data-popup="tooltip"].addAnswer-overlay {
   background: transparent;
 }
 
-  /* ---------------- Ratings and Reviews------------------- */
-#RatingsandReviews {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: column;
-  background-color: rgb(32, 33, 34);
-  font-family: 'Ubuntu', sans-serif;
+/* ---------------- Ratings and Reviews------------------- */
+.RatingsandReviews {
   width: auto;
   height: auto;
+  margin: 3px;
+  border-color: white;
+  background-color: rgb(32, 33, 34);
+  font-family: "Ubuntu", sans-serif;
 }
-
 
 #RRComp {
   display: flex;
   flex-flow: row;
   width: 100%;
   height: 100%;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
-
 
 #OverallRatings {
   align-items: center;
   text-align: center;
   height: auto;
-  width: 50%;
+  width: 60%;
   margin: 8px;
-  padding: 5px;
+  padding: 2px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
   background-color: rgb(60, 75, 80);
-
-  }
+}
 
 #OverallRatingsMain {
   align-items: center;
   text-align: center;
-  max-height: auto;
   width: auto;
-  margin: 8px;
-  padding: 5px;
+  height: 100vh;
+  max-height: 600px;
+  padding: 2px;
+  /* margin: 8px;
+  padding: 5px; */
 }
 
-#ratingInt{
-  font-size: 80px;
+#ratingInt {
+  font-size: 2rem;
   margin-top: 10px;
 }
 
-.recTitle{
-  font-size: 20px;
-  margin-top: -50px;
-  margin-bottom: 30px;
+.recTitle {
+  font-size: 0.75rem;
 }
 
 .OverallStarRatingBars {
-  display: flex;
+  padding: 1px;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  margin-left: 60px;
-  margin-top: -50px;
+  margin-top: 10px;
+  font-size: 1rem;
 }
 
 #CustomerReviewsMain {
   align-items: center;
-  height: 100%;
+  max-height: 600px;
   width: 100%;
   margin: 7px;
-  padding: 5px;
+  padding: 10px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
   border-color: black;
   background-color: rgb(60, 75, 80);
-
 }
 .revs {
-  overflow: scroll;
-  max-height: 1060px;
-  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 450px;
+  overflow: auto;
+  font-size: 0.75rem;
+  scrollbar-color: light;
 }
-#customerReviewsTitle{
+#customerReviewsTitle {
   text-align: left;
 }
+#SingleReview {
+  margin: 10px;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #reviewTile {
   margin: 10px;
 }
 #sortReviewsBy {
-  font-size: 20px;
-  float: left;
-  padding: 5px;
+  font-size: 1.5rem;
+  float: center;
 }
 
 .reviewSort {
   font-size: 20px;
-font-weight: bolder;
-color: white;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: auto;
-width: auto;
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-
+  font-weight: bolder;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
 }
 #CustomerReviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100vh;
+  overflow: auto;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 10px;
+}
+
+#SingleCustomerReviews {
   text-align: center;
   height: auto;
   width: auto;
-  margin: 5px;
-  padding: 5px;
-
+  margin-top: 10px;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .ReviewForm-content {
-font-size: 1.5vw;
-color: white;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: 80%;
-width: auto;
-padding: 1%;
-overflow: scroll;
-background-color: rgb(60, 75, 80);
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-border-color: white;
+  font-size: 0.75rem;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: 80%;
+  width: auto;
+  padding: 1%;
+  overflow: scroll;
+  background-color: rgb(60, 75, 80);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: white;
 }
 
-.RForm, .Form{
-background-color: rgb(60, 75, 80);
-font-size: 1.5vw;
-color: white;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: 100%;
-width: auto;
-margin: 5px;
-
+.RForm,
+.Form {
+  background-color: rgb(60, 75, 80);
+  font-size: 0.75rem;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  margin: 5px;
+}
+.QForm-content {
+  font-size: 0.75rem;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: 30%;
+  width: auto;
+  padding: 1%;
+  overflow: scroll;
+  background-color: rgb(60, 75, 80);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: white;
 }
 
+.AForm-content {
+  font-size: 0.75rem;
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: 50%;
+  width: auto;
+  padding: 1%;
+  overflow: scroll;
+  background-color: rgb(60, 75, 80);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: white;
+}
 #characteristics {
-    color: white;
-    text-align: center;
-    align-items: center;
-    height: auto;
-    width: 100%;
-    margin: 7px;
-    padding: 6px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: black;
+  color: white;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin: 7px;
+  padding: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
 }
 
 #reviewTile {
-padding: 2%;
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-border-color: black;
-background-color: rgb(32, 33, 34);
+  padding: 2%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(32, 33, 34);
 }
 
 #Error {
-padding: 1%;
-margin: 10px;
-border-style: solid;
-border-width: 3px;
-border-radius: 5px;
-border-color: red;
+  padding: 1%;
+  margin: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: red;
 }
 
 #photoUploads {
@@ -574,80 +640,109 @@ border-color: red;
   justify-content: space-evenly;
   max-width: 100%;
   height: auto;
-
 }
 
 #thumbnailsRR {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  max-width: 20%;
-  height: auto;
-}
 
-
-.btn{
-font-size: 20px;
-font-weight: bolder;
-color: black;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: auto;
-width: auto;
-margin: 15px;
-padding: 15px;
-border-style: solid;
-border-width: 3px;
-border-radius: 5px;
-border-color: black;
-background-color: rgb(248,248,255);
-}
-
-.uploadPhoto{
   font-size: 1vw;
-font-weight: bolder;
-color: rgb(16, 24, 66);
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: auto;
-width: auto;
-margin: 5px;
-padding: 5px;
-border-style: solid;
-border-width: 3px;
-border-radius: 5px;
-border-color: black;
-background-color: white;
+  font-weight: bolder;
+  color: rgb(16, 24, 66);
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: 75px;
+  width: auto;
+  margin: 5px;
+  padding: 5px;
 }
 
-.uploadPhoto:hover, .btn:hover, .photos:hover  {
-  border: 1px solid black;
+.btn {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  margin: 15px;
+  padding: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(248, 248, 255);
+}
+
+.btnf {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  margin: 10px;
+  padding: 15x;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(248, 248, 255);
+}
+
+.btnf:hover {
+  border: 4px solid black;
+  cursor: pointer;
+}
+
+.uploadPhoto {
+  font-size: 1vw;
+  font-weight: bolder;
+  color: rgb(16, 24, 66);
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  margin: 5px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: white;
+}
+
+.uploadPhoto:hover,
+.btn:hover,
+.photos:hover {
+  border: 7px solid black;
   cursor: pointer;
 }
 
 .charTable {
-background-color: white;
-  font-size: .5vw;
+  background-color: white;
+  font-size: 0.5vw;
   height: auto;
   width: auto;
-color: black;
-width: auto;
-border-Collapse: seperate;
-border-Spacing: .5em;
+  color: black;
+  width: auto;
+  border-collapse: seperate;
+  border-spacing: 0.5em;
 }
 
-.sumBody{
-  font-size: 1vw;
+.sumBody {
+  font-size: 0.75rem;
   margin-bottom: 20px;
 }
 
 .revSum {
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 1rem;
   margin-bottom: 20px;
+  margin-top: -15px;
 }
 
 .displayedFilters {
@@ -662,12 +757,79 @@ border-Spacing: .5em;
   list-style: none;
   text-decoration: underline;
 }
-.RHelpful, .RReport , .starRating{
+.RHelpful,
+.RReport,
+.charRating {
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+.starRating {
+  font-size: 0.75rem;
   text-decoration: underline;
   cursor: pointer;
 }
+.middle {
+  margin-left: 30px;
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+.middleChar {
+  margin-left: 30px;
+  float: left;
+  width: 70%;
+  height: 100%;
+  margin-top: 12px;
+}
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
 
-.reviewSort{
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+  border-radius: 50px;
+}
+
+.bar-containerChar {
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  color: white;
+  border-radius: 50px;
+}
+@media (max-width: 400px) {
+  .side,
+  .middle {
+    width: 100%;
+  }
+}
+
+.charText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3px;
+  font-size: 0.5rem;
+}
+
+.reviewSort {
   text-decoration: underline;
   cursor: pointer;
   color: white;
@@ -684,7 +846,6 @@ border-Spacing: .5em;
   border-width: 1px;
   border-radius: 5px;
   border-color: rgb(32, 33, 34);
-
 }
 
 .photos {
@@ -704,23 +865,17 @@ border-Spacing: .5em;
   transition-duration: 0.3s;
 }
 
-
 /* Styles specific to QUESTIONS & ANSWERS widget */
-
-
 
 /* Styles specific to RATINGS widget */
 
-
-
 /* Styles specific to RELATED ITEMS widget */
 #RelatedFeature {
-  flex-flow: wrap;
   flex-direction: column;
   background-color: rgb(60, 75, 80);
-  width: 97.5%;
-  height: 100%;
-  padding: 10px;
+  width: auto;
+  height: auto;
+  margin: 3px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
@@ -739,18 +894,18 @@ border-Spacing: .5em;
   position: relative;
 }
 .scrolling-content-wrapper {
-  overflow: hidden;
   width: 100%;
   height: 100%;
 }
 .scrolling-product-content {
   display: flex;
   transition: all 250ms linear;
-  -ms-overflow-style: none;  /* hide scrollbar in IE and Edge */
-  scrollbar-width: none;  /* hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* hide scrollbar in Firefox */
 }
 /* hide scrollbar in webkit browser */
-.scrolling-product-content::-webkit-scrollbar, .scrolling-product-content::-webkit-scrollbar {
+.scrolling-product-content::-webkit-scrollbar,
+.scrolling-product-content::-webkit-scrollbar {
   display: none;
 }
 .scrolling-product-content > * {
@@ -759,7 +914,8 @@ border-Spacing: .5em;
   flex-shrink: 0;
   flex-grow: 1;
 }
-.left-arrow, .right-arrow {
+.left-arrow,
+.right-arrow {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -779,10 +935,16 @@ border-Spacing: .5em;
 .product-display {
   min-width: 200px;
   max-width: 200px;
-  height: 400px;
-  border: 1px solid blue;
+  height: 350px;
   margin: 10px;
   display: inline-block;
+  padding: 2%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(32, 33, 34);
+  font-size: 0.75rem;
 }
 #product-display:hover {
   cursor: pointer;
@@ -793,49 +955,67 @@ border-Spacing: .5em;
   display: block;
   object-fit: cover;
   margin: auto;
+  margin-top: 5px;
+  border-radius: 10%;
+}
+
+#outfitTitle {
+  font-size: 1.5rem;
+  margin: 5px;
 }
 #favorite-radio {
   display: none;
 }
 #favorite-star {
   position: absolute;
-  top: 3%;
+  top: 4%;
 }
-#favorite-star:hover{
+#favorite-star:hover {
   cursor: pointer;
 }
 .close-outfit-display {
   position: absolute;
-  top: 3%;
+  top: 4%;
+  color: white;
+}
+.close-outfit-display:hover {
+  position: absolute;
+  top: 4%;
   color: red;
+  cursor: pointer;
 }
 /* ---------------comparison window popup --------------- */
 #comparison-popup {
-font-size: 1vw;
-color: white;
-font-family: 'Ubuntu', sans-serif;
-text-align: center;
-align-items: center;
-height: auto;
-width: auto;
-padding: 1%;
+  font-size: 1vw;
+  color: black;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  padding: 1%;
 }
 #comparison-table {
   width: 100%;
   empty-cells: show;
 }
-#comparison-table
-td {
+#comparison-table td {
   text-align: center;
 }
 
 #add-product-display {
   min-width: 200px;
   max-width: 200px;
-  height: 400px;
-  border: 1px solid blue;
+  height: 350px;
   margin: 10px;
   display: inline-block;
+  padding: 2%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  background-color: rgb(32, 33, 34);
+  font-size: 0.75rem;
 }
 
 #add-product-icon {
@@ -845,4 +1025,14 @@ td {
   align-items: center;
   top: 45%;
   font-size: 3rem;
+}
+#add-product-icon:hover {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 45%;
+  font-size: 3rem;
+  color: #3c4b4f;
+  cursor: pointer;
 }

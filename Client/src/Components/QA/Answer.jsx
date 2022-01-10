@@ -41,9 +41,9 @@ class Answer extends React.Component {
         <p className='answerText'>A: {this.props.data.body}</p>
         <p className='answererLinks'>
           by {username}, {date} | Helpful?{' '}
-          <span className='answerHelpful' onClick={this.handleAnswerHelpful}>Yes</span>{' '}
+          <span className='click'   onClick={this.handleAnswerHelpful}>Yes</span>{' '}
           {'(' + this.state.helpfulness + ')'}{' '}
-          | <span className='answerReport' onClick={this.handleAnswerReport}>{this.state.reportText}</span>
+          | <span className='click'  onClick={this.handleAnswerReport}>{this.state.reportText}</span>
         </p>
       </div>
     )

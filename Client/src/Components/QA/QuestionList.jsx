@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Question from './Question.jsx';
+import React, { useState, useEffect } from "react";
+import Question from "./Question.jsx";
 
 function QuestionList({ questions }) {
   const [listCount, setListCount] = useState(2);
-  const [search, setSearchText] = useState('');
+  const [search, setSearchText] = useState("");
 
   useEffect(() => {
-    let list = document.getElementById('questionList');
+    let list = document.getElementById("questionList");
     list.scrollTop = list.scrollHeight;
-  })
+  });
 
   let renderCount = 0;
 
@@ -21,16 +21,16 @@ function QuestionList({ questions }) {
   }
 
   function filterList(arr, searchText) {
-    if (searchText === '') {
+    if (searchText === "") {
       renderCount = arr.length;
       return arr;
     }
 
-    let searchWordsArr = searchText.split(' ');
+    let searchWordsArr = searchText.split(" ");
     let filteredQuestions = arr.filter((question) => {
-      return searchWordsArr.every(
-        (word) => { return question.question_body.includes(word) }
-      );
+      return searchWordsArr.every((word) => {
+        return question.question_body.includes(word);
+      });
     });
 
     renderCount = filteredQuestions.length;
@@ -43,19 +43,32 @@ function QuestionList({ questions }) {
 
   return (
     <>
-      <input type='text' id='questionSearch' value={search} onChange={(e) => setSearchText(e.target.value)}/>
-
-      <div id='questionList'>
+    <div id="questionSearch">
+      <label >Search Questions:</label>
+      <input
+      className="searchbar"
+        type="text"
+        placeholder="Search Term"
+        value={search}
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+      </div>
+      <div id="questionList">
         {renderListCount(
           filterList(questions, search),
           listCount,
-          (question, index) => <Question key={`question ${index}`} data={question} />
+          (question, index) => (
+            <Question key={`question ${index}`} data={question} />
+          )
         )}
       </div>
-
-      {listCount < renderCount && <button className="btn" onClick={handleMoreQuestions}>More Questions</button>}
+      {listCount < renderCount && (
+        <button className="btn" onClick={handleMoreQuestions}>
+          More Questions
+        </button>
+      )}
     </>
-  )
+  );
 }
 
 export default QuestionList;

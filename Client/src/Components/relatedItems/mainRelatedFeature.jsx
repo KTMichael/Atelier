@@ -36,7 +36,7 @@ function MainRelatedFeature() {
             </testContext.Provider>
           }
         </div>
-        <h1>Your Outfit</h1>
+        <span id="outfitTitle">Build Your Outfit Below!</span>
         <div>
           <testContext.Provider value={{ mainProduct, outfits }}>
             <ScrollableProductContainer />

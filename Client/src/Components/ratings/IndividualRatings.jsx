@@ -59,12 +59,12 @@ const IndividualRatings = (review) => {
 
   return (
     <div id="reviewTile">
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+      <div id="SingleReview">
         <StarRatings
           rating={review.review.rating}
           starRatedColor='gold'
           numberOfStars={5}
-          starDimension='25px'
+          starDimension='1rem'
           starSpacing='2px'
         />
         <span>{`${review.review.reviewer_name}, ${date}`}</span>
@@ -76,9 +76,6 @@ const IndividualRatings = (review) => {
         {showButton}
         <br />
       </div>
-      {/* <div className="photos" onClick={(event) => { console.log(event.target.src); setClickedImage(event.target.src); }}>
-      </div> */}
-      {/* {photos.map((photo => <img className="photo thumbnail" key={photo.id} loading="lazy" alt="Customer uploaded photo" src={photo.url} />))} */}
       <div >
         {response !== null ?
           <div style={{ backgroundColor: "grey" }}>
@@ -87,12 +84,12 @@ const IndividualRatings = (review) => {
           </div>
           : <div style={{ clear: 'none' }} />
         }</div>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontsize: ".5vw" }}>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontsize: "0.5rem" }}>
         <div >
           <p> Helpful?{' '}
-            <span className='RHelpful' onClick={(event) => markReviewHelpful(event)}>Yes </span>
+            <span className='click'  onClick={(event) => markReviewHelpful(event)}>Yes </span>
             {`(${helpful})`}{' '}
-            | <span className='RReport' onClick={(event) => markReviewReported(event)}>{`${report}`}{' '}</span>
+            | <span className='click'  onClick={(event) => markReviewReported(event)}>{`${report}`}{' '}</span>
           </p>
         </div>
         {recommended === true ?

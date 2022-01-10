@@ -31,7 +31,7 @@ const RatingsandReviews = ({ productId, allProductsData }) => {
 
 
   return (
-    <div id="RatingsandReviews" >
+    <div className="RatingsandReviews" >
       <div id="ComponentTitle">
         <h1> Ratings & Reviews</h1>
       </div>

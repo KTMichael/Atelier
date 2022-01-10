@@ -135,11 +135,10 @@ const CustomerReviews = ({ overallStarRating, productId, filters, setFilters, pr
             <option value="Helpful">Helpful</option>
           </select>
         </div>
-        <br /> <br />
-        <div style={{ marginTop: '60px' }} className="revs">
+        <div className="revs">
           {displayReviews()}
         </div>
-        <div id="CustomerReviews" style={{ display: 'flex', flexDirection: 'row' }}>
+        <div id="SingleCustomerReviews" >
           <div id="btn">
             {showingReviews < userReviews.length ?
             <button className="btn" onClick={(event) => {

@@ -10,8 +10,8 @@ const StarRating = ({ onChange }) => {
   };
 
   return (
-    <div id='StarRating' >
-      <span>
+    <div >
+      <span className="sRating">
         {[1, 2, 3, 4, 5].map((value, index) => (<Stars filled={value <= starRating} val={starRating} key={index} onClick={() => updateRating(value)} />))}
       </span>
     </div>

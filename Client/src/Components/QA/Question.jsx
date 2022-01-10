@@ -56,7 +56,7 @@ class Question extends React.Component {
   renderSeeMoreAnswers() {
     if (this.state.answers.length > 2) {
       if (this.state.answerListMax <= 2) {
-        return <p onClick={this.handleSeeMoreAnswers}>See more answers</p>
+        return <p  className='click'  onClick={this.handleSeeMoreAnswers}>See more answers</p>
       } else {
         return <p onClick={this.handleSeeMoreAnswers}>Collapse answers</p>
       }
@@ -78,10 +78,10 @@ class Question extends React.Component {
         </div>
         <p className='QuestionLinks'>
           Helpful?{' '}
-          <span className='questionHelpful' onClick={this.handleQuestionHelpful}>Yes</span>{' '}
+          <span className='click'  onClick={this.handleQuestionHelpful}>Yes</span>{' '}
           {'(' + this.state.helpfulness + ')'}{' '}
           |{' '}
-          <span className='questionReport' onClick={this.handleQuestionReport}>{this.state.reportText}</span>{' '}
+          <span className='click'  onClick={this.handleQuestionReport}>{this.state.reportText}</span>{' '}
           |{' '}
           <AddAnswer question_id={this.props.data.question_id}/>
         </p>
