@@ -15,6 +15,16 @@ This project was an assignment at Hack Reactor to develop and attach the front e
 By working collaboratively with three other developers on a single code base, my team and I integrated our newly created front end with an existing API, followed git workflow, utilized scrum and agile methodologies via Trello to meet given deadlines, and finally demonstrated our working deployed application by way of AWS:EC2 at the end of the project timeline.
 
 ## Demo
+### Product Overview
+![Products](https://raw.githubusercontent.com/KTMichael/Atelier/main/Products.gif)
+### Related Products
+![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/related.gif)
+### Questions & Answers
+![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/Qpart1.gif)
+![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/Qpart2.gif)
+### Ratings & Reviews
+![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/RR.gif)
+![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/ReviewForm.gif)
 
 ## Installation
 ### Step 1
