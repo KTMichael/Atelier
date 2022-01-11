@@ -26,6 +26,7 @@ By working collaboratively with three other developers on a single code base, my
 ![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/RR.gif)
 ![Demo](https://raw.githubusercontent.com/KTMichael/Atelier/main/ReviewForm.gif)
 
+### To view a full walkthrough video please visit the 'Applications' section of my [portfolio site](https://kaitlynmichael.herokuapp.com)
 ## Installation
 ### Step 1
 - Clone repo to local machine
